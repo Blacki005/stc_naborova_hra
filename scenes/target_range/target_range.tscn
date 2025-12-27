@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbko3ifs3mdgi"]
+
+[ext_resource type="Script" path="res://scripts/target_range/target_range.gd" id="1_hn331"]
+[ext_resource type="Texture2D" uid="uid://gl3rls4o078g" path="res://images/bigo_snake/bigo_snake_background.png" id="1_mbc6h"]
+[ext_resource type="Texture2D" uid="uid://bfufpnjvh1nxu" path="res://images/target_range/crosshair.png" id="3_teb57"]
+[ext_resource type="Texture2D" uid="uid://bttutscqbuxtm" path="res://images/target_range/bullseye.png" id="4_bi74x"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="5_4jm1f"]
+[ext_resource type="AudioStream" uid="uid://dvbqu6jwe3bf5" path="res://audio/bren_gunshot.mp3" id="5_f1ndq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fnoh"]
+size = Vector2(128, 128)
+
+[node name="target_range" type="Node2D"]
+script = ExtResource("1_hn331")
+needed_hits = 4
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_mbc6h")
+
+[node name="crosshair" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(907, 570)
+texture = ExtResource("3_teb57")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 292.0
+offset_top = 110.0
+offset_right = 1623.0
+offset_bottom = 247.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "KILL"
+horizontal_alignment = 1
+
+[node name="target" type="Area2D" parent="."]
+visible = false
+position = Vector2(565, 522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target"]
+shape = SubResource("RectangleShape2D_6fnoh")
+
+[node name="Sprite2D" type="Sprite2D" parent="target"]
+texture = ExtResource("4_bi74x")
+
+[node name="timer" type="Timer" parent="."]
+
+[node name="new_game_button" type="Button" parent="."]
+offset_left = 487.0
+offset_top = 252.0
+offset_right = 887.0
+offset_bottom = 352.0
+theme = ExtResource("5_4jm1f")
+text = "K boji!
+"
+
+[node name="exit_button" type="Button" parent="."]
+offset_left = 998.0
+offset_top = 245.0
+offset_right = 1398.0
+offset_bottom = 345.0
+theme = ExtResource("5_4jm1f")
+text = "Palbu zastav, náboj skryj!"
+
+[node name="gunshot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f1ndq")
+
+[node name="health_lost_message" type="Label" parent="."]
+offset_left = 541.0
+offset_top = 912.0
+offset_right = 1370.0
+offset_bottom = 988.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[connection signal="input_event" from="target" to="." method="_on_target_input_event"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="button_up" from="new_game_button" to="." method="_on_new_game_button_button_up"]
+[connection signal="button_up" from="exit_button" to="." method="_on_exit_button_button_up"]

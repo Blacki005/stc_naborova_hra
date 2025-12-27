@@ -1,0 +1,32 @@
+{
+	"Computer" : {
+		"ItemCategory": "Quest item",
+		"StackSize": 1,
+		"Description": "Jenom hromádka tranzistorů, nic víc."
+	},
+	"Monitor" : {
+		"ItemCategory": "Quest item",
+		"StackSize": 1,
+		"Description": "Když se na něj budeš dívat dostatečně dlouho, vypálí ti oči."
+	},
+	"Keyboard" : {
+		"ItemCategory": "Quest item",
+		"StackSize": 1,
+		"Description": "Klávesy w,a,s,d sice chybí, ale na LoLko to stačí."
+	},
+	"Mouse" : {
+		"ItemCategory": "Quest item",
+		"StackSize": 1,
+		"Description": "Liší se od krysy ocasem a menší velikostí."
+	},
+	"Pen" : {
+		"ItemCategory": "Throwable",
+		"StackSize": 1,
+		"Description": "Mimořádně smrtící proti záludným dokumentům."
+	},
+	"IDCard" : {
+		"ItemCategory": "Throwable",
+		"StackSize": 1,
+		"Description": "Větší kalibr než pero, ale většinou jich má člověk míň."
+	}
+}

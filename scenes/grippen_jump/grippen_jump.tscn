@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://be23cir7jqtiw"]
+
+[ext_resource type="Script" path="res://scripts/grippen_jump/grippen_jump.gd" id="1_7dcjc"]
+[ext_resource type="PackedScene" uid="uid://cttk54qm7ut8m" path="res://scenes/grippen_jump/grippen.tscn" id="2_b3mhc"]
+[ext_resource type="PackedScene" uid="uid://y8xduf1pvs6l" path="res://scenes/grippen_jump/pipe.tscn" id="2_qld4q"]
+[ext_resource type="Texture2D" uid="uid://cxqvowqq7ldjc" path="res://images/grippen_jump/background.png" id="3_a5did"]
+[ext_resource type="PackedScene" uid="uid://bgr81ofujy6i" path="res://scenes/grippen_jump/ground.tscn" id="4_5spyc"]
+[ext_resource type="PackedScene" uid="uid://buxu3rx8nr8sp" path="res://scenes/grippen_jump/game_over.tscn" id="6_8eeux"]
+
+[node name="grippen_jump" type="Node"]
+script = ExtResource("1_7dcjc")
+pipe_scene = ExtResource("2_qld4q")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("3_a5did")
+centered = false
+
+[node name="grippen" parent="." instance=ExtResource("2_b3mhc")]
+
+[node name="ground" parent="." instance=ExtResource("4_5spyc")]
+z_index = 1
+position = Vector2(0, 106)
+
+[node name="pipe_timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="score_label" type="Label" parent="."]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.153
+anchor_right = 0.5
+anchor_bottom = 0.039
+offset_left = 13.24
+offset_right = -583.0
+offset_bottom = -19.12
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0"
+
+[node name="game_over" parent="." instance=ExtResource("6_8eeux")]
+
+[connection signal="hit" from="ground" to="." method="_on_ground_hit"]
+[connection signal="timeout" from="pipe_timer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="restart" from="game_over" to="." method="new_game"]

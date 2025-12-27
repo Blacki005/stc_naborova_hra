@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://3ogyi7jjo27r"]
+
+[ext_resource type="Script" path="res://scripts/character_chooser.gd" id="1_3j2a5"]
+[ext_resource type="Texture2D" uid="uid://d1nkv5q1lcph5" path="res://images/user_interface/main_menu.png" id="2_6n5cx"]
+[ext_resource type="Texture2D" uid="uid://kenaun22xsjk" path="res://images/playable_characters/flasar.png" id="2_yleoj"]
+[ext_resource type="Texture2D" uid="uid://b3fog04n68x6y" path="res://images/playable_characters/blaznivej_boxer.png" id="3_ggh2v"]
+[ext_resource type="Texture2D" uid="uid://bbubk2gjtgob8" path="res://images/playable_characters/pepa_anime.png" id="3_l778r"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="4_fb86q"]
+
+[node name="character_chooser" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3j2a5")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_6n5cx")
+centered = false
+
+[node name="flasar" type="Sprite2D" parent="."]
+position = Vector2(382, 508)
+scale = Vector2(0.339744, 0.339744)
+texture = ExtResource("2_yleoj")
+
+[node name="micinka999" type="Sprite2D" parent="."]
+position = Vector2(1480, 521)
+scale = Vector2(0.715539, 0.715539)
+texture = ExtResource("3_ggh2v")
+
+[node name="pepa" type="Sprite2D" parent="."]
+position = Vector2(927, 496)
+scale = Vector2(0.389028, 0.389028)
+texture = ExtResource("3_l778r")
+
+[node name="flasar_button" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 169.0
+offset_top = 677.0
+offset_right = 569.0
+offset_bottom = 777.0
+theme = ExtResource("4_fb86q")
+text = "volím si tebe"
+
+[node name="pepa_button" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 775.0
+offset_top = 667.0
+offset_right = 1175.0
+offset_bottom = 767.0
+theme = ExtResource("4_fb86q")
+text = "ten je krásnej"
+
+[node name="micinka999_button" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 1293.0
+offset_top = 675.0
+offset_right = 1693.0
+offset_bottom = 775.0
+theme = ExtResource("4_fb86q")
+text = "tohle jsem já"
+
+[node name="flasar_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 287.0
+offset_right = 430.0
+offset_bottom = 332.0
+theme = ExtResource("4_fb86q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Black D"
+
+[node name="pepa_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 279.0
+offset_right = 1020.0
+offset_bottom = 324.0
+theme = ExtResource("4_fb86q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Kapitán Enžr"
+
+[node name="micinka999_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1375.0
+offset_top = 363.0
+offset_right = 1559.0
+offset_bottom = 408.0
+theme = ExtResource("4_fb86q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Micinka 999"
+
+[connection signal="button_up" from="flasar_button" to="." method="_on_flasar_button_up"]
+[connection signal="button_up" from="pepa_button" to="." method="_on_pepa_button_up"]
+[connection signal="button_up" from="micinka999_button" to="." method="_on_micinka_999_button_button_up"]

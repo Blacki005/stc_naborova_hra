@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://buxu3rx8nr8sp"]
+
+[ext_resource type="Script" path="res://scripts/grippen_jump/game_over.gd" id="1_46k36"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="2_wy7lj"]
+
+[node name="game_over" type="CanvasLayer"]
+script = ExtResource("1_46k36")
+
+[node name="restart_button" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 205.0
+offset_right = 880.0
+offset_bottom = 305.0
+theme = ExtResource("2_wy7lj")
+text = "Chci si zahrát znova"
+
+[node name="exit_button" type="Button" parent="."]
+offset_left = 1118.0
+offset_top = 202.0
+offset_right = 1518.0
+offset_bottom = 302.0
+theme = ExtResource("2_wy7lj")
+text = "A ven"
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+offset_left = 545.0
+offset_top = 45.0
+offset_right = 1446.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Label"]
+z_index = -1
+layout_mode = 0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = 883.0
+offset_bottom = 86.0
+
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="button_up" from="exit_button" to="." method="_on_exit_button_button_up"]

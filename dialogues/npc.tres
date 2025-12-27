@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://cgd1t35uvtgyg"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_kg5a1"]
+
+[resource]
+script = ExtResource("1_kg5a1")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-640, -440),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "A vo co ze nedas slavnostni pochod, mrdko",
+"offset": Vector2(-60, -220),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Play the game!"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Exit"
+}
+},
+"size": Vector2(380, 360),
+"speaker": ""
+},
+"1_2": {
+"dialogue": "Uz si to zvladl kokutku",
+"offset": Vector2(-60, -500),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(380, 240),
+"speaker": ""
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(360, 40),
+"signalValue": "play_game"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(-420, -480),
+"operator": 0,
+"true": &"1_2",
+"value1": "{{slavnostni_pochod_completed}}",
+"value2": "true"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

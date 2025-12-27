@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://40juvr2mq63n"]
+
+[ext_resource type="Script" path="res://scripts/death_screen.gd" id="1_gt06f"]
+[ext_resource type="Texture2D" uid="uid://c3ht14q1jpvcm" path="res://images/user_interface/death_screen.png" id="1_ke4io"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="3_hnope"]
+
+[node name="death_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gt06f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_ke4io")
+
+[node name="main_menu_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 535.0
+offset_right = 796.0
+offset_bottom = 631.0
+theme = ExtResource("3_hnope")
+text = "hlavní nabídka"
+
+[node name="exit_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 528.0
+offset_right = 1395.0
+offset_bottom = 644.0
+theme = ExtResource("3_hnope")
+text = "už mě to nebaví"
+
+[connection signal="button_up" from="main_menu_button" to="." method="_on_main_menu_button_button_up"]
+[connection signal="button_up" from="exit_button" to="." method="_on_exit_button_button_up"]

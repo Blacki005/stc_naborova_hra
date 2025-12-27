@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c8dj71ebo6upk"]
+
+[node name="hurtbox" type="Area2D"]
+modulate = Color(0.0145615, 0.530947, 0, 1)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

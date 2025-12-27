@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c26xyqotbajvx"]
+
+[ext_resource type="Script" uid="uid://dgahlpqehntqq" path="res://scripts/racing_game/bot_racer.gd" id="1_jruk5"]
+[ext_resource type="Texture2D" uid="uid://erlcjo14rs8r" path="res://textures/car_eny.png" id="2_jruk5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fl7yt"]
+radius = 32.0
+height = 96.0
+
+[node name="bot_racer" type="CharacterBody2D"]
+script = ExtResource("1_jruk5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
+texture = ExtResource("2_jruk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_fl7yt")

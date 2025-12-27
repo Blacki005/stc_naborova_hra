@@ -1,0 +1,69 @@
+[gd_scene load_steps=14 format=3 uid="uid://dahyokos7jqox"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_g5is1"]
+[ext_resource type="Texture2D" uid="uid://k02p47lg1u4l" path="res://images/npc_characters/enemy_temp.png" id="2_p1o5w"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="3_uawey"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_1gl1n"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_kegni"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_qv0u5"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="7_cd5b2"]
+[ext_resource type="Resource" uid="uid://bg264x2wad6dw" path="res://dialogues/enemy.tres" id="8_ylenb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlhrr"]
+radius = 634.028
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jre7"]
+size = Vector2(125, 232)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3ppd8"]
+script = ExtResource("4_1gl1n")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_0bsv0"]
+script = ExtResource("5_kegni")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_xu5u1"]
+script = ExtResource("6_qv0u5")
+
+[node name="enemy" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_g5is1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p1o5w")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_hlhrr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.5, 8)
+shape = SubResource("RectangleShape2D_6jre7")
+
+[node name="DialogueBubble" type="RichTextLabel" parent="."]
+visible = false
+clip_contents = false
+offset_left = 67.0
+offset_top = -92.0
+offset_right = 207.0
+offset_bottom = -69.0
+theme = ExtResource("3_uawey")
+bbcode_enabled = true
+text = "Sample dialogue."
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_3ppd8"), SubResource("RichTextEffect_0bsv0"), SubResource("RichTextEffect_xu5u1")]
+script = ExtResource("7_cd5b2")
+data = ExtResource("8_ylenb")
+start_id = "START"
+dialogue_custom_effects = [SubResource("RichTextEffect_3ppd8"), SubResource("RichTextEffect_0bsv0"), SubResource("RichTextEffect_xu5u1")]
+max_options_count = 1
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_ended" from="DialogueBubble" to="." method="_on_dialogue_bubble_dialogue_ended"]

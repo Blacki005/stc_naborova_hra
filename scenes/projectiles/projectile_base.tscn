@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c80e3g5vwh245"]
+
+[ext_resource type="PackedScene" uid="uid://bdv6v6q248x5t" path="res://scenes/overlap/hitbox.tscn" id="1_4juxb"]
+[ext_resource type="Script" uid="uid://cpkwuaprtmwvf" path="res://scripts/projectiles/projectile.gd" id="2_ik7qm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2tt0"]
+radius = 24.0
+height = 48.0
+
+[node name="projectile" groups=["projectiles"] instance=ExtResource("1_4juxb")]
+collision_layer = 8
+collision_mask = 5
+monitoring = true
+script = ExtResource("2_ik7qm")
+SPEED = 500
+destroy_effect = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_o2tt0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

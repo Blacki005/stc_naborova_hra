@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://oq5s71qxggu1"]
+
+[ext_resource type="Script" path="res://scripts/entity/entity_base.gd" id="1_88pqr"]
+[ext_resource type="PackedScene" uid="uid://c8dj71ebo6upk" path="res://scenes/overlap/hurtbox.tscn" id="2_58rcb"]
+
+[node name="EntityBase" type="CharacterBody2D"]
+script = ExtResource("1_88pqr")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="hurtbox" parent="." instance=ExtResource("2_58rcb")]
+
+[node name="attack_timer" type="Timer" parent="."]
+
+[connection signal="died" from="." to="." method="_on_died"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="hurtbox"]

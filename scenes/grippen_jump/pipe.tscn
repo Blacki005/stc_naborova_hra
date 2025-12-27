@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://y8xduf1pvs6l"]
+
+[ext_resource type="Texture2D" uid="uid://den4sx3n8oo4t" path="res://images/grippen_jump/pipe.png" id="1_bifsc"]
+[ext_resource type="Script" path="res://scripts/grippen_jump/pipe.gd" id="1_qiufl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58xkr"]
+size = Vector2(80, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w2mc"]
+size = Vector2(70, 489)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyblc"]
+size = Vector2(80, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7w30"]
+size = Vector2(70, 931)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d75d"]
+size = Vector2(35, 270)
+
+[node name="pipe" type="Area2D" groups=["pipes"]]
+script = ExtResource("1_qiufl")
+
+[node name="lower" type="Sprite2D" parent="."]
+position = Vector2(-2, 255)
+texture = ExtResource("1_bifsc")
+offset = Vector2(0, 380)
+
+[node name="upper" type="Sprite2D" parent="."]
+position = Vector2(-2, -256)
+texture = ExtResource("1_bifsc")
+offset = Vector2(0, -380)
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -171.5)
+shape = SubResource("RectangleShape2D_58xkr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -451.5)
+shape = SubResource("RectangleShape2D_4w2mc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 170.5)
+shape = SubResource("RectangleShape2D_hyblc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 671.5)
+shape = SubResource("RectangleShape2D_p7w30")
+
+[node name="score_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="score_area"]
+position = Vector2(55.5, -1)
+shape = SubResource("RectangleShape2D_8d75d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="score_area" to="." method="_on_score_area_body_entered"]

@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d3skd85tu8lgn"]
+
+[ext_resource type="Texture2D" uid="uid://c8217jhruol23" path="res://images/themes_resources/shop_button_hover.png" id="2_wbxh5"]
+[ext_resource type="Texture2D" uid="uid://b8tequg7sk0v2" path="res://images/themes_resources/shop_button_normal.png" id="3_wivc0"]
+[ext_resource type="Texture2D" uid="uid://dj3p41hgnrx5c" path="res://images/themes_resources/shop_button_pressed.png" id="4_vt3tl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rd4gb"]
+texture = ExtResource("2_wbxh5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_77ulm"]
+texture = ExtResource("3_wivc0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jgdf3"]
+texture = ExtResource("4_vt3tl")
+
+[resource]
+Button/fonts/font = null
+Button/styles/hover = SubResource("StyleBoxTexture_rd4gb")
+Button/styles/normal = SubResource("StyleBoxTexture_77ulm")
+Button/styles/pressed = SubResource("StyleBoxTexture_jgdf3")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = null

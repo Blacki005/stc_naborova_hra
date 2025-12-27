@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://vqd6f550jj66"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_smji7"]
+
+[resource]
+script = ExtResource("1_smji7")
+starts = {
+"FINISHED": &"0_2",
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-880, -280),
+"start_id": "START"
+},
+"0_2": {
+"link": &"1_5",
+"offset": Vector2(-880, 240),
+"start_id": "FINISHED"
+},
+"1_1": {
+"dialogue": "Dobrý den. Předpokládám, že chcete do zeleného, když už tu jste. Naše firma je dost jiná než ty ostatní, to ostatně máte možnost vidět okolo mě.",
+"offset": Vector2(-640, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Co se stalo?"
+}
+},
+"size": Vector2(300, 256),
+"speaker": "pracovník rekrutačního pracoviště"
+},
+"1_2": {
+"dialogue": "Snažili jsme se naučit dokumenty potřebné na zápis trochu pořadové přípravy...aby se uměly alespoň narovnat do komínků, pochodovat a tak.",
+"offset": Vector2(-180, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Tak to nechápu kde je problém, moje papíry to doma umí."
+}
+},
+"size": Vector2(300, 253),
+"speaker": -1
+},
+"1_3": {
+"dialogue": "Moc se s naší vizí neztotožnily a vzbouřily se. Nicméně hlavní schopností vojáka je přizpůsobit se, takže pokud máte zájem, budete se muset k pohovoru probojovat.",
+"offset": Vector2(260, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": "Nikdy jsem s papírem nebojoval..."
+}
+},
+"size": Vector2(300, 256),
+"speaker": ""
+},
+"1_4": {
+"dialogue": "Je to jednoduché. Stačí vám občaský průkaz a psací potřeby. Koukám že je máte, tak by to pro vás neměl být problém. Až je zlikvidujete, vraťte se za mnou.",
+"offset": Vector2(640, -280),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_5": {
+"dialogue": "Dobrá práce. Pohovor máte splněný, ale obávám se, že za svoji kariéru uvidíte ještě hodně záludných papírů. Občas jsou nebezpečnější než cokoliv jiného, zvlášť když na nich je váš podpis.",
+"offset": Vector2(-640, 240),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

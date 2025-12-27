@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5sydaptidx0n"]
+
+[ext_resource type="Script" uid="uid://cag3c01vff7p3" path="res://scripts/levels/kurz_zakladni_pripravy/kurz_zakladni_pripravy.gd" id="1_0v6pd"]
+[ext_resource type="PackedScene" uid="uid://da583lp4nicuu" path="res://scenes/levels/kruz_zakladni_pripravy/bvp.tscn" id="2_ot065"]
+[ext_resource type="PackedScene" uid="uid://bt2q2aj47cgav" path="res://scenes/levels/kruz_zakladni_pripravy/target.tscn" id="3_ygksr"]
+
+[node name="kurz_zakladni_pripravy" type="Node2D"]
+script = ExtResource("1_0v6pd")
+
+[node name="bvp" parent="." instance=ExtResource("2_ot065")]
+position = Vector2(960, 688)
+
+[node name="target" parent="." instance=ExtResource("3_ygksr")]
+z_index = -1
+position = Vector2(960, 188)
+scale = Vector2(0.5, 0.5)

@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://sue4tlr8wwrf"]
+
+[ext_resource type="FontFile" uid="uid://5sb7ywytiods" path="res://fonts/exprswy free.ttf" id="1_t6ynr"]
+[ext_resource type="Texture2D" uid="uid://beocyqj4k6ekp" path="res://images/themes_resources/button_hover.png" id="2_aj74n"]
+[ext_resource type="Texture2D" uid="uid://dpwarcbr64rbx" path="res://images/themes_resources/button.png" id="3_30stt"]
+[ext_resource type="Texture2D" uid="uid://bxs58egpcac4e" path="res://images/themes_resources/button_pressed.png" id="4_av7ei"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4p1da"]
+texture = ExtResource("2_aj74n")
+axis_stretch_horizontal = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wntk4"]
+texture = ExtResource("3_30stt")
+axis_stretch_horizontal = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ueifx"]
+texture = ExtResource("4_av7ei")
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_t6ynr")
+Button/styles/hover = SubResource("StyleBoxTexture_4p1da")
+Button/styles/normal = SubResource("StyleBoxTexture_wntk4")
+Button/styles/pressed = SubResource("StyleBoxTexture_ueifx")
+Label/font_sizes/font_size = 32

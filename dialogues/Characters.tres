@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="CharacterList" load_steps=19 format=3 uid="uid://cbtqpd3epedd2"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="1_ah8gm"]
+[ext_resource type="Texture2D" uid="uid://c527xy01emmkq" path="res://images/dialogue_icons/major.png" id="2_s67b3"]
+[ext_resource type="Texture2D" uid="uid://cif6b7tej8lkb" path="res://images/dialogue_icons/chrudimak.png" id="3_av3vg"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/CharacterList.gd" id="3_sikwv"]
+[ext_resource type="Texture2D" uid="uid://rblmhrux6ro2" path="res://images/dialogue_icons/math_teacher.png" id="4_3b3wc"]
+[ext_resource type="Texture2D" uid="uid://ewm40qyndrk7" path="res://images/dialogue_icons/blaznivej_boxer.png" id="4_he7h6"]
+[ext_resource type="Texture2D" uid="uid://1pysgrb3ncgk" path="res://images/dialogue_icons/velitel_fvl.png" id="5_ih8tq"]
+[ext_resource type="Texture2D" uid="uid://c7ljcho8qa6j5" path="res://images/dialogue_icons/velitel_katedry_informatiky.png" id="6_0yewy"]
+[ext_resource type="Texture2D" uid="uid://cihdjd34dp6ya" path="res://images/dialogue_icons/velitel_katedry_letectva.png" id="7_2auhr"]
+[ext_resource type="Texture2D" uid="uid://b6ujawjog1ri7" path="res://images/dialogue_icons/velitel_katedry_zbrani.png" id="8_7o810"]
+
+[sub_resource type="Resource" id="1"]
+script = ExtResource("1_ah8gm")
+name = "Major"
+image = ExtResource("2_s67b3")
+color = Color(1, 0.707573, 0.937059, 1)
+
+[sub_resource type="Resource" id="2"]
+script = ExtResource("1_ah8gm")
+name = "Chrudimák"
+image = ExtResource("3_av3vg")
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_uc76g"]
+script = ExtResource("1_ah8gm")
+name = "Bláznivej závislák na bagu"
+image = ExtResource("4_he7h6")
+color = Color(0, 0.459068, 0.308702, 1)
+
+[sub_resource type="Resource" id="Resource_w6mfl"]
+script = ExtResource("1_ah8gm")
+name = "RNDr. Slavoj Popovický, PhD"
+image = ExtResource("4_3b3wc")
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_dcqga"]
+script = ExtResource("1_ah8gm")
+name = "plk. Štír"
+image = ExtResource("5_ih8tq")
+color = Color(1, 0, 1, 1)
+
+[sub_resource type="Resource" id="Resource_iv6tj"]
+script = ExtResource("1_ah8gm")
+name = "plk. Bigo"
+image = ExtResource("6_0yewy")
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_jf67q"]
+script = ExtResource("1_ah8gm")
+name = "plk. Modrý"
+image = ExtResource("7_2auhr")
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_sgn7e"]
+script = ExtResource("1_ah8gm")
+name = "mjr. B.J. Blazkowicz"
+image = ExtResource("8_7o810")
+color = Color(1, 0, 0, 1)
+
+[resource]
+script = ExtResource("3_sikwv")
+characters = Array[ExtResource("1_ah8gm")]([SubResource("1"), SubResource("2"), SubResource("Resource_uc76g"), SubResource("Resource_w6mfl"), SubResource("Resource_dcqga"), SubResource("Resource_iv6tj"), SubResource("Resource_jf67q"), SubResource("Resource_sgn7e")])

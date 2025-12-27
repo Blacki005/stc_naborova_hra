@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtyhgddjc1o0j"]
+
+[ext_resource type="PackedScene" uid="uid://c80e3g5vwh245" path="res://scenes/projectiles/projectile_base.tscn" id="1_ps5p4"]
+[ext_resource type="Texture2D" uid="uid://gotp25giijdu" path="res://images/items/Pen.png" id="2_1vium"]
+
+[node name="pen_projectile" instance=ExtResource("1_ps5p4")]
+SPEED = 1500
+destroy_effect = null
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 4.71239
+texture = ExtResource("2_1vium")

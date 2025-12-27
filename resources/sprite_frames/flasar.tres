@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://ksu6a503mcy0"]
+
+[ext_resource type="Texture2D" uid="uid://c5nwy8ff68gch" path="res://images/playable_characters/flasar_spritesheet.png" id="1_d2ded"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an682"]
+atlas = ExtResource("1_d2ded")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfqhf"]
+atlas = ExtResource("1_d2ded")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kuof"]
+atlas = ExtResource("1_d2ded")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyvpb"]
+atlas = ExtResource("1_d2ded")
+region = Rect2(48, 0, 48, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an682")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfqhf")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kuof")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyvpb")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://usle3cetqvu8"]
+
+[ext_resource type="Script" path="res://scripts/levels/majorova_kancelar/majorova_kancelar.gd" id="1_dwh48"]
+[ext_resource type="Texture2D" uid="uid://cpk7m7ryxofmf" path="res://textures/majorova_kancelar_background.png" id="2_1c2kk"]
+[ext_resource type="PackedScene" uid="uid://dprbjqvu2al7c" path="res://scenes/player.tscn" id="2_1mbdh"]
+[ext_resource type="PackedScene" uid="uid://c7dtdy11356p2" path="res://scenes/user_interface.tscn" id="3_t3mv3"]
+[ext_resource type="Script" path="res://scripts/levels/majorova_kancelar/major.gd" id="4_1x3yh"]
+[ext_resource type="PackedScene" uid="uid://ltped2ukoxcp" path="res://scenes/interaction_area.tscn" id="4_mcuqr"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="5_1n8eb"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="6_5xfab"]
+[ext_resource type="Texture2D" uid="uid://caeuyaico6187" path="res://images/npc_characters/major.png" id="6_kr73q"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="7_8ut6q"]
+[ext_resource type="Resource" uid="uid://b6661vwcimwpd" path="res://dialogues/major.tres" id="7_j8hrv"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="8_wluxu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i28kh"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tv8s"]
+radius = 41.0122
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_8edh5"]
+script = ExtResource("6_5xfab")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_xxw0x"]
+script = ExtResource("7_8ut6q")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_6wp5g"]
+script = ExtResource("8_wluxu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_701u7"]
+size = Vector2(340, 283)
+
+[node name="majorova_kancelar" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_dwh48")
+camera_limit_bottom = 1080
+camera_limit_right = 1920
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_1c2kk")
+offset = Vector2(960, 540)
+
+[node name="player" parent="." instance=ExtResource("2_1mbdh")]
+position = Vector2(899, 836)
+
+[node name="user_interface" parent="." instance=ExtResource("3_t3mv3")]
+
+[node name="major" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1456, 495)
+collision_mask = 2
+script = ExtResource("4_1x3yh")
+texture = ExtResource("6_kr73q")
+dialogue_data = ExtResource("7_j8hrv")
+start_id = "START"
+
+[node name="Sprite2D" type="Sprite2D" parent="major"]
+y_sort_enabled = true
+offset = Vector2(0, -90)
+
+[node name="interaction_area" parent="major" instance=ExtResource("4_mcuqr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="major/interaction_area"]
+shape = SubResource("CircleShape2D_i28kh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="major"]
+shape = SubResource("CircleShape2D_2tv8s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="major"]
+
+[node name="DialogueBox" type="Panel" parent="major/CanvasLayer"]
+visible = false
+z_index = 3
+offset_left = 460.0
+offset_top = 808.0
+offset_right = 1460.0
+offset_bottom = 1064.0
+script = ExtResource("5_1n8eb")
+data = ExtResource("7_j8hrv")
+start_id = "START"
+sample_portrait = null
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_8edh5"), SubResource("RichTextEffect_xxw0x"), SubResource("RichTextEffect_6wp5g")])
+
+[node name="sumavska_transition" type="Area2D" parent="."]
+position = Vector2(670, 969)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sumavska_transition"]
+position = Vector2(-390, -31.5)
+shape = SubResource("RectangleShape2D_701u7")
+
+[node name="boundaries" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="boundaries"]
+polygon = PackedVector2Array(0, 248, 1584, 248, 1920, 1072, 456, 1080, 0, 1080, 0, 264, -24, 264, -24, 1096, 1928, 1088, 1928, -16, 0, -8)
+
+[connection signal="dialogue_signal" from="major/CanvasLayer/DialogueBox" to="major" method="_on_dialogue_signal"]
+[connection signal="body_entered" from="sumavska_transition" to="." method="_on_sumavska_transition_body_entered"]

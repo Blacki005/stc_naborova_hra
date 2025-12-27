@@ -1,0 +1,152 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://v072k1dahrh3"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_0lmo6"]
+
+[resource]
+script = ExtResource("1_0lmo6")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_2",
+"offset": Vector2(-1260, -140),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Dobrý den, co potřebujete?",
+"offset": Vector2(-180, -360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Hodila by se mi myš. "
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Nic "
+}
+},
+"size": Vector2(300, 290),
+"speaker": 4
+},
+"1_2": {
+"dialogue": "Nějakou bych tady měl. Ale nebude to zadarmo.",
+"offset": Vector2(220, -360),
+"options": {
+0: {
+"condition": {
+"operator": 4,
+"value1": "{{bago}}",
+"value2": "10"
+},
+"link": &"1_6",
+"text": "Dal byste mi ji za 10 báček?"
+},
+1: {
+"condition": {},
+"link": &"1_3",
+"text": "A kdybych za ni pro vás něco udělal   ?"
+},
+2: {
+"condition": {},
+"link": "END",
+"text": "Tak to ne, já beru věci jenom zadarmo "
+}
+},
+"size": Vector2(300, 324),
+"speaker": 4
+},
+"1_3": {
+"dialogue": "No, nějakou práci bych tu měl. Potřebuji po Březině posbírat alespoň deset konzerv výpečků na občerstvení pro důstojníky během setkání fakulty. Dostanete k dispozici speciální techniku pro sběr výpečků, tzv. snake. Snake se ovládá pomocí kláves w,a,s,d.",
+"offset": Vector2(600, -360),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": "Jdu do toho"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Tak to nic"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 4
+},
+"1_4": {
+"dialogue": "Myš už máte, takže asi nashledanou na polní přípravě.",
+"offset": Vector2(-119.158, 243.797),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 4
+},
+"1_5": {
+"dialogue": "Exelentní výkon, tady je vaše myš. ",
+"offset": Vector2(-120, -40),
+"options": {
+0: {
+"condition": {},
+"link": &"3_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 4
+},
+"1_6": {
+"dialogue": "No dobře, to je docela lákavá nabídka. Pro výpečky pošleme prváky.",
+"offset": Vector2(600, -740),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 4
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(1000, -540),
+"signalValue": "get_bago"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(1000, -200),
+"signalValue": "play_game"
+},
+"3_3": {
+"link": "END",
+"offset": Vector2(253.652, 108.972),
+"signalValue": "give_mouse"
+},
+"5_1": {
+"false": &"1_4",
+"offset": Vector2(-600, -180),
+"operator": 0,
+"true": &"1_5",
+"value1": "{{has_mouse}}",
+"value2": "false"
+},
+"5_2": {
+"false": &"5_1",
+"offset": Vector2(-1020, -180),
+"operator": 0,
+"true": &"1_1",
+"value1": "{{bigo_snake_completed}}",
+"value2": "false"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

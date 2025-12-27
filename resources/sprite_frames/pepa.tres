@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://crgomr8jbkx1x"]
+
+[ext_resource type="Texture2D" uid="uid://ddysa7o662ok0" path="res://images/playable_characters/pepa_spritesheet.png" id="1_b5vga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pag2v"]
+atlas = ExtResource("1_b5vga")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uhu3"]
+atlas = ExtResource("1_b5vga")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8efr"]
+atlas = ExtResource("1_b5vga")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xxql"]
+atlas = ExtResource("1_b5vga")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pag2v")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uhu3")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8efr")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xxql")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]

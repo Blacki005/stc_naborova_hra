@@ -1,0 +1,191 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://datpr5dfehfck"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_la7yr"]
+
+[resource]
+script = ExtResource("1_la7yr")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-560, -540),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Dobrý den kolego, mohu pro vás něco udělat? ",
+"offset": Vector2(80, -540),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Nemáte báčko co byste mohl postrádat?"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Nic"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 3
+},
+"1_2": {
+"dialogue": "No, nějaké by se našlo. Ale jak víte, situace je složitá a i akademici musí bago shánět dosti komplikovaně přes naše kontakty na chemickou fakultu VUT, kde syntetizují vlastní nahrážky. Ale snad bych vám mohl několik pytlů věnovat, když mi dokážete odpovědět na pár matematických otázek. Co vy na to?",
+"offset": Vector2(480, -540),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "S radostí."
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Bohužel, v matematice nejsem nejsilnější."
+}
+},
+"size": Vector2(300, 290),
+"speaker": 3
+},
+"1_3": {
+"dialogue": "Co je výsledkem vektorového součinu vektorů?
+
+a.) Zář emitovaná zdrojem ze zadaného bodu v zadaném směru.
+b.) Zář emitovaná zdrojem ze zadaného bodu v zadaném směru.
+c.) Vektor ortogonální k operandům.",
+"offset": Vector2(911.815, -531.35),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": "a.)"
+},
+1: {
+"condition": {},
+"link": &"1_6",
+"text": "b.)"
+},
+2: {
+"condition": {},
+"link": &"1_4",
+"text": "c.)"
+}
+},
+"size": Vector2(300, 323),
+"speaker": 3
+},
+"1_4": {
+"dialogue": "Co je řešením rovnice, která je napsaná za mnou na zdi?
+
+a.) Promítnutí obrazu na kolmou plochu.
+b.) Rovnovážný stav rozložení světla ve scéně.
+c.) Zář emitovaná zdrojem ze zadaného bodu v zadaném směru.",
+"offset": Vector2(1380, -520),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": "a.)"
+},
+1: {
+"condition": {},
+"link": &"1_7",
+"text": "b.)"
+},
+2: {
+"condition": {},
+"link": &"1_6",
+"text": "c.)"
+}
+},
+"size": Vector2(400, 380),
+"speaker": 3
+},
+"1_5": {
+"dialogue": "Výborně, je vidět, že nejste úplná lopata. Zde máte zasloužených 10 bag, užijte je s rozumem. ",
+"offset": Vector2(2400, -540),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Dík"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 3
+},
+"1_6": {
+"dialogue": "Tak to asi ne, baga si nechám pro někoho, kdo si je zaslouží více než vy.  Chápu, že skripta jsou na vás asi moc písmenek, ale občas se hodí se je přečíst.",
+"offset": Vector2(1812.67, -69.2767),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 3
+},
+"1_7": {
+"dialogue": "Co znamená že vektory jsou lineárně závislé?
+
+a.) Jsem schopen najít jejich netriviální lineární kombinaci, která dá nulový vektor.
+b.) Lineární kombinací několika vektorů jsem schopen vytvořit jiný.
+c.) Velikost vektorů na sobě závisí.
+
+
+",
+"offset": Vector2(1860, -520),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": "a.)"
+},
+1: {
+"condition": {},
+"link": &"1_5",
+"text": "b.)"
+},
+2: {
+"condition": {},
+"link": &"1_6",
+"text": "c.)"
+}
+},
+"size": Vector2(300, 323),
+"speaker": 3
+},
+"1_8": {
+"dialogue": "Už jsem vám dal všchno co jsem měl, i znalosti mají jen nějakou cenu. Zkuste střelnici, třeba vám něco dají tam.",
+"offset": Vector2(-18.1793, -52.7469),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 3
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(2840, -520),
+"signalValue": "give_bago"
+},
+"5_1": {
+"false": &"1_8",
+"offset": Vector2(-320, -540),
+"operator": 0,
+"true": &"1_1",
+"value1": "{{math_bago_given}}",
+"value2": "false"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

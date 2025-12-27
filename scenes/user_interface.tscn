@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7dtdy11356p2"]
+
+[ext_resource type="PackedScene" uid="uid://dna0n06fraoup" path="res://scenes/inventory.tscn" id="1_enoy0"]
+[ext_resource type="Script" path="res://scripts/user_interface.gd" id="1_ph6sc"]
+[ext_resource type="PackedScene" uid="uid://cde53tihhbiw8" path="res://scenes/shop.tscn" id="3_itncc"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="4_8mnmi"]
+[ext_resource type="PackedScene" uid="uid://c44e11i0yrpui" path="res://scenes/hotbar.tscn" id="5_v86ye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmdsp"]
+bg_color = Color(0.653898, 0, 0.362571, 1)
+
+[node name="user_interface" type="CanvasLayer" groups=["user_interface"]]
+process_mode = 3
+script = ExtResource("1_ph6sc")
+
+[node name="bago_label" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 83.0
+offset_right = 443.0
+offset_bottom = 156.0
+text = "Bago: 0"
+
+[node name="inventory" parent="." instance=ExtResource("1_enoy0")]
+visible = false
+mouse_filter = 1
+
+[node name="hotbar" parent="." instance=ExtResource("5_v86ye")]
+
+[node name="health_bar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.04
+anchor_right = 0.04
+anchor_bottom = 0.057
+offset_left = 0.16
+offset_top = -0.200001
+offset_right = 279.2
+offset_bottom = 8.44
+theme_override_styles/fill = SubResource("StyleBoxFlat_pmdsp")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
+
+[node name="shop" parent="." instance=ExtResource("3_itncc")]
+visible = false
+
+[node name="pause_screen" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.584314)
+
+[node name="continue_button" type="Button" parent="."]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(400, 100)
+offset_left = 203.0
+offset_top = 464.0
+offset_right = 603.0
+offset_bottom = 564.0
+theme = ExtResource("4_8mnmi")
+text = "zpět do hry"
+
+[node name="main_menu_button" type="Button" parent="."]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(400, 100)
+offset_left = 1231.0
+offset_top = 454.0
+offset_right = 1631.0
+offset_bottom = 554.0
+theme = ExtResource("4_8mnmi")
+text = "zpět do hlavní nabídky"
+
+[node name="save_game_button" type="Button" parent="."]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(400, 100)
+offset_left = 761.0
+offset_top = 448.0
+offset_right = 1161.0
+offset_bottom = 568.0
+theme = ExtResource("4_8mnmi")
+text = "uložit hru"
+
+[node name="save_filename" type="LineEdit" parent="."]
+process_mode = 2
+visible = false
+offset_left = 778.0
+offset_top = 716.0
+offset_right = 1159.0
+offset_bottom = 747.0
+
+[node name="save_message" type="Label" parent="."]
+process_mode = 2
+visible = false
+offset_left = 774.0
+offset_top = 677.0
+offset_right = 1199.0
+offset_bottom = 708.0
+text = "Název uložení hry:"
+horizontal_alignment = 1
+
+[connection signal="button_up" from="continue_button" to="." method="_on_continue_button_button_up"]
+[connection signal="button_up" from="main_menu_button" to="." method="_on_main_menu_button_button_up"]
+[connection signal="button_up" from="save_game_button" to="." method="_on_save_game_button_up"]

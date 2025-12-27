@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://2jcfnqfth2p7"]
+
+[ext_resource type="Script" path="res://scripts/bigo_snake/bigo_snake.gd" id="1_0sbef"]
+[ext_resource type="PackedScene" uid="uid://c08w0jq5vgimj" path="res://scenes/bigo_snake/hud.tscn" id="2_nrlkd"]
+[ext_resource type="PackedScene" uid="uid://mp4fbwlarkyr" path="res://scenes/bigo_snake/snake_segment.tscn" id="2_qmysy"]
+[ext_resource type="Texture2D" uid="uid://c16chqwivym6m" path="res://images/bigo_snake/background.png" id="3_cyeqy"]
+[ext_resource type="PackedScene" uid="uid://xybbaqkrfl1m" path="res://scenes/bigo_snake/game_over_menu.tscn" id="5_rtxa3"]
+[ext_resource type="Texture2D" uid="uid://c7dla0ld67rh7" path="res://images/bigo_snake/vypecky.png" id="6_r0oex"]
+[ext_resource type="Texture2D" uid="uid://c7j4d71gr40rh" path="res://images/bigo_snake/frame.png" id="7_wbys3"]
+
+[node name="bigo_snake" type="Node"]
+script = ExtResource("1_0sbef")
+snake_scene = ExtResource("2_qmysy")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(160, 160)
+texture = ExtResource("3_cyeqy")
+centered = false
+
+[node name="game_over_menu" parent="." instance=ExtResource("5_rtxa3")]
+
+[node name="hud" parent="." instance=ExtResource("2_nrlkd")]
+
+[node name="move_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="food" type="Sprite2D" parent="."]
+texture = ExtResource("6_r0oex")
+centered = false
+
+[node name="frame" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("7_wbys3")
+centered = false
+
+[connection signal="restart" from="game_over_menu" to="." method="_on_game_over_menu_restart"]
+[connection signal="timeout" from="move_timer" to="." method="_on_move_timer_timeout"]

@@ -1,0 +1,160 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://b6661vwcimwpd"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_0te4m"]
+
+[resource]
+script = ExtResource("1_0te4m")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-1020, -360),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "...",
+"offset": Vector2(-200, -360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Pane majore"
+},
+1: {
+"condition": {},
+"link": &"4_1",
+"text": "Dobrý den"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_2": {
+"dialogue": "...",
+"offset": Vector2(320, -360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Student druhého ročníku des. {{character}}"
+},
+1: {
+"condition": {},
+"link": &"4_1",
+"text": "Jak se dneska vede?"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "...",
+"offset": Vector2(755.641, -360.958),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": "Dovolte mi s vámi promluvit"
+},
+1: {
+"condition": {},
+"link": &"4_1",
+"text": "Potřeboval bych od vás laskavost"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_4": {
+"dialogue": "No, dobrý. Ale zkraťte to, mám za chvíli poradu!",
+"offset": Vector2(1361.19, -382.686),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": "Žádám o počítač ke studijním účelům"
+},
+1: {
+"condition": {},
+"link": &"1_5",
+"text": " Nemáte tady prosím počítač?"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_5": {
+"dialogue": "A veeeeeen",
+"offset": Vector2(800, 400),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_6": {
+"dialogue": "No, něco by se tu asi našlo. Tady to máte, hezkej den.",
+"offset": Vector2(1800, -380),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": "Díky, mějte se!"
+},
+1: {
+"condition": {},
+"link": &"3_1",
+"text": "Pane majore, dovolte mi odejít"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 0
+},
+"1_7": {
+"dialogue": "Tak takhle opravdu ne, vraťte se, až se budete umět zahlásit.",
+"offset": Vector2(2184.43, -589.362),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(2260, -200),
+"signalValue": "give_computer"
+},
+"4_1": {
+"link": &"1_5",
+"offset": Vector2(360, 60),
+"type": 0,
+"value": "true",
+"variable": "{{fucked}}"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(-680, -360),
+"operator": 0,
+"true": &"1_5",
+"value1": "{{has_computer}}",
+"value2": "true"
+}
+}
+variables = {
+"fucked": {
+"type": 1,
+"value": false
+}
+}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

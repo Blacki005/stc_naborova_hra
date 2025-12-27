@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxc5m8qslijc"]
+
+[ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_fidh4"]
+
+[node name="enemy_dokument" groups=["enemy"] instance=ExtResource("1_fidh4")]
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

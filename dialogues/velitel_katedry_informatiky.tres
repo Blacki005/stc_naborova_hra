@@ -1,0 +1,163 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://c2yxabu832u52"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_0fp0l"]
+
+[resource]
+script = ExtResource("1_0fp0l")
+starts = {
+"GAMEEND": &"0_2",
+"GAMESTART": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_6",
+"offset": Vector2(-1200, -840),
+"start_id": "GAMESTART"
+},
+"0_2": {
+"link": &"5_1",
+"offset": Vector2(-1020, -200),
+"start_id": "GAMEEND"
+},
+"1_1": {
+"dialogue": "Nechal jsem pro vás poslat, protože potřebuji někoho, kdo mi pomůže obejít pár lidí a sehnat komponenty na superpočítač. Ještě dneska na něm totiž potřebujeme spustit program, který rozhodne o budoucnosti celého UNOBu.",
+"offset": Vector2(-400, -780),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Co mám udělat?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 5
+},
+"1_2": {
+"dialogue": "Je to jednoduché. Potřebuji, abyste sehnal klávesnici, myš, počítač a monior. Zeptejte se třeba lidí na buzeráku, někdo určitě bude vědět kde se ty krámy válí. No a nezapomeňte salutovat vyšším hodnostem, nerad bych poslouchal nějaké stížnosti!",
+"offset": Vector2(-40, -780),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Jak se tam dostanu?"
+},
+1: {
+"condition": {},
+"link": &"3_1",
+"text": "Dobře, tak já jdu."
+}
+},
+"size": Vector2(300, 290),
+"speaker": 5
+},
+"1_3": {
+"dialogue": "Dejte si čelem vzad a o pár krocích vpřed chod najdete dveře. *zívnutí* Myslel jsem si, že mi poslali někoho schopného.",
+"offset": Vector2(320, -780),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 5
+},
+"1_4": {
+"dialogue": "Hezký, jdem to spustit ",
+"offset": Vector2(880, -240),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 5
+},
+"1_5": {
+"dialogue": "Říkal jsem, že potřebuji nutně sehnat ty komponenty. Tady je nenajdete, tak si dejte čelem vzad a bez nich se nevracejte!",
+"offset": Vector2(240, 220),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 5
+},
+"1_6": {
+"dialogue": "Dobrý den, vítám vás na UNOBu na naší katedře. ",
+"offset": Vector2(-960, -820),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 5
+},
+"1_7": {
+"dialogue": "Dám vám pár tipů k ovládání hry. Klávesou ESC lze přeskočit dialog, klávesou I lze zobrazit a skrýt inventář, pomocí SPACE salutujete a TAB hru stopne. Během hry narazíte na minihry, instrukce k jejich ovládání vám vždy upřesní příslušný pracovník. Nezapomeňte salutovat vyšším hodnostem pokud je uvidíte!",
+"offset": Vector2(-680, -1160),
+"options": {
+0: {
+"condition": {},
+"link": &"1_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 5
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(420, -440),
+"signalValue": "enable_door"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(1244.72, -110.676),
+"signalValue": "run_program"
+},
+"5_1": {
+"false": &"1_5",
+"offset": Vector2(-720, -240),
+"operator": 0,
+"true": &"5_2",
+"value1": "{{has_keyboard}}",
+"value2": "true"
+},
+"5_2": {
+"false": &"1_5",
+"offset": Vector2(-260, -240),
+"operator": 0,
+"true": &"5_3",
+"value1": "{{has_monitor}}",
+"value2": "true"
+},
+"5_3": {
+"false": &"1_5",
+"offset": Vector2(140, -240),
+"operator": 0,
+"true": &"5_4",
+"value1": "{{has_computer}}",
+"value2": "true"
+},
+"5_4": {
+"false": &"1_5",
+"offset": Vector2(500, -240),
+"operator": 0,
+"true": &"1_4",
+"value1": "{{has_mouse}}",
+"value2": "true"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

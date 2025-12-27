@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://c44e11i0yrpui"]
+
+[ext_resource type="Script" uid="uid://t1vuhl1ydknr" path="res://scripts/slot.gd" id="1_e06al"]
+[ext_resource type="Script" uid="uid://ushx1gctp7k1" path="res://scripts/hotbar.gd" id="1_na2sa"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_refdj"]
+
+[node name="hotbar" type="Control"]
+custom_minimum_size = Vector2(1920, 100)
+layout_mode = 3
+anchor_top = 0.903
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.75995
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_na2sa")
+
+[node name="background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 100)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 100.0
+texture = SubResource("PlaceholderTexture2D_refdj")
+metadata/_edit_use_anchors_ = true
+
+[node name="hotbar_slots" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 18.0
+offset_right = 1162.0
+offset_bottom = 82.0
+pivot_offset = Vector2(202, 32)
+columns = 6
+
+[node name="hotbar_slot_1" type="Panel" parent="hotbar_slots"]
+self_modulate = Color(1, 1, 1, 0.25)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_e06al")
+
+[node name="hotbar_slot_2" type="Panel" parent="hotbar_slots"]
+self_modulate = Color(1, 1, 1, 0.25)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_e06al")
+
+[node name="hotbar_slot_3" type="Panel" parent="hotbar_slots"]
+self_modulate = Color(1, 1, 1, 0.25)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_e06al")
+
+[node name="hotbar_slot_4" type="Panel" parent="hotbar_slots"]
+self_modulate = Color(1, 1, 1, 0.25)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_e06al")
+
+[node name="hotbar_slot_5" type="Panel" parent="hotbar_slots"]
+self_modulate = Color(1, 1, 1, 0.25)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_e06al")
+
+[node name="hotbar_slot_6" type="Panel" parent="hotbar_slots"]
+self_modulate = Color(1, 1, 1, 0.25)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_e06al")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

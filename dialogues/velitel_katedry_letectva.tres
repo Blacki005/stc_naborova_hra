@@ -1,0 +1,125 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dr5xyuk5uctpn"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_lepds"]
+
+[resource]
+script = ExtResource("1_lepds")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-720, -360),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Dobrý den, vypadáte znuděně. Neměl byste chvilku?",
+"offset": Vector2(-140, -220),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Ano"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Ne, mám práci"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 6
+},
+"1_2": {
+"dialogue": "Výborně. Sestavili jsme nový model stíhačky. Nicméně nikdo z pilotů nemá dost odvahy aby do ní vlezl, tak hledáme někoho, kdo by ji otestoval. Vaším cílem bude proletět alespoň 10 překážkami, aniž byste se naboural. Což je ve vašem zájmu, protože stíhačka nemá vystřelovací systém.",
+"offset": Vector2(360, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Výborně, jdu do toho!"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Tak to asi ne..."
+},
+2: {
+"condition": {},
+"link": &"1_5",
+"text": "Jak se stíhačka ovládá?"
+}
+},
+"size": Vector2(300, 323),
+"speaker": 6
+},
+"1_3": {
+"dialogue": "To bylo něco, kam se hrabou piloti. Díky za pomoc. Jako odměnu vám můžu dát třeba tenhle monitor, co se mi tu válí.",
+"offset": Vector2(360, -360),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 6
+},
+"1_4": {
+"dialogue": "Díky za pomoc, díky vaší odvaze můžeme přejít k testování na zvířatech.",
+"offset": Vector2(360, -680),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 6
+},
+"1_5": {
+"dialogue": "Piloti si stěžovali na pro ně nepochopitelné ovládání, tak jsme řízení stíhačky omezili na levé tlačítko myši.",
+"offset": Vector2(789.826, 325.109),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 6
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(1220, -40),
+"signalValue": "play_game"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(820, -320),
+"signalValue": "give_monitor"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(-480, -400),
+"operator": 0,
+"true": &"5_2",
+"value1": "{{grippen_jump_completed}}",
+"value2": "true"
+},
+"5_2": {
+"false": &"1_3",
+"offset": Vector2(-20, -520),
+"operator": 0,
+"true": &"1_4",
+"value1": "{{has_monitor}}",
+"value2": "true"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

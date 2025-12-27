@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://1lctbe03m5up"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_wio7d"]
+
+[resource]
+script = ExtResource("1_wio7d")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-77, -187),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Nazdar, mam pro tebe ukol. Co ty na to?",
+"offset": Vector2(240, -260),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Hele...asi ne kamo..."
+},
+1: {
+"condition": {},
+"link": &"4_1",
+"text": "Jasny brasko, val to do me."
+}
+},
+"size": Vector2(300, 289),
+"speaker": "gen. Kybus"
+},
+"1_2": {
+"dialogue": "No to je muj clovek!",
+"offset": Vector2(1020, 40),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "gen. Kybus "
+},
+"1_3": {
+"dialogue": "No tak si treba naser, kokote.",
+"offset": Vector2(720, -300),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "gen. Kybus"
+},
+"4_1": {
+"link": &"1_2",
+"offset": Vector2(620, 40),
+"type": 0,
+"value": "",
+"variable": ""
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

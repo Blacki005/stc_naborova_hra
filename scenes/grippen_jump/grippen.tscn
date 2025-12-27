@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cttk54qm7ut8m"]
+
+[ext_resource type="Script" path="res://scripts/grippen_jump/grippen.gd" id="1_ym1ex"]
+[ext_resource type="Texture2D" uid="uid://c5xfqm0ner405" path="res://images/grippen_jump/grippen.png" id="5_1a62m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_suwmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hfjl"]
+radius = 33.0
+height = 130.0
+
+[node name="grippen" type="CharacterBody2D"]
+script = ExtResource("1_ym1ex")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_suwmf")
+animation = &"flying"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1hfjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("5_1a62m")

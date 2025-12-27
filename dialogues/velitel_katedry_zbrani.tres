@@ -1,0 +1,122 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://4fgw6vcno3w8"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_rpbst"]
+
+[resource]
+script = ExtResource("1_rpbst")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-980, -120),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Dobrý den, mám pro vás zajímavou a ne zcela legální  a bezpečnou nabídku. Měl byste zájem?",
+"offset": Vector2(-340, -360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Ano"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Ne"
+}
+},
+"size": Vector2(300, 290),
+"speaker": 7
+},
+"1_2": {
+"dialogue": "Jedná se o střelbu z nového prototypu Brenu, který jsme vyvinuli. Střelbu provedete levým tlačítkem myši. Pokud se vám podaří se v časovém limitu 5 sekund trefit 5 terčů, dám vám za odměnu 5 sibérek. To zní velmi jednoduše, nemám pravdu?",
+"offset": Vector2(120, -400),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Dobře, jdu do toho."
+},
+1: {
+"condition": {},
+"link": &"1_3",
+"text": "Povězte mi víc, nějak se mi to nezdá."
+}
+},
+"size": Vector2(300, 300),
+"speaker": 7
+},
+"1_3": {
+"dialogue": "Zbraň je výjmečně přesná a vyniká svou vysokou úsťovou rychlostí. Dokonce už teď ve fázi prototypování překonala všechny dosavadní modely. Jistě ale chápete, že takto výjemčné přesnosti nelze dosáhnout bez kompromisů.",
+"offset": Vector2(559.018, -24.1587),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": "A ty jsou?"
+}
+},
+"size": Vector2(300, 257),
+"speaker": 7
+},
+"1_4": {
+"dialogue": "Abychom dosáhli vysoké přesnosti a úsťové rychlosti, je náboj v nábojové komoře odpálen granátem F1. To bohužel občas vede k závažnému zranění čí dokonce smrti střelce.",
+"offset": Vector2(984.901, 10.2452),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Nevadí, jdu do toho."
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Tak to si budete muset najít někoho jiného..."
+}
+},
+"size": Vector2(300, 290),
+"speaker": 7
+},
+"1_5": {
+"dialogue": "Vy jste u mě na střelnici již byl, takže budu předpokládat, že rizika znáte. Připraven na další akci?",
+"offset": Vector2(-320, 0),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Ano"
+},
+1: {
+"condition": {},
+"link": &"1_2",
+"text": "Zopakujte mi o co se jedná "
+},
+2: {
+"condition": {},
+"link": "END",
+"text": "Ne"
+}
+},
+"size": Vector2(380, 323),
+"speaker": 7
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(1419.04, -291.409),
+"signalValue": "play_game"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(-740, -160),
+"operator": 0,
+"true": &"1_5",
+"value1": "{{target_range_played}}",
+"value2": "true"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

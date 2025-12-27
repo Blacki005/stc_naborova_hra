@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://doje56mnd1y67"]
+
+[ext_resource type="Texture2D" uid="uid://cll1nvpk4ctun" path="res://images/playable_characters/micinka999_spritesheet.png" id="1_owxmi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fni8"]
+atlas = ExtResource("1_owxmi")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2k8v"]
+atlas = ExtResource("1_owxmi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkqhq"]
+atlas = ExtResource("1_owxmi")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dsq8"]
+atlas = ExtResource("1_owxmi")
+region = Rect2(64, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fni8")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2k8v")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkqhq")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dsq8")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://mp4fbwlarkyr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvlw6"]
+bg_color = Color(4.81308e-08, 0.728518, 0.00494707, 1)
+
+[node name="snake_segment" type="Panel" groups=["segments"]]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bvlw6")

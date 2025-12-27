@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://blq4adikl4fxk"]
+
+[ext_resource type="PackedScene" uid="uid://c80e3g5vwh245" path="res://scenes/projectiles/projectile_base.tscn" id="1_6f8ew"]
+[ext_resource type="Texture2D" uid="uid://oa1p5kjl7uyp" path="res://images/items/IDCard.png" id="2_gv7wy"]
+
+[node name="id_card_projectile" instance=ExtResource("1_6f8ew")]
+SPEED = 1000
+damage = 50
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_gv7wy")

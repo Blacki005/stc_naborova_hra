@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dmuyxu0e4oyh2"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_kg5a1"]
+
+[resource]
+script = ExtResource("1_kg5a1")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(-680, -320),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Dobrý den pane desátníku. Co potřebujete?",
+"offset": Vector2(-60, -220),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Potřeboval bych klávesnici"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Nic"
+}
+},
+"size": Vector2(380, 360),
+"speaker": 1
+},
+"1_2": {
+"dialogue": "Nemáte nic lepšího na práci než se tady potloukat?? Asi se zeptám velení roty jestli už všichni máte sportovní obuv!",
+"offset": Vector2(640, -980),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(380, 240),
+"speaker": 1
+},
+"1_3": {
+"dialogue": "Nějakou bych měl. Ale dám vám ji jen pokud zvládnete slavnostní pochod na výbornou. Cílem zaměstnání je správně synchronizovat kroky s hudbou, krok provedete mezerníkem. Co vy na to? ",
+"offset": Vector2(380, -220),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Dobře, to zvládnu"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Ještě si to rozmyslím"
+}
+},
+"size": Vector2(340, 360),
+"speaker": 1
+},
+"1_4": {
+"dialogue": "Tak to byl dobrý výkon, gratuluji. Klávesnice je vaše!",
+"offset": Vector2(640, -560),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
+},
+"3_1": {
+"link": "END",
+"offset": Vector2(840, -200),
+"signalValue": "play_game"
+},
+"3_2": {
+"link": "END",
+"offset": Vector2(1166.65, -531.108),
+"signalValue": "give_keyboard"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(-420, -360),
+"operator": 0,
+"true": &"5_2",
+"value1": "{{slavnostni_pochod_completed}}",
+"value2": "true"
+},
+"5_2": {
+"false": &"1_4",
+"offset": Vector2(26.7407, -620.977),
+"operator": 0,
+"true": &"1_2",
+"value1": "{{has_keyboard}}",
+"value2": "true"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogues/Characters.tres"

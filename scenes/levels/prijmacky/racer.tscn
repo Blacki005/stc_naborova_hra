@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqaa3b6inthkq"]
+
+[ext_resource type="Script" uid="uid://bl0soabu5tal5" path="res://scripts/racing_game/racer.gd" id="1_2v577"]
+[ext_resource type="Texture2D" uid="uid://b5prvk15gbm5w" path="res://textures/car.png" id="2_2v577"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v577"]
+radius = 16.0
+height = 48.0
+
+[node name="racer" type="CharacterBody2D"]
+script = ExtResource("1_2v577")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
+texture = ExtResource("2_2v577")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_2v577")
+
+[node name="Camera2D" type="Camera2D" parent="."]
