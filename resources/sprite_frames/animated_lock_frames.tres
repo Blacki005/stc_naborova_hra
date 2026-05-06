@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://dc6jf0j41p61e"]
+
+[ext_resource type="Texture2D" uid="uid://dtm0rva5jc45p" path="res://images/level_menu/lock_spritesheet.png" id="1_4qrm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgpvx"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dte56"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd4q5"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpoob"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd13i"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6sgy"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orwbt"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ijn4"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvlbb"]
+atlas = ExtResource("1_4qrm4")
+region = Rect2(256, 256, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgpvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dte56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd4q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpoob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd13i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6sgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orwbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ijn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvlbb")
+}],
+"loop": false,
+"name": &"unlock",
+"speed": 9.0
+}]

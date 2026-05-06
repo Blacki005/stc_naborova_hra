@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://cco24dddvbwn4"]
+
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_kp8ai"]
+
+[resource]
+script = ExtResource("1_kp8ai")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"5_1",
+"offset": Vector2(-54, 202),
+"start_id": "START"
+},
+&"1_1": {
+"dialogue": " Zamčeno! Možná by se hodil klíč...",
+"offset": Vector2(888.4602, 726.5568),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00012, 240.00018),
+"speaker": ""
+},
+&"1_2": {
+"dialogue": "**intenzivní klapnutí nahozených pojistek**",
+"offset": Vector2(969.09204, 387.90698),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Paráda"
+}
+},
+"size": Vector2(300, 273.00006),
+"speaker": ""
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(1402.235, 502.14618),
+"signalValue": "level_finished"
+},
+&"5_1": {
+"false": &"1_1",
+"offset": Vector2(380, 360),
+"operator": 0,
+"true": &"1_2",
+"value1": "{{has_hospital_key}}",
+"value2": "true"
+}
+}

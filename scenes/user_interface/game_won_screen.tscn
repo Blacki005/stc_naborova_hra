@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cals6tfnw4gf"]
+
+[ext_resource type="Script" uid="uid://cl2ox1t3dvajq" path="res://scripts/user_interface/game_won_screen.gd" id="1_drd73"]
+[ext_resource type="Texture2D" uid="uid://bprowwdqgm0uu" path="res://images/user_interface/game_won_screen.png" id="2_ix76p"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="2_pf7bt"]
+
+[node name="game_won_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_drd73")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ix76p")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 193.0
+offset_right = 1921.0
+offset_bottom = 656.0
+theme = ExtResource("2_pf7bt")
+theme_override_font_sizes/font_size = 96
+text = "Vyhrál jsi!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -402.0
+offset_top = 160.0
+offset_right = 402.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main_menu" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("2_pf7bt")
+text = "Hlavní menu"
+
+[node name="exit" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("2_pf7bt")
+text = "Ukončit hru
+"
+
+[connection signal="button_up" from="HBoxContainer/main_menu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="HBoxContainer/exit" to="." method="_on_exit_button_up"]

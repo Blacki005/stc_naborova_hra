@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3a0l1llbf2ej"]
+
+[ext_resource type="PackedScene" uid="uid://c80e3g5vwh245" path="res://scenes/projectiles/projectile_base.tscn" id="1_dyymh"]
+[ext_resource type="Texture2D" uid="uid://qb36l4uah8x2" path="res://images/projectiles/libor_projectile.png" id="2_jkh6n"]
+
+[node name="libor_projectile" instance=ExtResource("1_dyymh")]
+SPEED = 300
+damage = 15
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jkh6n")

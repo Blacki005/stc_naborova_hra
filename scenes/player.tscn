@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dprbjqvu2al7c"]
+[gd_scene load_steps=44 format=3 uid="uid://dprbjqvu2al7c"]
 
 [ext_resource type="Script" uid="uid://fk4f2liqrx3p" path="res://scripts/player.gd" id="1_3qfha"]
 [ext_resource type="Texture2D" uid="uid://cgn627ax6njxr" path="res://images/playable_characters/player.png" id="2_rirmd"]
@@ -8,9 +8,9 @@
 radius = 39.0
 height = 98.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iusil"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_rirmd")
-region = Rect2(0, 0, 256, 256)
+region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6g0c3"]
 atlas = ExtResource("2_rirmd")
@@ -39,10 +39,6 @@ region = Rect2(256, 1280, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1bhl"]
 atlas = ExtResource("2_rirmd")
 region = Rect2(0, 1280, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtkt2"]
-atlas = ExtResource("2_rirmd")
-region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_061it"]
 atlas = ExtResource("2_rirmd")
@@ -164,7 +160,7 @@ region = Rect2(768, 512, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iusil")
+"texture": SubResource("AtlasTexture_qhqgy")
 }],
 "loop": true,
 "name": &"default",
@@ -197,9 +193,6 @@ animations = [{
 "speed": 15.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtkt2")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_061it")
 }, {
@@ -312,6 +305,7 @@ radius = 28.0
 height = 194.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+light_mask = 0
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
@@ -319,6 +313,7 @@ script = ExtResource("1_3qfha")
 SPEED = 600
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_lbmu8")
 
@@ -329,14 +324,10 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 
 [node name="player_body" type="AnimatedSprite2D" parent="."]
+light_mask = 4
 sprite_frames = SubResource("SpriteFrames_4c78h")
-animation = &"salute"
-frame = 6
-frame_progress = 1.0
+animation = &"walk_down"
 offset = Vector2(0, -90)
-
-[node name="player_head" type="AnimatedSprite2D" parent="."]
-offset = Vector2(0, -180)
 
 [node name="hurtbox" parent="." instance=ExtResource("3_h2u5y")]
 collision_layer = 2
@@ -347,7 +338,7 @@ position = Vector2(0, -71)
 shape = SubResource("CapsuleShape2D_lu7lu")
 
 [node name="attack_timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.45
 one_shot = true
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

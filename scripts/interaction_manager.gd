@@ -3,12 +3,11 @@ extends Node2D
 var player
 @onready var label = $Label
 
-const base_text : String = "[E] to "
-const OFFSET : Vector2 = Vector2(-50,-250) #offset so the label is above the character
+const base_text : String = "[E]"
+const OFFSET : Vector2 = Vector2(-100,-250) #offset so the label is above the character
 
 var active_areas = [] #all interactive areas are registered to this array in the moment player walks in them
 var can_interact : bool = true
-
 
 func register_area(area: InteractionArea) -> void:
 	active_areas.push_back(area)

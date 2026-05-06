@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://byxc5m8qslijc"]
+[gd_scene load_steps=3 format=3 uid="uid://byxc5m8qslijc"]
 
 [ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_fidh4"]
+[ext_resource type="Texture2D" uid="uid://cxqmduiybiye0" path="res://images/enemies/enemy_document.png" id="2_crot1"]
 
-[node name="enemy_dokument" groups=["enemy"] instance=ExtResource("1_fidh4")]
+[node name="enemy_dokument" instance=ExtResource("1_fidh4")]
+SPEED = 350
+bago_drop_cnt = 2
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_crot1")
 
 [editable path="hurtbox"]
 [editable path="hitbox"]

@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bdck704i8pge7"]
+
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_et8aw"]
+
+[resource]
+script = ExtResource("1_et8aw")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-65, 140),
+"start_id": "START"
+},
+&"1_1": {
+"dialogue": "Démoni...démoni...démoni...démoni...démoni...",
+"offset": Vector2(301.22272, 140.5206),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Co se stalo?"
+}
+},
+"size": Vector2(300.0001, 273),
+"speaker": 1
+},
+&"1_2": {
+"dialogue": "UNOBáci...přivezli jsme je sem na povinnou kastraci. A jeden z nich začal křičet, Liboreeee, nebo nějak tak to znělo. Vypadly pojistky a po nemocnici se začaly pohybovat přízraky Libora, který nikomu nedovolí je nahodit. Pojistky jsou navíc zamčené. Jeden klíč se tu válí někde v jihovýchodní části s druhým jsem viděl utíkat bezdomovce do severozápadní části objektu. Zkus najít klíč a nahodit je, jsi naše jediná naděje!",
+"offset": Vector2(800, 140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Jdu"
+},
+1: {
+"condition": {},
+"link": &"1_4",
+"text": "Nemáte něco co by mi při hledání pomohlo? "
+}
+},
+"size": Vector2(300.00003, 308),
+"speaker": 1
+},
+&"1_3": {
+"dialogue": "Kryju",
+"offset": Vector2(1193.2971, 194.33044),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00024, 240.00003),
+"speaker": 1
+},
+&"1_4": {
+"dialogue": "No...sice bych neměl, ale za trochu baga jsem ochotný ti prodat nějaké lékařské vybavení, co by ti mohlo pomoct odehnat Libora.",
+"offset": Vector2(1164.8223, 586.9675),
+"options": {
+0: {
+"condition": {
+"operator": 4,
+"value1": "{{bago}}",
+"value2": "10"
+},
+"link": &"3_1",
+"text": "Ukaž, co máš."
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Bohužel žádné bago nemám."
+}
+},
+"size": Vector2(300, 307.9999),
+"speaker": 1
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(1669.6921, 612.52075),
+"signalValue": "display_shop"
+}
+}
+characters = "res://dialogues/Characters.tres"

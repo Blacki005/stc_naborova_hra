@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6p7k0ypoa7j7"]
+
+[ext_resource type="PackedScene" uid="uid://c80e3g5vwh245" path="res://scenes/projectiles/projectile_base.tscn" id="1_55wpt"]
+[ext_resource type="Texture2D" uid="uid://cjbbsuspntci7" path="res://images/items/Injection.png" id="2_1xpke"]
+
+[node name="injection_projectile" instance=ExtResource("1_55wpt")]
+damage = 20
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+texture = ExtResource("2_1xpke")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdv6v6q248x5t"]
 
-[ext_resource type="Script" path="res://scripts/overlap/hitbox.gd" id="1_vuo5n"]
+[ext_resource type="Script" uid="uid://vx4j10y4orid" path="res://scripts/overlap/hitbox.gd" id="1_vuo5n"]
 
 [node name="hitbox" type="Area2D"]
 monitoring = false

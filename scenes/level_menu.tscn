@@ -1,0 +1,160 @@
+[gd_scene load_steps=7 format=3 uid="uid://c31rtfjrkku7"]
+
+[ext_resource type="Script" uid="uid://c225s2nqamm54" path="res://scripts/level_menu.gd" id="1_yl4fo"]
+[ext_resource type="Texture2D" uid="uid://bn32j4oh8e3de" path="res://images/user_interface/level_menu_bg.png" id="2_k08aj"]
+[ext_resource type="SpriteFrames" uid="uid://dc6jf0j41p61e" path="res://resources/sprite_frames/animated_lock_frames.tres" id="2_rj3wb"]
+[ext_resource type="Theme" uid="uid://d3skd85tu8lgn" path="res://resources/themes/level_play_buttons.tres" id="3_jqwib"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="5_teein"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_teein"]
+bg_color = Color(0, 0, 0, 0.5254902)
+
+[node name="level_menu" type="Node2D"]
+script = ExtResource("1_yl4fo")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_k08aj")
+centered = false
+
+[node name="buildings" type="Node2D" parent="."]
+
+[node name="locks" type="Node2D" parent="."]
+
+[node name="lock1" type="AnimatedSprite2D" parent="locks"]
+position = Vector2(1800, 560)
+sprite_frames = ExtResource("2_rj3wb")
+animation = &"unlock"
+
+[node name="lock2" type="AnimatedSprite2D" parent="locks"]
+position = Vector2(1192, 936)
+sprite_frames = ExtResource("2_rj3wb")
+animation = &"unlock"
+
+[node name="lock3" type="AnimatedSprite2D" parent="locks"]
+position = Vector2(152, 232)
+sprite_frames = ExtResource("2_rj3wb")
+animation = &"unlock"
+
+[node name="lock4" type="AnimatedSprite2D" parent="locks"]
+position = Vector2(1048, 272)
+sprite_frames = ExtResource("2_rj3wb")
+animation = &"unlock"
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="level1" type="Button" parent="buttons"]
+offset_left = 232.0
+offset_top = 800.0
+offset_right = 360.0
+offset_bottom = 928.0
+theme = ExtResource("3_jqwib")
+
+[node name="level2" type="Button" parent="buttons"]
+visible = false
+anchors_preset = -1
+offset_left = 1744.0
+offset_top = 504.0
+offset_right = 1872.0
+offset_bottom = 632.0
+theme = ExtResource("3_jqwib")
+
+[node name="level3" type="Button" parent="buttons"]
+visible = false
+offset_left = 1128.0
+offset_top = 880.0
+offset_right = 1256.0
+offset_bottom = 1008.0
+theme = ExtResource("3_jqwib")
+
+[node name="level4" type="Button" parent="buttons"]
+visible = false
+offset_left = 96.0
+offset_top = 168.0
+offset_right = 224.0
+offset_bottom = 296.0
+theme = ExtResource("3_jqwib")
+
+[node name="level5" type="Button" parent="buttons"]
+visible = false
+offset_left = 992.0
+offset_top = 216.0
+offset_right = 1120.0
+offset_bottom = 344.0
+theme = ExtResource("3_jqwib")
+
+[node name="labels" type="Node2D" parent="."]
+
+[node name="Label1" type="Label" parent="labels"]
+visible = false
+texture_filter = 1
+offset_left = 168.0
+offset_top = 760.0
+offset_right = 424.0
+offset_bottom = 795.0
+theme = ExtResource("5_teein")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
+text = "Level completed!"
+
+[node name="Label2" type="Label" parent="labels"]
+visible = false
+texture_filter = 1
+offset_left = 1672.0
+offset_top = 624.0
+offset_right = 1928.0
+offset_bottom = 659.0
+theme = ExtResource("5_teein")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
+text = "Level completed!"
+
+[node name="Label3" type="Label" parent="labels"]
+visible = false
+texture_filter = 1
+offset_left = 1072.0
+offset_top = 800.0
+offset_right = 1328.0
+offset_bottom = 835.0
+theme = ExtResource("5_teein")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
+text = "Level completed!"
+
+[node name="Label4" type="Label" parent="labels"]
+visible = false
+texture_filter = 1
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 296.0
+offset_bottom = 67.0
+theme = ExtResource("5_teein")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
+text = "Level completed!"
+
+[node name="Label5" type="Label" parent="labels"]
+visible = false
+texture_filter = 1
+offset_left = 928.0
+offset_top = 328.0
+offset_right = 1184.0
+offset_bottom = 363.0
+theme = ExtResource("5_teein")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
+text = "Level completed!"
+
+[connection signal="animation_finished" from="locks/lock1" to="." method="_on_lock_1_animation_finished"]
+[connection signal="animation_finished" from="locks/lock2" to="." method="_on_lock_2_animation_finished"]
+[connection signal="animation_finished" from="locks/lock3" to="." method="_on_lock_3_animation_finished"]
+[connection signal="animation_finished" from="locks/lock4" to="." method="_on_lock_4_animation_finished"]
+[connection signal="button_up" from="buttons/level1" to="." method="_on_level_1_button_up"]
+[connection signal="button_up" from="buttons/level2" to="." method="_on_level_2_button_up"]
+[connection signal="button_up" from="buttons/level3" to="." method="_on_level_3_button_up"]
+[connection signal="button_up" from="buttons/level4" to="." method="_on_level_4_button_up"]
+[connection signal="button_up" from="buttons/level5" to="." method="_on_level_5_button_up"]

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var health_bar = $health_bar
+@onready var shield_bar = $shield_bar
 @onready var inventory = $inventory
 @onready var shop = $shop
 
@@ -9,17 +10,36 @@ var holding_item = null #item player is currently holding
 var warning_issued : bool = false
 
 func _ready() -> void:
+	shield_bar.value = Globals.shield
+	health_bar.value = Globals.health
 	Globals.health_changed.connect(_on_health_changed)
 	Globals.bago_changed.connect(_on_bago_changed)
+	Globals.shield_changed.connect(_on_shield_changed)
 	_on_health_changed()
 	_on_bago_changed()
 
-
 func _input(event : InputEvent) -> void:
-	if event.is_action_pressed("inventory") and not get_tree().paused:
-		#toggle visibility of inventory
-		inventory.visible = !inventory.visible
-		inventory.initialize_inventory()
+	if not get_tree().paused:
+		if event.is_action_pressed("inventory"):
+			#toggle visibility of inventory
+			inventory.visible = !inventory.visible
+			inventory.initialize_inventory()
+		elif event.is_action_pressed("scroll_up"):
+			PlayerInventory.active_item_scroll_down()
+		elif event.is_action_pressed("scroll_down"):
+			PlayerInventory.active_item_scroll_up()
+		elif event.is_action_pressed("hotbar_slot_1"):
+			PlayerInventory.change_active_item(0)
+		elif event.is_action_pressed("hotbar_slot_2"):
+			PlayerInventory.change_active_item(1)
+		elif event.is_action_pressed("hotbar_slot_3"):
+			PlayerInventory.change_active_item(2)
+		elif event.is_action_pressed("hotbar_slot_4"):
+			PlayerInventory.change_active_item(3)
+		elif event.is_action_pressed("hotbar_slot_5"):
+			PlayerInventory.change_active_item(4)
+		elif event.is_action_pressed("hotbar_slot_6"):
+			PlayerInventory.change_active_item(5 )
 	if event.is_action_pressed("pause"):
 		#toggle pause menu
 		if not get_tree().paused:
@@ -27,16 +47,13 @@ func _input(event : InputEvent) -> void:
 			$pause_screen.show()
 			$continue_button.show()
 			$main_menu_button.show()
-			$save_game_button.show()
-			$save_filename.show()
-			$save_message.show()
+			#$save_game_button.show()
+			#$save_filename.show()
+			#$save_message.show()
 			$save_message.text = "Jméno souboru pro uložení hry:"
 		else:
 			_on_continue_button_button_up()
-	if event.is_action_pressed("scroll_up") and not get_tree().paused:
-		PlayerInventory.active_item_scroll_down()
-	elif event.is_action_pressed("scroll_down") and not get_tree().paused:
-		PlayerInventory.active_item_scroll_up()
+
 
 
 func _on_bago_changed() -> void:
@@ -46,7 +63,8 @@ func _on_bago_changed() -> void:
 func _on_health_changed() -> void:
 	health_bar.value = Globals.health
 
-
+func _on_shield_changed() -> void:
+	shield_bar.value = Globals.shield
 #displays shop named shopName
 func display_shop(shopName : String) -> void:
 	shop.display(shopName)
@@ -63,7 +81,7 @@ func _on_main_menu_button_button_up() -> void:
 		Globals.reset()
 		get_tree().paused = false
 		#no need to reset warning_issued, scene is changed
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_menu.tscn")
 
 
 func _on_continue_button_button_up() -> void:

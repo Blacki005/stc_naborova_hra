@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://c41uq21f4rj4v"]
+
+[ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_hxphb"]
+[ext_resource type="PackedScene" uid="uid://blrmp4hay8l34" path="res://scenes/entity/npc_base.tscn" id="2_irmhm"]
+[ext_resource type="Texture2D" uid="uid://l0r82hylif4s" path="res://textures/backgrounds/sumavska_bg.png" id="2_oxryl"]
+[ext_resource type="Texture2D" uid="uid://blmtec4c1ynr3" path="res://images/npc_characters/chrudimak.png" id="3_4h8v5"]
+[ext_resource type="Resource" uid="uid://dvbmf0k6icbw2" path="res://dialogues/chrudimak.tres" id="4_oxryl"]
+[ext_resource type="PackedScene" uid="uid://bhsy2yjledrlk" path="res://scenes/levels/prisaha/pochod.tscn" id="5_4h8v5"]
+[ext_resource type="PackedScene" uid="uid://cals6tfnw4gf" path="res://scenes/user_interface/game_won_screen.tscn" id="7_1oj1t"]
+
+[node name="prisaha" instance=ExtResource("1_hxphb")]
+default_position = Vector2(1280, 752)
+camera_limit_bottom = 1080
+
+[node name="player" parent="." index="1"]
+position = Vector2(1280, 752)
+
+[node name="background" parent="." index="2"]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("2_oxryl")
+
+[node name="CollisionPolygon2D" parent="walls" index="0"]
+polygon = PackedVector2Array(0, 480, 896, 480, 984, 424, 1496, 424, 1496, 480, 1920, 480, 1920, 984, 0, 984, 0, 480, -8, 480, -8, 1088, 1928, 1088, 1928, -8, -8, -8, -8, 480)
+
+[node name="chrudimak" parent="." index="4" instance=ExtResource("2_irmhm")]
+z_index = 0
+position = Vector2(648, 528)
+texture = ExtResource("3_4h8v5")
+dialogue_data = ExtResource("4_oxryl")
+minigame = ExtResource("5_4h8v5")
+next_scene = ExtResource("7_1oj1t")

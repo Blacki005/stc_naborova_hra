@@ -8,7 +8,6 @@ extends Node2D
 @export var camera_limit_top : int = 0
 
 
-
 func _ready() -> void:
 	var camera : Camera2D = get_tree().get_first_node_in_group("player").get_node("./Camera2D")
 	if camera == null:

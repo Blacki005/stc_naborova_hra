@@ -7,6 +7,7 @@ extends Control
 @onready var price_label = $Price
 @onready var count_label = $Count
 @onready var name_label = $Name
+@onready var description_label = $Description
 
 var shop_name : String
 var shop_goods : Array
@@ -35,7 +36,9 @@ func display(shop_name : String) -> void:
 
 func display_item(item_data : Array) -> void:
 	sprite.texture = load("res://images/items/" + item_data[0] + ".png")
+	
 	name_label.text = item_data[0]
+	description_label.text = "Popis:\n" + JsonData.item_data[item_data[0]]["Description"]
 	item_name = item_data[0]
 	
 	#unused feature: limited number of items to sell
@@ -48,6 +51,8 @@ func display_item(item_data : Array) -> void:
 	
 	if Globals.bago < item_price:
 		$shop_button.disabled = true
+	else:
+		$shop_button.disabled = false
 
 
 #function makes sure that shop contents are stored in shop json file and plays exit animatiopn
@@ -83,21 +88,10 @@ func _on_shop_button_button_up() -> void:
 		#ignoring item count feature for now
 		if Globals.bago < item_price:
 			$shop_button.disabled=true
-		
 		#decrease available goods - unused
 		#shop_goods[i][1] -= 1
 		#count_label.text = str(item_count)
-		
 		PlayerInventory.add_item(item_name, 1)
-		
-		#update globals state according to bought item
-		match item_name:
-			"Monitor":
-				Globals.has_monitor=true
-			"Keyboard":
-				Globals.has_keyboard=true
-			"Computer":
-				Globals.has_computer=true
 
 
 func _on_next_button_button_up() -> void:

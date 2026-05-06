@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://blo5xok80p6bq"]
+
+[ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_vxmtn"]
+[ext_resource type="PackedScene" uid="uid://b6p7k0ypoa7j7" path="res://scenes/projectiles/injection_projectile.tscn" id="2_0awxv"]
+[ext_resource type="Texture2D" uid="uid://b8w4ck0yyxqk5" path="res://images/npc_characters/peta.png" id="2_rgkdf"]
+
+[node name="enemy_bezdomovec" instance=ExtResource("1_vxmtn")]
+ENY_PROJECTILE = ExtResource("2_0awxv")
+hp_max = 60
+hp = 60
+defence = 5
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_rgkdf")
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

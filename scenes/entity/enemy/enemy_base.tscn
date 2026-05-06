@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm7lb7j4wmbus"]
+[gd_scene load_steps=11 format=3 uid="uid://bm7lb7j4wmbus"]
 
 [ext_resource type="PackedScene" uid="uid://oq5s71qxggu1" path="res://scenes/entity/entity_base.tscn" id="1_jery7"]
 [ext_resource type="Script" uid="uid://b468wwjp8x7rq" path="res://scripts/entity/enemy/enemy_base.gd" id="2_t2j3i"]
@@ -20,13 +20,16 @@ height = 208.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_67ore"]
 radius = 800.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o85r"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="enemy_base" groups=["enemy"] instance=ExtResource("1_jery7")]
 collision_layer = 4
 collision_mask = 7
+motion_mode = 1
 script = ExtResource("2_t2j3i")
 ENY_PROJECTILE = ExtResource("3_sctgn")
 ATTACK_DISTANCE = 700
-hp_max = 50
 SPEED = 600
 knockback_modifier = 4.0
 
@@ -37,14 +40,14 @@ texture = ExtResource("3_vev8t")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_kscqh")
 
-[node name="hurtbox" parent="." index="3"]
+[node name="hurtbox" parent="." index="3" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_j75oj")
 
-[node name="hitbox" parent="." index="4" instance=ExtResource("3_b58gt")]
+[node name="hitbox" parent="." index="4" groups=["enemy"] instance=ExtResource("3_b58gt")]
 collision_layer = 4
 collision_mask = 2
 damage = 2
@@ -53,18 +56,28 @@ damage = 2
 modulate = Color(0.98, 0, 0, 1)
 shape = SubResource("CapsuleShape2D_0bm27")
 
-[node name="detection_area" type="Area2D" parent="." index="5"]
+[node name="detection_area" type="Area2D" parent="." index="5" groups=["enemy"]]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" index="0"]
+position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_67ore")
 
 [node name="attack_timer" parent="." index="6"]
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="health_bar" type="ProgressBar" parent="." index="7"]
+offset_left = -56.0
+offset_top = -160.0
+offset_right = 56.0
+offset_bottom = -144.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_6o85r")
+rounded = true
+show_percentage = false
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

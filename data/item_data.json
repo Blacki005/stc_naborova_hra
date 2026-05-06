@@ -28,5 +28,46 @@
 		"ItemCategory": "Throwable",
 		"StackSize": 1,
 		"Description": "Větší kalibr než pero, ale většinou jich má člověk míň."
+	},
+	"Key" : {
+		"ItemCategory": "Quest item",
+		"StackSize": 1,
+		"Description": "Ti mrtví jsou překvapivě živí."
+	},
+	"Injection" : {
+		"ItemCategory" : "Throwable",
+		"StackSize":1,
+		"Description":"Uvnitř je buď elixír lásky, nebo heroin, nebo oboje."
+	},
+	"Grenade" : {
+		"ItemCategory" : "Throwable",
+		"StackSize" : 1,
+		"Description" : "600g čisté zábavy? Jasně, máme."
+	},
+	"GreenPotion" : {
+		"ItemCategory" : "Consumable",
+		"StackSize" : 10,
+		"Description" : "Kdybys byl(a) malá, rodiče by ti pravděpodobně řekli ať to nejíš.",
+		"Healing" : 3,
+		"Shield" : 0
+	},
+	"RedPotion" : {
+		"ItemCategory" : "Consumable",
+		"StackSize" : 10,
+		"Description" : "Polévka z výpečků? Smrtelný mix drog? Babiččina bramboračka? Kdo ví...",
+		"Healing" : -3,
+		"Shield" : 0
+	},
+	"BluePotion" : {
+		"ItemCategory" : "Throwable",
+		"StackSize" : 1,
+		"Description" : "Jeho mrazivá textura ti připomíná kosti z kapra zabodnuté v krku na Vánoce."
+	},
+	"YellowPotion" : {
+		"ItemCategory" : "Consumable",
+		"StackSize" : 1,
+		"Description" : "Prý byl využit při stavbě Karlova mostu. Snad po něm budeš stejně odolný.",
+		"Healing" : 0,
+		"Shield" : 10
 	}
 }

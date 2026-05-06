@@ -1,8 +1,0 @@
-Main menu: 
-- budovy jsou klikatelne buttons, hrac muze prepinat mezi mapou brna a ceska, kde jsou validni rekrutacni pracoviste, unob, brezina - podobne jako packettracer
-
-1. level
-- hrac jde na rekrutacni pracoviste
-- basic dialog, co potrebujete, podat prihlasku na unob
-- problem - specialni mutace postihla nikotinove vyrobky, ktere ted chteji sezrat vojaky
-- 

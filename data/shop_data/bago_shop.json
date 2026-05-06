@@ -1,17 +1,12 @@
 [
 	[
-		"Keyboard",
+		"Injection",
 		1,
-		10
+		4
 	],
 	[
-		"Monitor",
+		"Grenade",
 		1,
-		10
-	],
-	[
-		"Computer",
-		1,
-		10
+		20
 	]
 ]

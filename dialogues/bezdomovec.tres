@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://c60wvd7wn7roo"]
+
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_mtd8t"]
+
+[resource]
+script = ExtResource("1_mtd8t")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-120, 100),
+"start_id": "START"
+},
+&"1_1": {
+"dialogue": "Chrrrrmpfff ",
+"offset": Vector2(100, 60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Dobrý den...co tu děláte?"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Fuj"
+},
+2: {
+"condition": {},
+"link": &"1_5",
+"text": "Řekni mi svůj příběh"
+}
+},
+"size": Vector2(300.00003, 343),
+"speaker": 2
+},
+&"1_2": {
+"dialogue": "Viděl jsem že tady bylo otevřeno, tak sem sem šel hledat vajgly a drogy.",
+"offset": Vector2(641.4811, 79.73221),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": "Dej sem ten klíč a vypadni!"
+},
+1: {
+"condition": {},
+"link": &"1_4",
+"text": "Nemohl byste mi prosím věnovat ten klíč a opustit objekt? "
+}
+},
+"size": Vector2(300, 308),
+"speaker": 2
+},
+&"1_3": {
+"dialogue": "No dobře, když to musí bejt...",
+"offset": Vector2(1018.80615, 82.62192),
+"options": {
+0: {
+"condition": {},
+"link": &"3_2",
+"text": "Dík"
+}
+},
+"size": Vector2(300.00024, 273),
+"speaker": 2
+},
+&"1_4": {
+"dialogue": "To víš že jo, nehrozí. Radší mi běž sehnat nějaký injekce, už mi došly.",
+"offset": Vector2(1000, 360),
+"options": {
+0: {
+"condition": {
+"operator": 0,
+"value1": "{{has_injection}}",
+"value2": "true"
+},
+"link": &"3_3",
+"text": "Zrovna jsem jednu našel, tady ji máš! [bodnout injekcí]"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Dobře, jdu to najít. "
+}
+},
+"size": Vector2(300.0006, 307.99997),
+"speaker": 2
+},
+&"1_5": {
+"dialogue": "No, když to chceš slyšet...začalo to na střední v Rumburku. Měli jsme mejdan jako kráva, ale přítelkyně otěhotněla a nějak to nevyšlo, špatný lidi a špatný místo. Pak jsem dělal v Praze u Krysy a taky chvíli v gastru, u Zlatýho Mloka. Ale z obojího jsem si odnesl jen další šrámy na duši. A od tý doby se to táhne, několikrát jsem seděl, ale vždycky jsem nějak zdrhnul.",
+"offset": Vector2(320, 460),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Ok "
+}
+},
+"size": Vector2(300.00003, 272.99994),
+"speaker": 2
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(1740, 380),
+"signalValue": "die"
+},
+&"3_2": {
+"link": "END",
+"offset": Vector2(1401.7577, 152.08086),
+"signalValue": "give_item"
+},
+&"3_3": {
+"link": &"3_1",
+"offset": Vector2(1520, 540),
+"signalValue": "give_item"
+}
+}
+characters = "res://dialogues/Characters.tres"

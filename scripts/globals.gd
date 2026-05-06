@@ -2,33 +2,22 @@ extends Node
 #this scripts serves as a place to store global variables for all NPCs, quests etc.
 
 const MAX_HEALTH : int = 10
+const INITIAL_BAGO : int = 0
+const LEVELS_CNT : int = 5
+const MAX_SHIELD : int = 10
+const INITIAL_SHIELD : int = 0
+
+const SERVER_URL : String = "localhost"
+const HTTP_PORT : String = "8080"
+const HTTPS_PORT : String = "8443"
 
 #signal to UI that health or bago changed
 signal bago_changed
 signal health_changed
-
-#chosen character - player loads corresponding head sprite and it sets initial values of other variables
-var character : String = "flasar":
-	set(value):
-		match value:
-			"flasar":
-				character = value
-				variables["character"] = "flasar"
-				bago = 5
-			"pepa":
-				character = value
-				variables["character"] = "pepa"
-				health = 5
-			"micinka999":
-				variables["character"] = "micinka999"
-				character = value
-			_:
-				#default, invalid character chosen
-				character = "flasar"
-
+signal shield_changed
 
 #player stats variables:
-var bago : int = 0:
+var bago : int = INITIAL_BAGO:
 	set(value):
 		bago = value
 		variables["bago"] = value
@@ -42,18 +31,47 @@ var health : int = MAX_HEALTH:
 		if(health <= 0):
 			die()
 		emit_signal("health_changed")
+var shield : int = INITIAL_SHIELD:
+	set(value):
+		shield = value
+		variables["shield"] = value
+		if(shield > MAX_SHIELD):
+			shield = MAX_SHIELD
+		emit_signal("shield_changed")
 
+#variable for playing unlocking animation in level menu:
+var new_level_unlocked : bool = false
+var levels_completed : int = 0:
+	set(value):
+		if value > LEVELS_CNT:
+			return
+		else:
+			levels_completed = value
+
+#TODO: new level completing mechanism for data collecting
+var cnt_levels_played : Dictionary = {
+	"level_1" : 0,
+	"level_2" : 0,
+	"level_3" : 0,
+	"level_4" : 0,
+	"level_5" : 0
+}
+
+var cnt_levels_completed : Dictionary = {
+	
+}
 
 #all important variables in dictionary, so they can be stored in/loaded from file and/or parsed to dialogue
 var variables : Dictionary = {
-#levels variables:
-	"rekrutacni_pracoviste_completed" : false,
-
 #bago is like currency and is needed in some dialogues
-	"bago" : 0,
+	"bago" : INITIAL_BAGO,
 	"health" : 10,
+	"shield" : 0,
 
 #define quest items variables:
+	"has_hospital_key" : false,
+	"has_injection" : false,
+	"march_completed" : false
 }
 
 #==============================
@@ -70,9 +88,35 @@ var player_position:
 #variable that makes sure player doesn't unintentionally fire when clicking on inventory node
 var able_to_attack : bool = true
 
+var http_request: HTTPRequest
+
 #set window to fullscreen at the beginning
 func _ready() -> void:
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	PlayerInventory.connect("inventory_updated", _on_inventory_updated)
+	
+	#add http request node
+	http_request = HTTPRequest.new()
+	add_child(http_request)
+	
+	#send data about user to server
+	get_user_fingerprint()
+	
+	#prevent clipping viewport:
+	#DisplayServer.window_set_min_size()
+	DisplayServer.window_set_min_size(Vector2i(1920, 1080))
+	#DisplayServer.window_set_max_size()
+
+func _on_inventory_updated() -> void:
+	if PlayerInventory.has_item("Key"):
+		variables["has_hospital_key"] = true
+	if PlayerInventory.has_item("Injection"):
+		variables["has_injection"] = true
+
+
+func send_data(address: String, data: Dictionary) -> void:
+	var json_string : String = JSON.stringify(data)
+	var headers = ["Content-Type: application/json"]
+	http_request.request(address, headers, HTTPClient.METHOD_POST, json_string)
 
 
 #resets global variables to initial state
@@ -81,9 +125,6 @@ func reset() -> void:
 	bago = 0
 	health = MAX_HEALTH
 	player_position = null
-	
-	#apply character effects again after death
-	character = character
 
 
 func die() -> void:
@@ -91,6 +132,92 @@ func die() -> void:
 	PlayerInventory.reset_inventory()
 	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
 
+
+func get_public_ip() -> String:
+	var err : Error = http_request.request("https://api.ipify.org")
+	if err != OK:
+		printerr("Request error: " + str(err))
+		return ""
+
+	var result = await http_request.request_completed
+
+	var response_code = result[1]
+	var body = result[3]
+
+	if response_code != 200:
+		printerr("Failed to get IP: " + str(response_code))
+		return ""
+
+	return body.get_string_from_utf8().strip_edges()
+
+
+func get_server_url() -> String:
+	if OS.has_feature("web"):
+		return "https://"+SERVER_URL+":"+HTTPS_PORT+"/data"
+	else:
+		return "http://"+SERVER_URL+":"+HTTP_PORT+"/data"
+
+#get user's fingerprint to send to db
+func get_user_fingerprint() -> void:
+	var fingerprint : Dictionary = {}
+	
+	# Network
+	# Get local IPs
+	var ips: Array = IP.get_local_addresses()
+	# Get public IP
+	var public_ip = await get_public_ip()
+	if public_ip != "":
+	# Avoid duplicates just in case
+		if not ips.has(public_ip):
+			ips.push_front(public_ip)
+	fingerprint["ip_addresses"] = ips
+
+	# OS info
+	fingerprint["os_name"] = OS.get_name()
+	fingerprint["os_version"] = OS.get_version()
+	fingerprint["os_locale"] = OS.get_locale()
+	fingerprint["model_name"] = OS.get_model_name()
+	fingerprint["processor_name"] = OS.get_processor_name()
+	fingerprint["processor_count"] = OS.get_processor_count()
+	
+	# Platform features
+	fingerprint["is_web"] = OS.has_feature("web")
+	fingerprint["is_windows"] = OS.has_feature("windows")
+	fingerprint["is_linux"] = OS.has_feature("linux")
+	fingerprint["is_macos"] = OS.has_feature("macos")
+	fingerprint["is_mobile"] = OS.has_feature("mobile")
+	
+	# Screen
+	fingerprint["screen_size"] = {
+		"width": DisplayServer.screen_get_size().x,
+		"height": DisplayServer.screen_get_size().y
+	}
+	fingerprint["screen_dpi"] = DisplayServer.screen_get_dpi()
+	
+	# Web-specific via JavaScript
+	if OS.has_feature("web"):
+		fingerprint["user_agent"] = JavaScriptBridge.eval("navigator.userAgent")
+		fingerprint["browser_language"] = JavaScriptBridge.eval("navigator.language")
+		fingerprint["browser_platform"] = JavaScriptBridge.eval("navigator.platform")
+		fingerprint["screen_color_depth"] = JavaScriptBridge.eval("screen.colorDepth")
+		fingerprint["timezone"] = JavaScriptBridge.eval("Intl.DateTimeFormat().resolvedOptions().timeZone")
+	
+	# Environment variables (desktop only, empty on web)
+	var env_keys = ["HOME", "USER", "USERNAME", "COMPUTERNAME", "OS"]
+	for key in env_keys:
+		var val = OS.get_environment(key)
+		if val != "":
+			fingerprint["env_" + key.to_lower()] = val
+	
+	# Unique hash of all collected data
+	fingerprint["fingerprint_hash"] = str(fingerprint).hash()
+	
+	
+	var json_string = JSON.stringify(fingerprint)
+	var headers = ["Content-Type: application/json"]
+	http_request.request(get_server_url(), headers, HTTPClient.METHOD_POST, json_string)
+
+#	send_data("https://192.168.0.111:8443/data", fingerprint)
 
 #creates save file and stores global variables in it
 #file is changed as read only and cannot be edited by user via file explorer

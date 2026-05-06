@@ -1,16 +1,130 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5sydaptidx0n"]
+[gd_scene load_steps=23 format=3 uid="uid://b5sydaptidx0n"]
 
 [ext_resource type="Script" uid="uid://cag3c01vff7p3" path="res://scripts/levels/kurz_zakladni_pripravy/kurz_zakladni_pripravy.gd" id="1_0v6pd"]
+[ext_resource type="Texture2D" uid="uid://cbl0hygqiacww" path="res://textures/backgrounds/landscape.png" id="2_frwnf"]
 [ext_resource type="PackedScene" uid="uid://da583lp4nicuu" path="res://scenes/levels/kruz_zakladni_pripravy/bvp.tscn" id="2_ot065"]
 [ext_resource type="PackedScene" uid="uid://bt2q2aj47cgav" path="res://scenes/levels/kruz_zakladni_pripravy/target.tscn" id="3_ygksr"]
+[ext_resource type="Texture2D" uid="uid://c05nu1u02wubf" path="res://images/kurz_zakladni_pripravy/soldier.png" id="5_si35h"]
+[ext_resource type="Texture2D" uid="uid://2fegriv8kjfy" path="res://images/kurz_zakladni_pripravy/gear/helma.png" id="6_dekso"]
+[ext_resource type="Texture2D" uid="uid://3km20f1c2jvr" path="res://images/kurz_zakladni_pripravy/gear/nakoleniky.png" id="7_5l8re"]
+[ext_resource type="Texture2D" uid="uid://brj5yt06mjbdp" path="res://images/kurz_zakladni_pripravy/gear/rukavice.png" id="8_b01dc"]
+[ext_resource type="Texture2D" uid="uid://c2s1g3quv4lgv" path="res://images/kurz_zakladni_pripravy/gear/vesta.png" id="9_o6krp"]
+[ext_resource type="Texture2D" uid="uid://qoaga5vr81v2" path="res://images/kurz_zakladni_pripravy/tree.png" id="11_5l8re"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="11_xgb6r"]
+[ext_resource type="Script" uid="uid://cq8bvripc54di" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_xgb6r"]
+[ext_resource type="Script" uid="uid://btauc604y04n3" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="13_qjhh8"]
+[ext_resource type="Script" uid="uid://cp21o5x0xdtq2" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="14_lwao1"]
+[ext_resource type="Script" uid="uid://3faicvn5bf11" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="15_qjhh8"]
+[ext_resource type="Resource" uid="uid://duu25fqb1f5ps" path="res://dialogues/kzp.tres" id="16_qjhh8"]
+[ext_resource type="Texture2D" uid="uid://b5fuba15syhq1" path="res://images/kurz_zakladni_pripravy/bunker.png" id="17_lwao1"]
+[ext_resource type="Texture2D" uid="uid://j0up4hd2y5yt" path="res://images/kurz_zakladni_pripravy/tank.png" id="18_evpve"]
+[ext_resource type="Texture2D" uid="uid://t7lye2k4pahj" path="res://textures/red_tank.png" id="19_evpve"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_lwao1"]
+script = ExtResource("12_xgb6r")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_evpve"]
+script = ExtResource("13_qjhh8")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_v8wcy"]
+script = ExtResource("14_lwao1")
 
 [node name="kurz_zakladni_pripravy" type="Node2D"]
 script = ExtResource("1_0v6pd")
+gear_nodes = Array[NodePath]([NodePath("soldier/gear1"), NodePath("soldier/gear2"), NodePath("soldier/gear3"), NodePath("soldier/gear4")])
+
+[node name="user_interface" type="CanvasLayer" parent="."]
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 540)
+texture = ExtResource("2_frwnf")
 
 [node name="bvp" parent="." instance=ExtResource("2_ot065")]
-position = Vector2(960, 688)
+position = Vector2(960, 800)
+MOVEMENT_RADIUS = 85.0
+BASE_SPEED = 50.0
+SPEED_INCREASE_PER_SCORE = 15.0
+WAIT_TIME_AT_DESTINATION = 0.2
+RANGE = 500
+MAX_RADIUS = 200.0
 
 [node name="target" parent="." instance=ExtResource("3_ygksr")]
 z_index = -1
-position = Vector2(960, 188)
-scale = Vector2(0.5, 0.5)
+position = Vector2(960, 300)
+
+[node name="soldier" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(184, 824)
+
+[node name="base_sprite" type="Sprite2D" parent="soldier"]
+texture = ExtResource("5_si35h")
+
+[node name="gear1" type="Sprite2D" parent="soldier"]
+visible = false
+texture = ExtResource("6_dekso")
+
+[node name="gear2" type="Sprite2D" parent="soldier"]
+visible = false
+texture = ExtResource("7_5l8re")
+
+[node name="gear3" type="Sprite2D" parent="soldier"]
+visible = false
+texture = ExtResource("8_b01dc")
+
+[node name="gear4" type="Sprite2D" parent="soldier"]
+visible = false
+texture = ExtResource("9_o6krp")
+
+[node name="label_timer" type="Timer" parent="soldier"]
+wait_time = 2.0
+one_shot = true
+
+[node name="soldier_dialogue" type="RichTextLabel" parent="soldier"]
+process_mode = 3
+visible = false
+texture_filter = 1
+clip_contents = false
+offset_left = 72.0
+offset_top = -96.0
+offset_right = 232.0
+offset_bottom = -74.0
+theme = ExtResource("11_xgb6r")
+bbcode_enabled = true
+text = "Sample dialogue."
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_lwao1"), SubResource("RichTextEffect_evpve"), SubResource("RichTextEffect_v8wcy")]
+script = ExtResource("15_qjhh8")
+data = ExtResource("16_qjhh8")
+start_id = "START"
+default_speaker_color = Color(1, 1, 1, 0)
+dialogue_custom_effects = [SubResource("RichTextEffect_lwao1"), SubResource("RichTextEffect_evpve"), SubResource("RichTextEffect_v8wcy")]
+metadata/_custom_type_script = "uid://3faicvn5bf11"
+
+[node name="environment" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="environment"]
+position = Vector2(1808, 912)
+texture = ExtResource("11_5l8re")
+
+[node name="Sprite2D2" type="Sprite2D" parent="environment"]
+position = Vector2(1672, 824)
+texture = ExtResource("11_5l8re")
+
+[node name="Sprite2D4" type="Sprite2D" parent="environment"]
+position = Vector2(112, 632)
+texture = ExtResource("17_lwao1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="environment"]
+position = Vector2(568, 712)
+texture = ExtResource("18_evpve")
+
+[node name="RedTank" type="Sprite2D" parent="environment"]
+position = Vector2(1776, 368)
+texture = ExtResource("19_evpve")
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="timeout" from="soldier/label_timer" to="." method="_on_label_timer_timeout"]
+[connection signal="dialogue_ended" from="soldier/soldier_dialogue" to="." method="_on_soldier_dialogue_ended"]
+[connection signal="dialogue_signal" from="soldier/soldier_dialogue" to="." method="_on_soldier_dialogue_signal"]

@@ -1,38 +1,49 @@
 [gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://vqd6f550jj66"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_smji7"]
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_smji7"]
 
 [resource]
 script = ExtResource("1_smji7")
 starts = {
+"CONTINUE": &"0_3",
 "FINISHED": &"0_2",
 "START": &"0_1"
 }
 nodes = {
-"0_1": {
+&"0_1": {
 "link": &"1_1",
-"offset": Vector2(-880, -280),
+"offset": Vector2(-1180, -260),
 "start_id": "START"
 },
-"0_2": {
+&"0_2": {
 "link": &"1_5",
 "offset": Vector2(-880, 240),
 "start_id": "FINISHED"
 },
-"1_1": {
-"dialogue": "Dobrý den. Předpokládám, že chcete do zeleného, když už tu jste. Naše firma je dost jiná než ty ostatní, to ostatně máte možnost vidět okolo mě.",
-"offset": Vector2(-640, -280),
+&"0_3": {
+"link": &"1_8",
+"offset": Vector2(-848.1022, 575.28174),
+"start_id": "CONTINUE"
+},
+&"1_1": {
+"dialogue": "Dobrý den. Koukám že už jste si svoje zelené přinesl. Normálně je to přestupek, když u nás nepracujete, nicméně budu to brát jako projev zájmu o vstup k nám. Naše firma je dost jiná než ty ostatní, to ostatně máte možnost vidět okolo mě.",
+"offset": Vector2(-940, -260),
 "options": {
 0: {
 "condition": {},
 "link": &"1_2",
 "text": "Co se stalo?"
+},
+1: {
+"condition": {},
+"link": &"1_6",
+"text": "Rád bych nejdřív tušil/a jak se tahle hra ovládá."
 }
 },
-"size": Vector2(300, 256),
-"speaker": "pracovník rekrutačního pracoviště"
+"size": Vector2(300, 308.00006),
+"speaker": 4
 },
-"1_2": {
+&"1_2": {
 "dialogue": "Snažili jsme se naučit dokumenty potřebné na zápis trochu pořadové přípravy...aby se uměly alespoň narovnat do komínků, pochodovat a tak.",
 "offset": Vector2(-180, -280),
 "options": {
@@ -42,11 +53,11 @@ nodes = {
 "text": "Tak to nechápu kde je problém, moje papíry to doma umí."
 }
 },
-"size": Vector2(300, 253),
-"speaker": -1
+"size": Vector2(300.00012, 273),
+"speaker": 4
 },
-"1_3": {
-"dialogue": "Moc se s naší vizí neztotožnily a vzbouřily se. Nicméně hlavní schopností vojáka je přizpůsobit se, takže pokud máte zájem, budete se muset k pohovoru probojovat.",
+&"1_3": {
+"dialogue": "Moc se s naší vizí neztotožnily, naučily se házet propisky a vzbouřily se. Nicméně hlavní schopností vojáka je přizpůsobit se, takže pokud máte zájem, budete se muset k pohovoru probojovat.",
 "offset": Vector2(260, -280),
 "options": {
 0: {
@@ -55,36 +66,111 @@ nodes = {
 "text": "Nikdy jsem s papírem nebojoval..."
 }
 },
-"size": Vector2(300, 256),
-"speaker": ""
+"size": Vector2(300.00073, 273.00012),
+"speaker": 4
 },
-"1_4": {
-"dialogue": "Je to jednoduché. Stačí vám občaský průkaz a psací potřeby. Koukám že je máte, tak by to pro vás neměl být problém. Až je zlikvidujete, vraťte se za mnou.",
-"offset": Vector2(640, -280),
+&"1_4": {
+"dialogue": "Je to jednoduché. Stačí vám občaský průkaz a psací potřeby. Házejte je zkuste se trefit, když je podepíšete, zkrotnou. Mám tady nějakou propisku, zkuste to tou. Až je zlikvidujete, vraťte se za mnou.",
+"offset": Vector2(660, -260),
 "options": {
 0: {
 "condition": {},
-"link": "END",
-"text": ""
+"link": &"3_3",
+"text": "Díky!"
+},
+1: {
+"condition": {},
+"link": &"1_7",
+"text": "Ještě nějaké tipy?"
 }
 },
-"size": Vector2(300, 240),
-"speaker": ""
+"size": Vector2(300.00024, 308.00006),
+"speaker": 4
 },
-"1_5": {
+&"1_5": {
 "dialogue": "Dobrá práce. Pohovor máte splněný, ale obávám se, že za svoji kariéru uvidíte ještě hodně záludných papírů. Občas jsou nebezpečnější než cokoliv jiného, zvlášť když na nich je váš podpis.",
 "offset": Vector2(-640, 240),
 "options": {
 0: {
 "condition": {},
+"link": &"3_1",
+"text": "Díky!"
+}
+},
+"size": Vector2(300.0001, 272.99988),
+"speaker": 4
+},
+&"1_6": {
+"dialogue": "No dobře... [Esc] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
+"offset": Vector2(-540, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Tak zpátky k věci..."
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Díky, to mi stačí."
+}
+},
+"size": Vector2(300.00018, 273.00006),
+"speaker": 4
+},
+&"1_7": {
+"dialogue": "Jo! Málem bych zapoměl. Kdybys tu našel nějaký bago, ber ho. V armádě funguje jako prémiová měna.",
+"offset": Vector2(1180, -80),
+"options": {
+0: {
+"condition": {},
+"link": &"3_3",
+"text": "Dobře, jdu."
+}
+},
+"size": Vector2(300.0005, 273),
+"speaker": 4
+},
+&"1_8": {
+"dialogue": "Běžte vyčistit kancelář od dokumentů, až to bude hotové, vraťte se za mnou.",
+"offset": Vector2(-560, 580),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": "Jak se hra ovládá?"
+},
+1: {
+"condition": {},
+"link": &"1_9",
+"text": "Jdu"
+}
+},
+"size": Vector2(300.00006, 273.00012),
+"speaker": 4
+},
+&"1_9": {
+"dialogue": "Kryju.",
+"offset": Vector2(-113.69995, 585.6523),
+"options": {
+0: {
+"condition": {},
 "link": "END",
 "text": ""
 }
 },
-"size": Vector2(300, 240),
-"speaker": ""
+"size": Vector2(300.00012, 240.00006),
+"speaker": 4
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(-220, 340),
+"signalValue": "level_finished"
+},
+&"3_3": {
+"link": "END",
+"offset": Vector2(1540, -280),
+"signalValue": "give_item"
 }
 }
-variables = {}
-strays = Array[String]([])
-characters = ""
+characters = "res://dialogues/Characters.tres"

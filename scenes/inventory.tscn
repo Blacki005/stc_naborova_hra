@@ -1,27 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://dna0n06fraoup"]
 
-[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_s4ns6"]
+[ext_resource type="Script" uid="uid://bsxq6m6mrbksc" path="res://scripts/inventory.gd" id="1_s4ns6"]
 [ext_resource type="Texture2D" uid="uid://c4d5g5m150gel" path="res://images/user_interface/inventory_background.png" id="2_ediuq"]
-[ext_resource type="Texture2D" uid="uid://p4roc04hy5t3" path="res://images/user_interface/inventory_slot.png" id="2_wsvst"]
-[ext_resource type="Script" path="res://scripts/slot.gd" id="2_y5fwg"]
+[ext_resource type="Script" uid="uid://t1vuhl1ydknr" path="res://scripts/slot.gd" id="2_y5fwg"]
+[ext_resource type="Texture2D" uid="uid://dr6f60ui70vqc" path="res://images/user_interface/slot_background.png" id="3_53g1v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ekvf"]
-texture = ExtResource("2_wsvst")
+texture = ExtResource("3_53g1v")
 
 [node name="inventory" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1557.0
-offset_top = 39.0
-offset_right = -43.0
-offset_bottom = -785.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_s4ns6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+light_mask = 8
 custom_minimum_size = Vector2(320, 256)
 layout_mode = 1
 anchors_preset = 8
@@ -57,6 +50,7 @@ theme_override_constants/v_separation = 5
 columns = 4
 
 [node name="Slot1" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -64,6 +58,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot2" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -71,6 +66,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot3" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -78,6 +74,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot4" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -85,6 +82,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot5" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -92,6 +90,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot6" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -99,6 +98,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot7" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -106,6 +106,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot8" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -113,6 +114,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot9" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -120,6 +122,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot10" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -127,6 +130,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot11" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
@@ -134,6 +138,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_2ekvf")
 script = ExtResource("2_y5fwg")
 
 [node name="Slot12" type="Panel" parent="GridContainer"]
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1

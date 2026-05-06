@@ -1,8 +1,8 @@
 [gd_scene load_steps=57 format=3 uid="uid://dlebh4rwrl6el"]
 
-[ext_resource type="Script" path="res://scripts/end_cutscene.gd" id="1_en215"]
-[ext_resource type="Texture2D" uid="uid://j6wqesedbqm5" path="res://images/user_interface/end_cutscene_spritesheet.png" id="1_l3fua"]
-[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="3_q1q1w"]
+[ext_resource type="Script" uid="uid://cvnmwsewrcfus" path="res://scripts/end_cutscene.gd" id="1_en215"]
+[ext_resource type="Texture2D" path="res://images/user_interface/end_cutscene_spritesheet.png" id="1_l3fua"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="3_q1q1w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vryss"]
 atlas = ExtResource("1_l3fua")

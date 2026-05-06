@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx7hk6f6b8qbw"]
+
+[ext_resource type="Script" uid="uid://bqhp0jx8sbfy5" path="res://scripts/items/pickable_item.gd" id="1_jqwrp"]
+[ext_resource type="PackedScene" uid="uid://ltped2ukoxcp" path="res://scenes/interaction_area.tscn" id="1_vplft"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqwrp"]
+radius = 120.0
+
+[node name="pickable_item" type="Node2D"]
+script = ExtResource("1_jqwrp")
+pop_distance = 64
+pop_time = 0.5
+hop_height = 32.0
+hop_time = 0.5
+
+[node name="interaction_area" parent="." instance=ExtResource("1_vplft")]
+action_name = "sebrat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+shape = SubResource("CircleShape2D_jqwrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

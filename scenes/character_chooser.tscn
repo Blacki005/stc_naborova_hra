@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://3ogyi7jjo27r"]
 
-[ext_resource type="Script" path="res://scripts/character_chooser.gd" id="1_3j2a5"]
+[ext_resource type="Script" uid="uid://cvw1denu8lgr2" path="res://scripts/character_chooser.gd" id="1_3j2a5"]
 [ext_resource type="Texture2D" uid="uid://d1nkv5q1lcph5" path="res://images/user_interface/main_menu.png" id="2_6n5cx"]
 [ext_resource type="Texture2D" uid="uid://kenaun22xsjk" path="res://images/playable_characters/flasar.png" id="2_yleoj"]
 [ext_resource type="Texture2D" uid="uid://b3fog04n68x6y" path="res://images/playable_characters/blaznivej_boxer.png" id="3_ggh2v"]
 [ext_resource type="Texture2D" uid="uid://bbubk2gjtgob8" path="res://images/playable_characters/pepa_anime.png" id="3_l778r"]
-[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default.tres" id="4_fb86q"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="4_fb86q"]
 
 [node name="character_chooser" type="Control"]
 layout_mode = 3

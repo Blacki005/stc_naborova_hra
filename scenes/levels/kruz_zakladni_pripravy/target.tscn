@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt2q2aj47cgav"]
 
 [ext_resource type="PackedScene" uid="uid://c8dj71ebo6upk" path="res://scenes/overlap/hurtbox.tscn" id="1_6ukqd"]
-[ext_resource type="Texture2D" uid="uid://dfo2v5evwlowe" path="res://textures/brana.png" id="2_6mcnr"]
 [ext_resource type="Script" uid="uid://wcq6d3jh4yqv" path="res://scripts/levels/kurz_zakladni_pripravy/target.gd" id="2_hwoy8"]
+[ext_resource type="Texture2D" uid="uid://cdous2brhrcv4" path="res://images/kurz_zakladni_pripravy/eny.png" id="3_hwoy8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mcnr"]
-size = Vector2(248, 216)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjdxp"]
+radius = 32.0
+height = 144.0
 
 [node name="target" instance=ExtResource("1_6ukqd")]
 collision_mask = 0
@@ -15,9 +16,9 @@ priority = 1
 script = ExtResource("2_hwoy8")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-12, 12)
-shape = SubResource("RectangleShape2D_6mcnr")
+position = Vector2(0, 16)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vjdxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6mcnr")
+texture = ExtResource("3_hwoy8")

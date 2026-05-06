@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci6vhm53mv6dm"]
+
+[ext_resource type="Script" uid="uid://ds7ijnlpbillh" path="res://scripts/user_interface/disclaimer.gd" id="1_ehjxq"]
+[ext_resource type="Texture2D" uid="uid://d03a7ag4v27c8" path="res://images/user_interface/disclaimer.png" id="1_xwj0y"]
+
+[sub_resource type="Animation" id="Animation_xwj0y"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ehjxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2f4i"]
+_data = {
+&"RESET": SubResource("Animation_ehjxq"),
+&"fade_out": SubResource("Animation_xwj0y")
+}
+
+[node name="disclaimer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ehjxq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xwj0y")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q2f4i")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

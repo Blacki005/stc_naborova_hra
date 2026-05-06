@@ -1,17 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqaa3b6inthkq"]
+[gd_scene load_steps=7 format=3 uid="uid://cqaa3b6inthkq"]
 
-[ext_resource type="Script" uid="uid://bl0soabu5tal5" path="res://scripts/racing_game/racer.gd" id="1_2v577"]
-[ext_resource type="Texture2D" uid="uid://b5prvk15gbm5w" path="res://textures/car.png" id="2_2v577"]
+[ext_resource type="Script" uid="uid://bl0soabu5tal5" path="res://scripts/levels/prijmacky/racer.gd" id="1_2v577"]
+[ext_resource type="Texture2D" uid="uid://dc4u06oxa3l6r" path="res://images/prijmacky/player.png" id="2_2v577"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="3_75xgd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v577"]
-radius = 16.0
-height = 48.0
+radius = 12.0
+height = 58.0
+
+[sub_resource type="Gradient" id="Gradient_75xgd"]
+colors = PackedColorArray(0, 1, 1, 1, 0.99999994, 0.041708328, 0.013721307, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v577"]
+bg_color = Color(7.2196126e-06, 0.6625514, 0.8317523, 1)
 
 [node name="racer" type="CharacterBody2D"]
 script = ExtResource("1_2v577")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 3.1415927
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
+texture_filter = 1
+rotation = 1.5707964
 texture = ExtResource("2_2v577")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,3 +27,51 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_2v577")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+rotation = 1.5707964
+ignore_rotation = false
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.0
+
+[node name="BoostParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-32, 0)
+emitting = false
+amount = 10
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 0.5
+fixed_fps = 30
+spread = 180.0
+gravity = Vector2(-300, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+radial_accel_min = 50.0
+radial_accel_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.050980393, 0.7764706, 0.8039216, 1)
+color_ramp = SubResource("Gradient_75xgd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="boost_bar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+offset_left = 168.0
+offset_top = 136.0
+offset_right = 264.0
+offset_bottom = 160.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_2v577")
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 160.0
+offset_bottom = 201.0
+theme = ExtResource("3_75xgd")
+text = "Boost:
+"

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bg264x2wad6dw"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_4iamp"]
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_4iamp"]
 
 [resource]
 script = ExtResource("1_4iamp")
@@ -8,12 +8,12 @@ starts = {
 "START": &"0_1"
 }
 nodes = {
-"0_1": {
+&"0_1": {
 "link": &"1_1",
 "offset": Vector2(-264, -233),
 "start_id": "START"
 },
-"1_1": {
+&"1_1": {
 "dialogue": "A zdravit vás učil jako kdo??",
 "offset": Vector2(60, -280),
 "options": {
@@ -27,6 +27,3 @@ nodes = {
 "speaker": "plk. Plk"
 }
 }
-variables = {}
-strays = Array[String]([])
-characters = ""

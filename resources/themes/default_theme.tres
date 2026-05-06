@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://sue4tlr8wwrf"]
+
+[ext_resource type="StyleBox" uid="uid://p1sjch5um5ht" path="res://resources/ButtonNormalStyleBoxFlat.tres" id="2_dgxsq"]
+[ext_resource type="StyleBox" uid="uid://mw05gx62ij07" path="res://resources/ButtonDisabledStyleBoxFlat.tres" id="2_nfgd4"]
+[ext_resource type="StyleBox" uid="uid://cqdjg28g1hime" path="res://resources/ButtonHoverStyleBoxFlat.tres" id="3_nfgd4"]
+[ext_resource type="StyleBox" uid="uid://x4jek74qrroa" path="res://resources/ButtonClickedStyleBoxFlat.tres" id="4_dgxsq"]
+[ext_resource type="FontFile" uid="uid://dkhubn87fqsuh" path="res://fonts/CozetteVector.otf" id="6_hge1u"]
+[ext_resource type="FontFile" uid="uid://cy8tg748a0wvi" path="res://fonts/CozetteVector.ttf" id="6_ttywx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttywx"]
+bg_color = Color(0, 0, 0, 0.54509807)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.017732462, 0.017732365, 0.017732387, 0.5019608)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("6_hge1u")
+Button/styles/disabled = ExtResource("2_nfgd4")
+Button/styles/focus = ExtResource("2_dgxsq")
+Button/styles/hover = ExtResource("3_nfgd4")
+Button/styles/normal = ExtResource("2_dgxsq")
+Button/styles/pressed = ExtResource("4_dgxsq")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("6_hge1u")
+Label/styles/focus = SubResource("StyleBoxFlat_ttywx")
+LineEdit/font_sizes/font_size = 25
+LineEdit/fonts/font = ExtResource("6_ttywx")
+RichTextLabel/font_sizes/normal_font_size = 23
+RichTextLabel/fonts/normal_font = ExtResource("6_ttywx")
+TextEdit/font_sizes/font_size = 24
+TextEdit/fonts/font = ExtResource("6_ttywx")

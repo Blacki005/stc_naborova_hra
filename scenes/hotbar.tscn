@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c44e11i0yrpui"]
+[gd_scene load_steps=7 format=3 uid="uid://c44e11i0yrpui"]
 
 [ext_resource type="Script" uid="uid://t1vuhl1ydknr" path="res://scripts/slot.gd" id="1_e06al"]
 [ext_resource type="Script" uid="uid://ushx1gctp7k1" path="res://scripts/hotbar.gd" id="1_na2sa"]
+[ext_resource type="Texture2D" uid="uid://d3xsu3dseyut7" path="res://images/user_interface/hotbar_background.png" id="2_xrqkv"]
+[ext_resource type="Texture2D" uid="uid://dr6f60ui70vqc" path="res://images/user_interface/slot_background.png" id="3_2n1yv"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_refdj"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vu8xs"]
+texture = ExtResource("3_2n1yv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2n1yv"]
+texture = ExtResource("3_2n1yv")
 
 [node name="hotbar" type="Control"]
 custom_minimum_size = Vector2(1920, 100)
@@ -17,11 +23,12 @@ grow_vertical = 2
 script = ExtResource("1_na2sa")
 
 [node name="background" type="TextureRect" parent="."]
+light_mask = 8
 custom_minimum_size = Vector2(1920, 100)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 100.0
-texture = SubResource("PlaceholderTexture2D_refdj")
+texture = ExtResource("2_xrqkv")
 metadata/_edit_use_anchors_ = true
 
 [node name="hotbar_slots" type="GridContainer" parent="."]
@@ -35,44 +42,56 @@ columns = 6
 
 [node name="hotbar_slot_1" type="Panel" parent="hotbar_slots"]
 self_modulate = Color(1, 1, 1, 0.25)
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_vu8xs")
 script = ExtResource("1_e06al")
 
 [node name="hotbar_slot_2" type="Panel" parent="hotbar_slots"]
 self_modulate = Color(1, 1, 1, 0.25)
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_2n1yv")
 script = ExtResource("1_e06al")
 
 [node name="hotbar_slot_3" type="Panel" parent="hotbar_slots"]
 self_modulate = Color(1, 1, 1, 0.25)
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_2n1yv")
 script = ExtResource("1_e06al")
 
 [node name="hotbar_slot_4" type="Panel" parent="hotbar_slots"]
 self_modulate = Color(1, 1, 1, 0.25)
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_2n1yv")
 script = ExtResource("1_e06al")
 
 [node name="hotbar_slot_5" type="Panel" parent="hotbar_slots"]
 self_modulate = Color(1, 1, 1, 0.25)
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_2n1yv")
 script = ExtResource("1_e06al")
 
 [node name="hotbar_slot_6" type="Panel" parent="hotbar_slots"]
 self_modulate = Color(1, 1, 1, 0.25)
+light_mask = 8
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_2n1yv")
 script = ExtResource("1_e06al")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

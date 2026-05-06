@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dmuyxu0e4oyh2"]
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dvbmf0k6icbw2"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_kg5a1"]
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_kg5a1"]
 
 [resource]
 script = ExtResource("1_kg5a1")
@@ -8,100 +8,72 @@ starts = {
 "START": &"0_1"
 }
 nodes = {
-"0_1": {
+&"0_1": {
 "link": &"5_1",
 "offset": Vector2(-680, -320),
 "start_id": "START"
 },
-"1_1": {
-"dialogue": "Dobrý den pane desátníku. Co potřebujete?",
+&"1_1": {
+"dialogue": "Tady jste! Hledáme vás celou věčnost, nevíte že tu máte být o 5 minut dřív?? Doufejme že alespoň ta hudba vyjde, máme nového zvukaře protože na nástupech pluku to moc nefungovalo",
 "offset": Vector2(-60, -220),
 "options": {
 0: {
 "condition": {},
 "link": &"1_3",
-"text": "Potřeboval bych klávesnici"
-},
-1: {
-"condition": {},
-"link": "END",
-"text": "Nic"
+"text": " Pardon, vynahradím to na pochodu."
 }
 },
-"size": Vector2(380, 360),
-"speaker": 1
+"size": Vector2(380, 360.00027),
+"speaker": 0
 },
-"1_2": {
-"dialogue": "Nemáte nic lepšího na práci než se tady potloukat?? Asi se zeptám velení roty jestli už všichni máte sportovní obuv!",
-"offset": Vector2(640, -980),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(380, 240),
-"speaker": 1
-},
-"1_3": {
-"dialogue": "Nějakou bych měl. Ale dám vám ji jen pokud zvládnete slavnostní pochod na výbornou. Cílem zaměstnání je správně synchronizovat kroky s hudbou, krok provedete mezerníkem. Co vy na to? ",
-"offset": Vector2(380, -220),
+&"1_3": {
+"dialogue": "Cílem zaměstnání je synchronizovat kroky s hudbou, levá noha (mezerník) by měla vždy došlápnout na buben. Pár chyb vám prominu, ale snažte se ať to vypadá, jinak to půjdete znovu.",
+"offset": Vector2(400, -200),
 "options": {
 0: {
 "condition": {},
 "link": &"3_1",
 "text": "Dobře, to zvládnu"
-},
-1: {
-"condition": {},
-"link": "END",
-"text": "Ještě si to rozmyslím"
 }
 },
-"size": Vector2(340, 360),
-"speaker": 1
+"size": Vector2(339.99982, 359.99997),
+"speaker": 0
 },
-"1_4": {
-"dialogue": "Tak to byl dobrý výkon, gratuluji. Klávesnice je vaše!",
-"offset": Vector2(640, -560),
+&"1_4": {
+"dialogue": "Tak to byl dobrý výkon. Matky pláčou, otcové a domácí mazlíčci také a mě nezbývá než vám popřát hodně štěstí ve vaší budoucí kariéře! ",
+"offset": Vector2(0, -540),
 "options": {
 0: {
 "condition": {},
 "link": &"3_2",
-"text": ""
+"text": "Taky budu brečet"
+},
+1: {
+"condition": {},
+"link": &"3_2",
+"text": "Chcete kapesník?"
 }
 },
-"size": Vector2(300, 240),
-"speaker": 1
+"size": Vector2(300.00012, 273.00003),
+"speaker": 0
 },
-"3_1": {
+&"3_1": {
 "link": "END",
 "offset": Vector2(840, -200),
 "signalValue": "play_game"
 },
-"3_2": {
+&"3_2": {
 "link": "END",
-"offset": Vector2(1166.65, -531.108),
-"signalValue": "give_keyboard"
+"offset": Vector2(391.05734, -416.04178),
+"signalValue": "level_finished"
 },
-"5_1": {
+&"5_1": {
 "false": &"1_1",
 "offset": Vector2(-420, -360),
 "operator": 0,
-"true": &"5_2",
-"value1": "{{slavnostni_pochod_completed}}",
-"value2": "true"
-},
-"5_2": {
-"false": &"1_4",
-"offset": Vector2(26.7407, -620.977),
-"operator": 0,
-"true": &"1_2",
-"value1": "{{has_keyboard}}",
+"true": &"1_4",
+"value1": "{{march_completed}}",
 "value2": "true"
 }
 }
-variables = {}
-strays = Array[String]([])
 characters = "res://dialogues/Characters.tres"

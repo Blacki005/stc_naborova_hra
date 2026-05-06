@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dvs0vnceislp8"]
+
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_yuh7e"]
+
+[resource]
+script = ExtResource("1_yuh7e")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-260, 140),
+"start_id": "START"
+},
+&"1_1": {
+"dialogue": "Naši kartičku máte?? A bodíky sbíráte??",
+"offset": Vector2(126.06409, 76.59687),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": "Mám jenom bago."
+},
+1: {
+"condition": {},
+"link": &"1_2",
+"text": "Jasně."
+}
+},
+"size": Vector2(300.00003, 273),
+"speaker": 5
+},
+&"1_2": {
+"dialogue": "Tak to je mi k ničemu, radši nahoď ty pojistky.",
+"offset": Vector2(524.2641, 314.19687),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Ok"
+}
+},
+"size": Vector2(300, 240.00003),
+"speaker": 5
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(679.3641, 130.49687),
+"signalValue": "display_shop"
+}
+}
+characters = "res://dialogues/Characters.tres"

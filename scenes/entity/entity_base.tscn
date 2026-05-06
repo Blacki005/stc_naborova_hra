@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://oq5s71qxggu1"]
 
-[ext_resource type="Script" path="res://scripts/entity/entity_base.gd" id="1_88pqr"]
+[ext_resource type="Script" uid="uid://c4ociu1gch3jv" path="res://scripts/entity/entity_base.gd" id="1_88pqr"]
 [ext_resource type="PackedScene" uid="uid://c8dj71ebo6upk" path="res://scenes/overlap/hurtbox.tscn" id="2_58rcb"]
 
 [node name="EntityBase" type="CharacterBody2D"]

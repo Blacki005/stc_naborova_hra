@@ -4,12 +4,16 @@ var chasing_player : bool = false
 var player = null
 var LOS_to_player = false
 
+@onready var health_bar = $health_bar
 @onready var move_timer = $move_timer
 @onready var detection_area = $detection_area
 @export var ENY_PROJECTILE : PackedScene = null
 @export var ATTACK_DISTANCE : int = 700
 
 func _ready() -> void:
+	self.hp_changed.connect(_on_hp_changed)
+	health_bar.max_value = hp_max
+	health_bar.value = hp_max
 	SPEED = 300
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +40,7 @@ func attack(projectile_direction: Vector2):
 	if ENY_PROJECTILE != null:
 		var projectile = ENY_PROJECTILE.instantiate()
 		get_tree().current_scene.add_child(projectile)
-		projectile.global_position = self.global_position + Vector2(0,-150)
+		projectile.global_position = self.global_position + Vector2(0,-100)
 		#make sure that projectile hits player and is on correct layers
 		projectile.set_collision_layer_value(4, false)
 		projectile.set_collision_layer_value(3, true)
@@ -64,3 +68,7 @@ func _on_attack_timer_timeout() -> void:
 		attack(self.global_position.direction_to(player.global_position))
 	if chasing_player:
 		attack_timer.start()
+
+func _on_hp_changed(new_hp):
+	
+	health_bar.value = new_hp

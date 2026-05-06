@@ -20,11 +20,11 @@ nodes = {
 0: {
 "condition": {},
 "link": &"1_2",
-"text": "?"
+"text": "Co?"
 }
 },
-"size": Vector2(300.00012, 240.00008),
-"speaker": ""
+"size": Vector2(300.0003, 273),
+"speaker": 1
 },
 &"1_2": {
 "dialogue": "UNOBáci...přivezli jsme je sem na povinnou kastraci. A jeden z nich začal křičet, Liboreeee, nebo nějak tak to znělo. Vypadly pojistky a po nemocnici se začaly pohybovat přízraky Libora, který nikomu nedovolí je nahodit. Zkus to ty, třeba se ti to podaří.",
@@ -33,10 +33,11 @@ nodes = {
 0: {
 "condition": {},
 "link": "END",
-"text": ""
+"text": "Rozumím, provedu!"
 }
 },
-"size": Vector2(300, 240.00006),
-"speaker": ""
+"size": Vector2(300.00024, 273),
+"speaker": 1
 }
 }
+characters = "res://dialogues/Characters.tres"

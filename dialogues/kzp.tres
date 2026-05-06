@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://duu25fqb1f5ps"]
+
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_umx83"]
+
+[resource]
+script = ExtResource("1_umx83")
+starts = {
+"GAME_OVER": &"0_4",
+"MISS": &"0_3",
+"NICE_SHOT": &"0_2",
+"START": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-52.832325, 170.48238),
+"start_id": "START"
+},
+&"0_2": {
+"link": &"1_3",
+"offset": Vector2(-24.004265, 520.53326),
+"start_id": "NICE_SHOT"
+},
+&"0_3": {
+"link": &"1_4",
+"offset": Vector2(45.74852, 806.35333),
+"start_id": "MISS"
+},
+&"0_4": {
+"link": &"1_5",
+"offset": Vector2(93.45528, 1171.8705),
+"start_id": "GAME_OVER"
+},
+&"1_1": {
+"dialogue": "Zdravím. Velení nám svěřilo CV-90 na testy a Grippeny na sešrotování, tak jsme to spojili dohormady.
+Sedni do toho a zkus sesřelit alespoň 5 Grippenů aniž bys minul.",
+"offset": Vector2(339.72076, 152.2567),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Co z toho budu mít?"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Jdu na to"
+}
+},
+"size": Vector2(300.00027, 308),
+"speaker": 3
+},
+&"1_2": {
+"dialogue": "Tady nejsme na pirátské lodi, tady se rozkazy plní bez takových otázek. Ale abych tě motivoval, za každý sestřelený Grippen si na sebe vezmu část taktiky.",
+"offset": Vector2(720, 160),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Tak to beru"
+}
+},
+"size": Vector2(300.00006, 273),
+"speaker": 3
+},
+&"1_3": {
+"dialogue": "Tahle prošla přímo skrz!",
+"offset": Vector2(340, 520),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 240.00003),
+"speaker": 3
+},
+&"1_4": {
+"dialogue": "Na co koukáš? Soustřeď se na bitvu!",
+"offset": Vector2(353.74854, 873.35333),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 240.00012),
+"speaker": 3
+},
+&"1_5": {
+"dialogue": "Výborně, vy budete postrach nepřátelských pilotů.",
+"offset": Vector2(380, 1180),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300.00006, 240.00015),
+"speaker": 3
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(768.6353, 1345.2892),
+"signalValue": "game_over"
+}
+}
+characters = "res://dialogues/Characters.tres"

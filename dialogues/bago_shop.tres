@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://cttaltrp06oj6"]
 
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_7pb52"]
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_7pb52"]
 
 [resource]
 script = ExtResource("1_7pb52")
@@ -8,12 +8,12 @@ starts = {
 "START": &"0_1"
 }
 nodes = {
-"0_1": {
+&"0_1": {
 "link": &"1_1",
 "offset": Vector2(-420, -320),
 "start_id": "START"
 },
-"1_1": {
+&"1_1": {
 "dialogue": "Zdar, co hledáš?",
 "offset": Vector2(-200, -320),
 "options": {
@@ -28,10 +28,10 @@ nodes = {
 "text": "Ale nic..."
 }
 },
-"size": Vector2(300, 289),
+"size": Vector2(300, 308),
 "speaker": 2
 },
-"1_2": {
+&"1_2": {
 "dialogue": "Jak víš, situace se dost změnila, když školní pluk zakázal prodej baga v Brně . Ale koukám že ty nějaký máš, takže se určitě dohodneme.",
 "offset": Vector2(676.747, -408.835),
 "options": {
@@ -46,10 +46,10 @@ nodes = {
 "text": "Tak to ne, sám mám málo "
 }
 },
-"size": Vector2(300, 289),
+"size": Vector2(300.00024, 308),
 "speaker": 2
 },
-"1_3": {
+&"1_3": {
 "dialogue": "Jak víš, situace se dost změnila, když školní pluk zakázal prodej baga v Brně. Kdyby se ti povedlo nějaký sehnat, zaplatil bych zlatem nebo čímkoliv jiným. ",
 "offset": Vector2(700, -60),
 "options": {
@@ -59,15 +59,15 @@ nodes = {
 "text": "Zkusím ti nějaký sehnat"
 }
 },
-"size": Vector2(300, 289),
+"size": Vector2(300.00006, 289.00006),
 "speaker": 2
 },
-"3_1": {
+&"3_1": {
 "link": "END",
 "offset": Vector2(1168.1, -399.69),
 "signalValue": "display_shop"
 },
-"5_1": {
+&"5_1": {
 "false": &"1_3",
 "offset": Vector2(227.6, -248.075),
 "operator": 2,
@@ -76,6 +76,4 @@ nodes = {
 "value2": "0"
 }
 }
-variables = {}
-strays = Array[String]([])
 characters = "res://dialogues/Characters.tres"
