@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7dtdy11356p2"]
+[gd_scene format=3 uid="uid://c7dtdy11356p2"]
 
 [ext_resource type="PackedScene" uid="uid://dna0n06fraoup" path="res://scenes/inventory.tscn" id="1_enoy0"]
 [ext_resource type="Script" uid="uid://cmcfuf8yw3ec2" path="res://scripts/user_interface.gd" id="1_ph6sc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="4_8mnmi"]
 [ext_resource type="Texture2D" uid="uid://w0gepoppmbdw" path="res://images/user_interface/healthbar_background.png" id="4_lmgon"]
 [ext_resource type="PackedScene" uid="uid://c44e11i0yrpui" path="res://scenes/hotbar.tscn" id="5_v86ye"]
+[ext_resource type="Material" uid="uid://o7ne8ad4lmtp" path="res://shaders/screen_damage_flash.tres" id="7_xsrv6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmdsp"]
 bg_color = Color(0.653898, 0, 0.362571, 1)
@@ -13,11 +14,11 @@ bg_color = Color(0.653898, 0, 0.362571, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmgon"]
 bg_color = Color(0.7656455, 0.6386846, 3.85046e-07, 1)
 
-[node name="user_interface" type="CanvasLayer" groups=["user_interface"]]
+[node name="user_interface" type="CanvasLayer" unique_id=1845212251 groups=["user_interface"]]
 process_mode = 3
 script = ExtResource("1_ph6sc")
 
-[node name="inventory" parent="." instance=ExtResource("1_enoy0")]
+[node name="inventory" parent="." unique_id=140297686 instance=ExtResource("1_enoy0")]
 visible = false
 visibility_layer = 2
 anchors_preset = 1
@@ -32,7 +33,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_filter = 1
 
-[node name="bago_label" type="Label" parent="."]
+[node name="bago_label" type="Label" parent="." unique_id=931274382]
 visibility_layer = 2
 offset_left = 42.0
 offset_top = 152.0
@@ -41,14 +42,14 @@ offset_bottom = 211.0
 theme = ExtResource("4_8mnmi")
 text = "Bago: 0"
 
-[node name="hotbar" parent="." instance=ExtResource("5_v86ye")]
+[node name="hotbar" parent="." unique_id=1005653614 instance=ExtResource("5_v86ye")]
 visibility_layer = 2
 anchors_preset = 12
 anchor_top = 1.0
 offset_top = -100.0
 grow_vertical = 0
 
-[node name="health_bar" type="ProgressBar" parent="."]
+[node name="health_bar" type="ProgressBar" parent="." unique_id=1953468087]
 light_mask = 8
 visibility_layer = 2
 anchors_preset = -1
@@ -66,7 +67,7 @@ step = 1.0
 value = 10.0
 show_percentage = false
 
-[node name="TextureRect" type="TextureRect" parent="health_bar"]
+[node name="TextureRect" type="TextureRect" parent="health_bar" unique_id=1793035520]
 light_mask = 8
 z_index = -1
 layout_mode = 0
@@ -76,7 +77,7 @@ offset_right = 510.0
 offset_bottom = 42.0
 texture = ExtResource("4_lmgon")
 
-[node name="shield_bar" type="ProgressBar" parent="."]
+[node name="shield_bar" type="ProgressBar" parent="." unique_id=1603864353]
 light_mask = 8
 visibility_layer = 2
 anchors_preset = -1
@@ -94,7 +95,7 @@ step = 1.0
 value = 10.0
 show_percentage = false
 
-[node name="TextureRect" type="TextureRect" parent="shield_bar"]
+[node name="TextureRect" type="TextureRect" parent="shield_bar" unique_id=1286120043]
 light_mask = 8
 z_index = -1
 layout_mode = 0
@@ -104,11 +105,11 @@ offset_right = 510.0
 offset_bottom = 42.0
 texture = ExtResource("4_lmgon")
 
-[node name="shop" parent="." instance=ExtResource("3_itncc")]
+[node name="shop" parent="." unique_id=2103320836 instance=ExtResource("3_itncc")]
 visible = false
 visibility_layer = 2
 
-[node name="pause_screen" type="ColorRect" parent="."]
+[node name="pause_screen" type="ColorRect" parent="." unique_id=317523427]
 visible = false
 light_mask = 8
 visibility_layer = 2
@@ -117,7 +118,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.584314)
 
-[node name="continue_button" type="Button" parent="."]
+[node name="continue_button" type="Button" parent="." unique_id=1244999312]
 process_mode = 2
 visible = false
 light_mask = 8
@@ -130,7 +131,7 @@ offset_bottom = 564.0
 theme = ExtResource("4_8mnmi")
 text = "zpět do hry"
 
-[node name="main_menu_button" type="Button" parent="."]
+[node name="main_menu_button" type="Button" parent="." unique_id=2048103120]
 process_mode = 2
 visible = false
 light_mask = 8
@@ -143,7 +144,7 @@ offset_bottom = 554.0
 theme = ExtResource("4_8mnmi")
 text = "zpět do hlavní nabídky"
 
-[node name="save_game_button" type="Button" parent="."]
+[node name="save_game_button" type="Button" parent="." unique_id=1084506912]
 process_mode = 2
 visible = false
 light_mask = 8
@@ -156,7 +157,7 @@ offset_bottom = 568.0
 theme = ExtResource("4_8mnmi")
 text = "uložit hru"
 
-[node name="save_filename" type="LineEdit" parent="."]
+[node name="save_filename" type="LineEdit" parent="." unique_id=324670239]
 process_mode = 2
 visible = false
 light_mask = 8
@@ -166,7 +167,7 @@ offset_top = 716.0
 offset_right = 1159.0
 offset_bottom = 747.0
 
-[node name="save_message" type="Label" parent="."]
+[node name="save_message" type="Label" parent="." unique_id=805326197]
 process_mode = 2
 visible = false
 light_mask = 8
@@ -177,6 +178,16 @@ offset_right = 1199.0
 offset_bottom = 708.0
 text = "Název uložení hry:"
 horizontal_alignment = 1
+
+[node name="screen_damage" type="ColorRect" parent="." unique_id=991237627]
+material = ExtResource("7_xsrv6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [connection signal="button_up" from="continue_button" to="." method="_on_continue_button_button_up"]
 [connection signal="button_up" from="main_menu_button" to="." method="_on_main_menu_button_button_up"]

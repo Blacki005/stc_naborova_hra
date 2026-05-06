@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://o7ne8ad4lmtp"]
+
+[ext_resource type="Shader" uid="uid://cty1kblnuwmog" path="res://shaders/screen_damage_flash.gdshader" id="1_68jks"]
+
+[resource]
+shader = ExtResource("1_68jks")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/edge_power = 2.5
+shader_parameter/inner_ratio = 0.75
+shader_parameter/feather = 0.40000001830148
