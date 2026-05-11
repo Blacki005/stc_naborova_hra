@@ -23,7 +23,7 @@ nodes = {
 "text": "Co se stalo?"
 }
 },
-"size": Vector2(300.0001, 273),
+"size": Vector2(300.00006, 273),
 "speaker": 1
 },
 &"1_2": {
@@ -41,7 +41,7 @@ nodes = {
 "text": "Nemáte něco co by mi při hledání pomohlo? "
 }
 },
-"size": Vector2(300.00003, 308),
+"size": Vector2(300, 308),
 "speaker": 1
 },
 &"1_3": {
@@ -76,7 +76,7 @@ nodes = {
 "text": "Bohužel žádné bago nemám."
 }
 },
-"size": Vector2(300, 307.9999),
+"size": Vector2(300, 308),
 "speaker": 1
 },
 &"3_1": {

@@ -51,7 +51,6 @@ func _on_audio_stream_player_finished() -> void:
 		game_won = false
 		game_over(WRONG_STEP_CNT)
 
-
 func game_over(status:int) -> void:
 	$idle_timer.stop()
 	

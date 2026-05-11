@@ -23,7 +23,7 @@ func _ready():
 	center_position = position
 	choose_new_target()
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event.is_action_pressed("attack"):
 		#check if there is no projectile:
 		if get_tree().get_nodes_in_group("projectiles").size() == 0:
@@ -33,7 +33,8 @@ func _unhandled_input(event):
 		aim_point.global_position += relative_mouse_movement.limit_length(200)
 		aim_point.global_position.x = clamp(aim_point.global_position.x, 960-512, 960+512)
 		aim_point.global_position.y = clamp(aim_point.global_position.y, 10, 512)
-func choose_new_target():
+		
+func choose_new_target() -> void:
 	# Random angle within full circle
 	var random_angle = randf_range(0, TAU)
 	var target_position = center_position + Vector2(
@@ -43,8 +44,8 @@ func choose_new_target():
 	
 	# Calculate duration based on distance and speed
 	var distance = position.distance_to(target_position)
-	var current_speed = BASE_SPEED + (score * SPEED_INCREASE_PER_SCORE)
-	var duration = distance / current_speed
+	var current_speed : int = BASE_SPEED + (score * SPEED_INCREASE_PER_SCORE)
+	var duration : float = distance / current_speed
 	
 	# Kill existing tween if any
 	if tween:

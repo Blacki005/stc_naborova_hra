@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dahyokos7jqox"]
+[gd_scene load_steps=14 format=3 uid="uid://bknu7kdngeibc"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_g5is1"]
+[ext_resource type="Script" uid="uid://bfxeo6aebcqq0" path="res://scripts/enemy.gd" id="1_g5is1"]
 [ext_resource type="Texture2D" uid="uid://k02p47lg1u4l" path="res://images/npc_characters/enemy_temp.png" id="2_p1o5w"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="3_uawey"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_1gl1n"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_kegni"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_qv0u5"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="7_cd5b2"]
+[ext_resource type="Script" uid="uid://cq8bvripc54di" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_1gl1n"]
+[ext_resource type="Script" uid="uid://btauc604y04n3" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_kegni"]
+[ext_resource type="Script" uid="uid://cp21o5x0xdtq2" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_qv0u5"]
+[ext_resource type="Script" uid="uid://3faicvn5bf11" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="7_cd5b2"]
 [ext_resource type="Resource" uid="uid://bg264x2wad6dw" path="res://dialogues/enemy.tres" id="8_ylenb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hlhrr"]
@@ -50,8 +50,8 @@ visible = false
 clip_contents = false
 offset_left = 67.0
 offset_top = -92.0
-offset_right = 207.0
-offset_bottom = -69.0
+offset_right = 227.0
+offset_bottom = -70.0
 theme = ExtResource("3_uawey")
 bbcode_enabled = true
 text = "Sample dialogue."

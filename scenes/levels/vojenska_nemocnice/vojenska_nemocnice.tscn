@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://704q12wfm74o" path="res://scenes/entity/enemy/enemy_libor.tscn" id="11_mc5yi"]
 [ext_resource type="Texture2D" uid="uid://b1a4we3iffb85" path="res://images/npc_characters/hlavni_jistic_down.png" id="12_1ilnj"]
 [ext_resource type="Resource" uid="uid://cco24dddvbwn4" path="res://dialogues/hlavni_jistic.tres" id="13_7yw58"]
-[ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/level_menu.tscn" id="14_7mkqb"]
+[ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/user_interface/level_menu.tscn" id="14_7mkqb"]
 [ext_resource type="PackedScene" uid="uid://dx7hk6f6b8qbw" path="res://scenes/items/pickable_item.tscn" id="16_u41ys"]
 [ext_resource type="Texture2D" uid="uid://cssdf15dwarlt" path="res://images/items/Key.png" id="17_5q3si"]
 
@@ -30,6 +30,7 @@ fill_to = Vector2(1, 1)
 [node name="vojenska_nemocnice" instance=ExtResource("1_bqiso")]
 light_mask = 0
 default_position = Vector2(272, 360)
+next_scene = ExtResource("14_7mkqb")
 camera_limit_bottom = 3264
 camera_limit_left = -2880
 camera_limit_right = 4160

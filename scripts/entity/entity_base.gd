@@ -14,18 +14,18 @@ signal died
 				emit_signal("died")
 
 @export var defence : int = 0
-
 @export var SPEED : int = 750
 
-@onready var sprite = $Sprite
-@onready var coll_shape = $CollisionShape2D
-@onready var anim_player = $AnimationPlayer
+@onready var sprite : Sprite2D = $Sprite
+@onready var coll_shape : CollisionShape2D = $CollisionShape2D
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var hurtbox = $hurtbox
-@onready var attack_timer = $attack_timer
+@onready var attack_timer : Timer = $attack_timer
 
 @export var receives_knockback : bool = true
 @export var knockback_modifier : float = 2
-@export var bago_drop_cnt : int = 0
+@export var item_drop_name : String = ""
+@export var item_drop_cnt : int = 0
 
 func die():
 	queue_free()
@@ -40,17 +40,17 @@ func receive_damage(base_damage : int) -> int:
 	var actual_damage = base_damage - defence
 	if actual_damage:
 		blink_red()
-	if (self.hp - actual_damage)<=0 and bago_drop_cnt:
+	
+	if (self.hp - actual_damage)<=0 and item_drop_cnt:
 		var drop_item_scene : PackedScene = load("res://scenes/items/pickable_item.tscn")
 		var drop_item = drop_item_scene.instantiate()
 		get_parent().add_child(drop_item)
-		drop_item.item_name = "Bago"
-		drop_item.item_quantity = bago_drop_cnt
-		drop_item.sprite2d.texture = load("res://images/items/Bago.png")
+		drop_item.item_name = item_drop_name
+		drop_item.item_quantity = item_drop_cnt
+		drop_item.sprite2d.texture = load("res://images/items/" + item_drop_name + ".png")
 		drop_item.global_position = self.global_position
 		
 	self.hp -= actual_damage #neccessary for setter call
-
 	return actual_damage
 
 func receive_knockback(damage_source_pos: Vector2, received_damage:int):

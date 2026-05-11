@@ -12,7 +12,6 @@ var can_interact : bool = true
 func register_area(area: InteractionArea) -> void:
 	active_areas.push_back(area)
 
-
 func unregister_area(area: InteractionArea) -> void:
 	var idx = active_areas.find(area)
 	if idx != -1:
@@ -39,10 +38,5 @@ func _sort_by_distance_to_player(area1, area2) -> bool:
 func _input(event) -> void:
 	if event.is_action_pressed("interact") && can_interact:
 		if active_areas.size() > 0:
-			#zavora
-			can_interact = false
 			label.hide()
-			
 			await active_areas[0].interact.call()
-			
-			can_interact = true

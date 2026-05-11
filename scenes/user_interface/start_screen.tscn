@@ -1,9 +1,58 @@
-[gd_scene format=3 uid="uid://t3dlfokhbdg7"]
+[gd_scene load_steps=3 format=3 uid="uid://t3dlfokhbdg7"]
 
-[node name="start_screen" type="Node2D"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="1_me04h"]
+[ext_resource type="Script" uid="uid://dajcqnftwdfy4" path="res://scripts/user_interface/start_screen.gd" id="1_ruq57"]
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="start_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ruq57")
 
-[node name="start_game" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.5411765, 0.4509804, 0.3137255, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 193.0
+offset_right = 1921.0
+offset_bottom = 656.0
+theme = ExtResource("1_me04h")
+theme_override_font_sizes/font_size = 96
+text = "Cesta na UNOB"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 558.0
+offset_top = 700.0
+offset_right = 1362.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="main_menu" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("1_me04h")
+text = "Hlavní menu"
+
+[node name="exit" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("1_me04h")
+text = "Ukončit hru
+"
+
+[connection signal="button_up" from="HBoxContainer/main_menu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="HBoxContainer/exit" to="." method="_on_exit_button_up"]

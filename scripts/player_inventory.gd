@@ -164,10 +164,12 @@ func change_active_item(slot_number : int) -> void:
 	emit_signal("active_item_updated")
 
 func active_item_scroll_up() -> void:
-	change_active_item((active_item_slot + 1) % NUM_HOTBAR_SLOTS)
+	if InteractionManager.can_interact:
+		change_active_item((active_item_slot + 1) % NUM_HOTBAR_SLOTS)
 
 func active_item_scroll_down() -> void:
-	if active_item_slot == 0:
-		change_active_item(NUM_HOTBAR_SLOTS - 1)
-	else:
-		change_active_item(active_item_slot-1)
+	if InteractionManager.can_interact:
+		if active_item_slot == 0:
+			change_active_item(NUM_HOTBAR_SLOTS - 1)
+		else:
+			change_active_item(active_item_slot-1)

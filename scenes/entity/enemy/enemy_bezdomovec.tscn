@@ -9,6 +9,8 @@ ENY_PROJECTILE = ExtResource("2_0awxv")
 hp_max = 60
 hp = 60
 defence = 5
+item_drop_name = "Key"
+item_drop_cnt = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_rgkdf")

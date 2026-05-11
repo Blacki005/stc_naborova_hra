@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cwtg46lgd8qe2" path="res://images/npc_characters/pracovnik_rekrutacniho_pracoviste.png" id="4_e1vv4"]
 [ext_resource type="Resource" uid="uid://vqd6f550jj66" path="res://dialogues/pracovnik_rekrutacniho_pracoviste.tres" id="5_n0hlp"]
 [ext_resource type="PackedScene" uid="uid://byxc5m8qslijc" path="res://scenes/entity/enemy/enemy_dokument.tscn" id="6_5onb4"]
-[ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/level_menu.tscn" id="7_5b5qw"]
+[ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/user_interface/level_menu.tscn" id="7_5b5qw"]
 [ext_resource type="PackedScene" uid="uid://dx7hk6f6b8qbw" path="res://scenes/items/pickable_item.tscn" id="9_1ciho"]
 [ext_resource type="Texture2D" uid="uid://bcd0bqxh0k0mq" path="res://images/items/Bago.png" id="10_5ntsb"]
 
 [node name="rekrutacni_pracoviste" instance=ExtResource("1_2gqs8")]
 script = ExtResource("1_bea72")
 default_position = Vector2(200, 200)
+next_scene = ExtResource("7_5b5qw")
 camera_limit_bottom = 1664
 camera_limit_left = -1216
 camera_limit_right = 1664
@@ -49,9 +50,13 @@ next_scene = ExtResource("7_5b5qw")
 
 [node name="enemy_dokument" parent="." index="5" instance=ExtResource("6_5onb4")]
 position = Vector2(-1080, 192)
+item_drop_name = "Bago"
+item_drop_cnt = 2
 
 [node name="enemy_dokument2" parent="." index="6" instance=ExtResource("6_5onb4")]
 position = Vector2(1160, 1472)
+item_drop_name = "Bago"
+item_drop_cnt = 2
 
 [node name="pickable_items" type="Node2D" parent="." index="8"]
 

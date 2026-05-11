@@ -33,8 +33,6 @@ script = ExtResource("14_lwao1")
 script = ExtResource("1_0v6pd")
 gear_nodes = Array[NodePath]([NodePath("soldier/gear1"), NodePath("soldier/gear2"), NodePath("soldier/gear3"), NodePath("soldier/gear4")])
 
-[node name="user_interface" type="CanvasLayer" parent="."]
-
 [node name="background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(960, 540)
@@ -42,9 +40,9 @@ texture = ExtResource("2_frwnf")
 
 [node name="bvp" parent="." instance=ExtResource("2_ot065")]
 position = Vector2(960, 800)
-MOVEMENT_RADIUS = 85.0
-BASE_SPEED = 50.0
-SPEED_INCREASE_PER_SCORE = 15.0
+MOVEMENT_RADIUS = 100.0
+BASE_SPEED = 75.0
+SPEED_INCREASE_PER_SCORE = 20.0
 WAIT_TIME_AT_DESTINATION = 0.2
 RANGE = 500
 MAX_RADIUS = 200.0
@@ -99,6 +97,7 @@ script = ExtResource("15_qjhh8")
 data = ExtResource("16_qjhh8")
 start_id = "START"
 default_speaker_color = Color(1, 1, 1, 0)
+skip_input_action = "interact"
 dialogue_custom_effects = [SubResource("RichTextEffect_lwao1"), SubResource("RichTextEffect_evpve"), SubResource("RichTextEffect_v8wcy")]
 metadata/_custom_type_script = "uid://3faicvn5bf11"
 

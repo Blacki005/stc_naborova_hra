@@ -4,9 +4,10 @@ var chasing_player : bool = false
 var player = null
 var LOS_to_player = false
 
-@onready var health_bar = $health_bar
-@onready var move_timer = $move_timer
-@onready var detection_area = $detection_area
+@onready var health_bar : ProgressBar = $health_bar
+@onready var move_timer : Timer = $move_timer
+@onready var detection_area : Area2D = $detection_area
+
 @export var ENY_PROJECTILE : PackedScene = null
 @export var ATTACK_DISTANCE : int = 700
 
@@ -69,6 +70,5 @@ func _on_attack_timer_timeout() -> void:
 	if chasing_player:
 		attack_timer.start()
 
-func _on_hp_changed(new_hp):
-	
+func _on_hp_changed(new_hp) -> void:
 	health_bar.value = new_hp

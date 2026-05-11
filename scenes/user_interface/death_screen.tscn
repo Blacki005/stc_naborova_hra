@@ -34,6 +34,7 @@ offset_left = 558.0
 offset_top = 700.0
 offset_right = 1362.0
 offset_bottom = 800.0
+alignment = 1
 
 [node name="main_menu_button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)

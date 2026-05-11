@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7dtdy11356p2"]
 
-[ext_resource type="PackedScene" uid="uid://dna0n06fraoup" path="res://scenes/inventory.tscn" id="1_enoy0"]
-[ext_resource type="Script" uid="uid://cmcfuf8yw3ec2" path="res://scripts/user_interface.gd" id="1_ph6sc"]
-[ext_resource type="PackedScene" uid="uid://cde53tihhbiw8" path="res://scenes/shop.tscn" id="3_itncc"]
-[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="4_8mnmi"]
-[ext_resource type="Texture2D" uid="uid://w0gepoppmbdw" path="res://images/user_interface/healthbar_background.png" id="4_lmgon"]
-[ext_resource type="PackedScene" uid="uid://c44e11i0yrpui" path="res://scenes/hotbar.tscn" id="5_v86ye"]
+[ext_resource type="Script" uid="uid://cmcfuf8yw3ec2" path="res://scripts/user_interface.gd" id="1_pvt6f"]
+[ext_resource type="PackedScene" uid="uid://dna0n06fraoup" path="res://scenes/user_interface/inventory.tscn" id="2_6xuti"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="3_flq3v"]
+[ext_resource type="PackedScene" uid="uid://c44e11i0yrpui" path="res://scenes/user_interface/hotbar.tscn" id="4_8wifb"]
+[ext_resource type="Texture2D" uid="uid://w0gepoppmbdw" path="res://images/user_interface/healthbar_background.png" id="5_axgoa"]
+[ext_resource type="PackedScene" uid="uid://cde53tihhbiw8" path="res://scenes/shop.tscn" id="6_tfswy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmdsp"]
 bg_color = Color(0.653898, 0, 0.362571, 1)
@@ -15,9 +15,9 @@ bg_color = Color(0.7656455, 0.6386846, 3.85046e-07, 1)
 
 [node name="user_interface" type="CanvasLayer" groups=["user_interface"]]
 process_mode = 3
-script = ExtResource("1_ph6sc")
+script = ExtResource("1_pvt6f")
 
-[node name="inventory" parent="." instance=ExtResource("1_enoy0")]
+[node name="inventory" parent="." instance=ExtResource("2_6xuti")]
 visible = false
 visibility_layer = 2
 anchors_preset = 1
@@ -38,10 +38,10 @@ offset_left = 42.0
 offset_top = 152.0
 offset_right = 203.0
 offset_bottom = 211.0
-theme = ExtResource("4_8mnmi")
+theme = ExtResource("3_flq3v")
 text = "Bago: 0"
 
-[node name="hotbar" parent="." instance=ExtResource("5_v86ye")]
+[node name="hotbar" parent="." instance=ExtResource("4_8wifb")]
 visibility_layer = 2
 anchors_preset = 12
 anchor_top = 1.0
@@ -74,7 +74,7 @@ offset_left = -10.0
 offset_top = -13.0
 offset_right = 510.0
 offset_bottom = 42.0
-texture = ExtResource("4_lmgon")
+texture = ExtResource("5_axgoa")
 
 [node name="shield_bar" type="ProgressBar" parent="."]
 light_mask = 8
@@ -102,9 +102,9 @@ offset_left = -10.0
 offset_top = -13.0
 offset_right = 510.0
 offset_bottom = 42.0
-texture = ExtResource("4_lmgon")
+texture = ExtResource("5_axgoa")
 
-[node name="shop" parent="." instance=ExtResource("3_itncc")]
+[node name="shop" parent="." instance=ExtResource("6_tfswy")]
 visible = false
 visibility_layer = 2
 
@@ -127,7 +127,7 @@ offset_left = 203.0
 offset_top = 464.0
 offset_right = 603.0
 offset_bottom = 564.0
-theme = ExtResource("4_8mnmi")
+theme = ExtResource("3_flq3v")
 text = "zpět do hry"
 
 [node name="main_menu_button" type="Button" parent="."]
@@ -140,7 +140,7 @@ offset_left = 1231.0
 offset_top = 454.0
 offset_right = 1631.0
 offset_bottom = 554.0
-theme = ExtResource("4_8mnmi")
+theme = ExtResource("3_flq3v")
 text = "zpět do hlavní nabídky"
 
 [node name="save_game_button" type="Button" parent="."]
@@ -153,7 +153,7 @@ offset_left = 761.0
 offset_top = 448.0
 offset_right = 1161.0
 offset_bottom = 568.0
-theme = ExtResource("4_8mnmi")
+theme = ExtResource("3_flq3v")
 text = "uložit hru"
 
 [node name="save_filename" type="LineEdit" parent="."]

@@ -57,8 +57,11 @@ offset_bottom = 980.0
 mouse_filter = 1
 theme = ExtResource("3_olw6l")
 script = ExtResource("4_l2era")
+skip_input_action = "interact"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3b4l1"), SubResource("RichTextEffect_lw2ll"), SubResource("RichTextEffect_0c0mt")])
 
+[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_ended"]
 [connection signal="dialogue_signal" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_signal"]
+[connection signal="dialogue_started" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_started"]
 [connection signal="mouse_entered" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_box_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_box_mouse_exited"]

@@ -68,7 +68,7 @@ func _on_finish_body_entered(body: Node2D) -> void:
 	if bot1_score > lap_count || bot2_score > lap_count:
 		game_over()
 
-func game_over():
+func game_over() -> void:
 	get_tree().paused = true
 	player.set_physics_process(false)
 	anim_player.play("fade_out")
@@ -76,7 +76,7 @@ func game_over():
 	end_buttons.show()
 	
 
-func race_finished():
+func race_finished() -> void:
 	get_tree().paused = true
 	player.set_physics_process(false)
 	Globals.new_level_unlocked = true
@@ -110,7 +110,7 @@ func _on_dialogue_signal(value: String) -> void:
 func _on_exit_button_button_up() -> void:
 	#reset the pause invoked at crossing the finish line
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/level_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/user_interface/level_menu.tscn")
 
 
 func _on_restart_button_button_up() -> void:

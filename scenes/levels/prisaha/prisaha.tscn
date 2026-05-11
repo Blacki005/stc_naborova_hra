@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c41uq21f4rj4v"]
+[gd_scene load_steps=9 format=3 uid="uid://c41uq21f4rj4v"]
 
 [ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_hxphb"]
 [ext_resource type="PackedScene" uid="uid://blrmp4hay8l34" path="res://scenes/entity/npc_base.tscn" id="2_irmhm"]
+[ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/user_interface/level_menu.tscn" id="2_nukuh"]
 [ext_resource type="Texture2D" uid="uid://l0r82hylif4s" path="res://textures/backgrounds/sumavska_bg.png" id="2_oxryl"]
 [ext_resource type="Texture2D" uid="uid://blmtec4c1ynr3" path="res://images/npc_characters/chrudimak.png" id="3_4h8v5"]
 [ext_resource type="Resource" uid="uid://dvbmf0k6icbw2" path="res://dialogues/chrudimak.tres" id="4_oxryl"]
@@ -10,6 +11,7 @@
 
 [node name="prisaha" instance=ExtResource("1_hxphb")]
 default_position = Vector2(1280, 752)
+next_scene = ExtResource("2_nukuh")
 camera_limit_bottom = 1080
 
 [node name="player" parent="." index="1"]

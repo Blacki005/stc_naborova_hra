@@ -15,8 +15,7 @@ func _ready() -> void:
 		return
 	
 	#set players position:
-	var player_position = Globals.player_position
+	var player_position : Vector2 = Globals.player_position
 	if player_position == null:
 		player_position = default_position
 	$player.position = player_position
-	#o vynulovani player position se stara getter Globals sckriptu

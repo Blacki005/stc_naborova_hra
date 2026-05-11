@@ -73,7 +73,7 @@ func player_movement(_delta) -> void:
 
 	move_and_slide()
 
-func attack(projectile_direction: Vector2):
+func attack(projectile_direction: Vector2) -> void:
 	#decide if active item is throwable:
 	if PlayerInventory.hotbar.has(PlayerInventory.active_item_slot):
 		var active_item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot][0]
@@ -98,7 +98,7 @@ func blink_red(duration: float = 0.1) -> void:
 func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 	if hitbox.is_in_group("projectiles"):
 		hitbox.destroy()
-		var dmg = hitbox.damage
+		var dmg : int = hitbox.damage
 		blink_red()
 		#TODO: implement meelee damage - this gets damage only if area is projectile
 		#TODO: cool take damage effects

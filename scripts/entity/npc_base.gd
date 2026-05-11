@@ -37,6 +37,7 @@ func _on_interact() -> void:
 	#display NPCs dialogue
 	
 	if dialogue_data != null:
+		InteractionManager.can_interact = false
 		dialogue_box.data = dialogue_data
 		#writes global variables to dialoguebox variables dictionary
 		dialogue_box.variables.merge(Globals.variables, true)
@@ -63,7 +64,7 @@ func display_shop() -> void:
 	ui_node.display_shop(shop_name)
 
 
-func give_item():
+func give_item() -> void:
 	if item == "bago":
 		Globals.bago += item_quantity
 		return
@@ -76,11 +77,11 @@ func play_game() -> void:
 	
 	#run slavnostni pochod scene
 	#slavnostni pochod scene sets global variable completed
-	#store player global position before transition
+	#store player global position"res://scenes/entity/npc_base.tscn" before transition
 	Globals.player_position = get_tree().get_first_node_in_group("player").position
 	get_tree().change_scene_to_packed(minigame)
 
-func level_finished():
+func level_finished() -> void:
 	#increment completed levels counter:
 	Globals.levels_completed += 1
 	Globals.new_level_unlocked = true
@@ -94,9 +95,18 @@ func _on_dialogue_box_mouse_entered() -> void:
 func _on_dialogue_box_mouse_exited() -> void:
 	Globals.able_to_attack=true
 
-func die():
+func die() -> void:
 	if death_effect:
 		var death_effect_node = death_effect.instantiate()
 		get_parent().add_child(death_effect_node)
 		death_effect_node.global_position = self.global_position
 		queue_free()
+
+
+func _on_dialogue_started(_id: String) -> void:
+	pass
+	#InteractionManager.can_interact = false
+
+
+func _on_dialogue_ended() -> void:
+	InteractionManager.can_interact = true

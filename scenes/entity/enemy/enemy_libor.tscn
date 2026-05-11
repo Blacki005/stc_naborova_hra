@@ -7,7 +7,8 @@
 [node name="libor" instance=ExtResource("1_d84gk")]
 ENY_PROJECTILE = ExtResource("2_63qvd")
 ATTACK_DISTANCE = 400
-bago_drop_cnt = 3
+item_drop_name = "Bago"
+item_drop_cnt = 3
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_lgblf")
