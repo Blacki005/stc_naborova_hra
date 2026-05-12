@@ -101,7 +101,19 @@ func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 		var dmg = hitbox.damage
 		blink_red()
 		#TODO: implement meelee damage - this gets damage only if area is projectile
-		#TODO: cool take damage effects
+		# Play random hit sound
+		var hit_sounds = [
+			load("res://audio/hit1.mp3"),
+			load("res://audio/hit2.mp3"),
+			load("res://audio/hit3.mp3"),
+			load("res://audio/hit4.mp3"),
+		]
+		var hit_player = AudioStreamPlayer.new()
+		hit_player.stream = hit_sounds[randi() % hit_sounds.size()]
+		hit_player.bus = "Master"
+		add_child(hit_player)
+		hit_player.play()
+		hit_player.finished.connect(hit_player.queue_free)
 		if Globals.shield > dmg:
 			Globals.shield -= dmg
 		elif Globals.shield > 0:
