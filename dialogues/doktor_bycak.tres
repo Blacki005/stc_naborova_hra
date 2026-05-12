@@ -41,7 +41,7 @@ nodes = {
 "text": "Nemáte něco co by mi při hledání pomohlo? "
 }
 },
-"size": Vector2(300, 308),
+"size": Vector2(300.00006, 308),
 "speaker": 1
 },
 &"1_3": {
@@ -54,7 +54,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 240.00003),
+"size": Vector2(300.00104, 240.00002),
 "speaker": 1
 },
 &"1_4": {
@@ -65,7 +65,7 @@ nodes = {
 "condition": {
 "operator": 4,
 "value1": "{{bago}}",
-"value2": "10"
+"value2": "1"
 },
 "link": &"3_1",
 "text": "Ukaž, co máš."
@@ -76,7 +76,7 @@ nodes = {
 "text": "Bohužel žádné bago nemám."
 }
 },
-"size": Vector2(300, 308),
+"size": Vector2(300.00073, 308.00006),
 "speaker": 1
 },
 &"3_1": {

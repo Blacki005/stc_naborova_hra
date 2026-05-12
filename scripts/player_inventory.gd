@@ -21,6 +21,12 @@ var hotbar : Dictionary = {
 
 #current active item slot
 var active_item_slot : int = 0
+@onready var audiostreamplayer : AudioStreamPlayer
+
+func _ready() -> void:
+	audiostreamplayer = AudioStreamPlayer.new()
+	audiostreamplayer.stream = load("res://sound/consuming.mp3")
+	add_child(audiostreamplayer)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("consume") and hotbar.has(active_item_slot):
@@ -29,7 +35,8 @@ func _input(event: InputEvent) -> void:
 			remove_item(active_item_name, 1)
 			Globals.health += JsonData.item_data[active_item_name]["Healing"]
 			Globals.shield += JsonData.item_data[active_item_name]["Shield"]
-			
+			audiostreamplayer.play()
+
 
 #add item_quantity of item_name in inventory
 func add_item(item_name: String, item_quantity: int) -> bool:

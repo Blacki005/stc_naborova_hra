@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5sydaptidx0n"]
+[gd_scene load_steps=24 format=3 uid="uid://b5sydaptidx0n"]
 
 [ext_resource type="Script" uid="uid://cag3c01vff7p3" path="res://scripts/levels/kurz_zakladni_pripravy/kurz_zakladni_pripravy.gd" id="1_0v6pd"]
 [ext_resource type="Texture2D" uid="uid://cbl0hygqiacww" path="res://textures/backgrounds/landscape.png" id="2_frwnf"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b5fuba15syhq1" path="res://images/kurz_zakladni_pripravy/bunker.png" id="17_lwao1"]
 [ext_resource type="Texture2D" uid="uid://j0up4hd2y5yt" path="res://images/kurz_zakladni_pripravy/tank.png" id="18_evpve"]
 [ext_resource type="Texture2D" uid="uid://t7lye2k4pahj" path="res://textures/red_tank.png" id="19_evpve"]
+[ext_resource type="AudioStream" uid="uid://udl6amr17psk" path="res://sound/kzp.wav" id="20_v8wcy"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_lwao1"]
 script = ExtResource("12_xgb6r")
@@ -40,12 +41,9 @@ texture = ExtResource("2_frwnf")
 
 [node name="bvp" parent="." instance=ExtResource("2_ot065")]
 position = Vector2(960, 800)
-MOVEMENT_RADIUS = 100.0
 BASE_SPEED = 75.0
 SPEED_INCREASE_PER_SCORE = 20.0
 WAIT_TIME_AT_DESTINATION = 0.2
-RANGE = 500
-MAX_RADIUS = 200.0
 
 [node name="target" parent="." instance=ExtResource("3_ygksr")]
 z_index = -1
@@ -122,6 +120,12 @@ texture = ExtResource("18_evpve")
 [node name="RedTank" type="Sprite2D" parent="environment"]
 position = Vector2(1776, 368)
 texture = ExtResource("19_evpve")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("20_v8wcy")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="timeout" from="soldier/label_timer" to="." method="_on_label_timer_timeout"]

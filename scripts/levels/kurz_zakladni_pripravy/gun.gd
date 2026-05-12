@@ -25,7 +25,6 @@ func _ready():
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("attack"):
-		#check if there is no projectile:
 		if get_tree().get_nodes_in_group("projectiles").size() == 0:
 			shoot()
 	if event is InputEventMouseMotion:
@@ -62,4 +61,5 @@ func shoot():
 	get_parent().add_child(projectile)
 	projectile.global_position = global_position
 	projectile.shoot_towards_position(aim_point.global_position)
-	#projectile.shoot_towards_position(Vector2(global_position.x, global_position.y - RANGE))
+	$AudioStreamPlayer.stream = load("res://sound/projectiles/gun_kzp.mp3")
+	$AudioStreamPlayer.play()

@@ -6,6 +6,7 @@ signal hit
 
 func get_hit():
 	emit_signal("hit")
+	$AudioStreamPlayer.play()
 	play_hit_animation()
 	self.hit_points -= 1
 

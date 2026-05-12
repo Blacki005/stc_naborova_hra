@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cu7td2nnura82"]
+[gd_scene load_steps=20 format=4 uid="uid://cu7td2nnura82"]
 
 [ext_resource type="Script" uid="uid://d38cylbrkjj8e" path="res://scripts/levels/prijmacky/prijmacky.gd" id="1_xkojd"]
 [ext_resource type="PackedScene" uid="uid://cqaa3b6inthkq" path="res://scenes/levels/prijmacky/racer.tscn" id="2_4tc22"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://cxqulkgujvce7" path="res://dialogues/prijmacky.tres" id="7_22sox"]
 [ext_resource type="Script" uid="uid://btauc604y04n3" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="8_22sox"]
 [ext_resource type="Script" uid="uid://cp21o5x0xdtq2" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="9_qroch"]
+[ext_resource type="AudioStream" uid="uid://bgte7c6tajrui" path="res://sound/racing_theme.wav" id="11_22sox"]
 
 [sub_resource type="Curve2D" id="Curve2D_4tc22"]
 _data = {
@@ -197,6 +198,7 @@ theme = ExtResource("5_4tc22")
 script = ExtResource("6_sbi4x")
 data = ExtResource("7_22sox")
 start_id = "START"
+skip_input_action = "interact"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_6homy"), SubResource("RichTextEffect_4drfy"), SubResource("RichTextEffect_mloo7")])
 metadata/_custom_type_script = "uid://b7phm81kihjxc"
 
@@ -236,6 +238,11 @@ libraries = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_22sox")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="body_entered" from="finish" to="." method="_on_finish_body_entered"]
 [connection signal="dialogue_signal" from="user_interface/DialogueBox" to="." method="_on_dialogue_signal"]

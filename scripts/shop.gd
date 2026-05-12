@@ -82,6 +82,7 @@ func load_data(file_path : String) -> Array:
 func _on_shop_button_button_up() -> void:
 	#TODO dodelat nejaky cool efekty, kdyz nema dost penez
 	if Globals.bago >= item_price: #&& item_count > 0: - part of unused limited items to sell
+		$AudioStreamPlayer.play()
 		Globals.bago -= item_price
 		item_count -= 1
 		

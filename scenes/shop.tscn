@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cde53tihhbiw8"]
+[gd_scene load_steps=9 format=3 uid="uid://cde53tihhbiw8"]
 
 [ext_resource type="Script" uid="uid://bkbjrolmf4i7k" path="res://scripts/shop.gd" id="1_7k5tl"]
 [ext_resource type="Texture2D" uid="uid://c2cxf2fhcksdy" path="res://images/user_interface/dialogue.png" id="2_kwgar"]
+[ext_resource type="AudioStream" uid="uid://dljuvutyvt6hc" path="res://sound/shop.mp3" id="4_2fc2m"]
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="4_032fp"]
 
 [sub_resource type="Animation" id="Animation_rutef"]
@@ -220,6 +221,9 @@ offset_bottom = -0.360016
 theme = ExtResource("4_032fp")
 text = "Předchozí
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2fc2m")
 
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
 [connection signal="button_up" from="shop_button" to="." method="_on_shop_button_button_up"]

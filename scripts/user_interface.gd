@@ -47,10 +47,6 @@ func _input(event : InputEvent) -> void:
 			$pause_screen.show()
 			$continue_button.show()
 			$main_menu_button.show()
-			#$save_game_button.show()
-			#$save_filename.show()
-			#$save_message.show()
-			$save_message.text = "Jméno souboru pro uložení hry:"
 		else:
 			_on_continue_button_button_up()
 
@@ -81,7 +77,7 @@ func _on_main_menu_button_button_up() -> void:
 		Globals.reset()
 		get_tree().paused = false
 		#no need to reset warning_issued, scene is changed
-		get_tree().change_scene_to_file("res://scenes/level_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/user_interface/level_menu.tscn")
 
 
 func _on_continue_button_button_up() -> void:
@@ -89,14 +85,3 @@ func _on_continue_button_button_up() -> void:
 	$pause_screen.hide()
 	$continue_button.hide()
 	$main_menu_button.hide()
-	$save_game_button.hide()
-	$save_filename.hide()
-	$save_message.hide()
-
-
-func _on_save_game_button_up() -> void:
-	var save_file = Globals.save_game($save_filename.text)
-	if  save_file == "":
-		$save_message.text = "Saving failed, save name probably already exists!"
-	else:
-		$save_message.text = "Game saved in ./saves/" + save_file + ".json"

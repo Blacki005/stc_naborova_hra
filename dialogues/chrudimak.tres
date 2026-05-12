@@ -23,7 +23,7 @@ nodes = {
 "text": " Pardon, vynahradím to na pochodu."
 }
 },
-"size": Vector2(380, 360.00027),
+"size": Vector2(380.00027, 360.00024),
 "speaker": 0
 },
 &"1_3": {
@@ -36,7 +36,7 @@ nodes = {
 "text": "Dobře, to zvládnu"
 }
 },
-"size": Vector2(339.99982, 359.99997),
+"size": Vector2(339.9995, 360),
 "speaker": 0
 },
 &"1_4": {
@@ -54,7 +54,7 @@ nodes = {
 "text": "Chcete kapesník?"
 }
 },
-"size": Vector2(300.00012, 273.00003),
+"size": Vector2(300.0005, 308),
 "speaker": 0
 },
 &"3_1": {

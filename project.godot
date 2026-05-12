@@ -15,6 +15,10 @@ run/main_scene="uid://ci6vhm53mv6dm"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
 
+[audio]
+
+driver/output_latency=10
+
 [autoload]
 
 JsonData="*res://scripts/JSON_data.gd"

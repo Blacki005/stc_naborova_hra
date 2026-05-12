@@ -17,7 +17,7 @@ func _ready():
 	sprite2d.texture = texture
 	interaction_area.interact = Callable(self, "_on_interact")
 
-func _on_interact():
+func _on_interact() -> void:
 	if item_name == "Bago":
 		Globals.bago += item_quantity
 	else:
@@ -25,6 +25,7 @@ func _on_interact():
 	animate_and_free()
 
 func animate_and_free() -> void:
+	$AudioStreamPlayer.play()
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
 		queue_free()

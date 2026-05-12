@@ -86,7 +86,7 @@ nodes = {
 "text": "Dobře, jdu to najít. "
 }
 },
-"size": Vector2(300.0006, 308.00012),
+"size": Vector2(300.0006, 307.99997),
 "speaker": 2
 },
 &"1_5": {
@@ -99,7 +99,7 @@ nodes = {
 "text": "Ok "
 }
 },
-"size": Vector2(300, 273.00006),
+"size": Vector2(300.00003, 272.99994),
 "speaker": 2
 },
 &"3_1": {

@@ -123,10 +123,10 @@ visible = false
 light_mask = 8
 visibility_layer = 2
 custom_minimum_size = Vector2(400, 100)
-offset_left = 203.0
-offset_top = 464.0
-offset_right = 603.0
-offset_bottom = 564.0
+offset_left = 512.0
+offset_top = 456.0
+offset_right = 912.0
+offset_bottom = 556.0
 theme = ExtResource("3_flq3v")
 text = "zpět do hry"
 
@@ -136,48 +136,12 @@ visible = false
 light_mask = 8
 visibility_layer = 2
 custom_minimum_size = Vector2(400, 100)
-offset_left = 1231.0
-offset_top = 454.0
-offset_right = 1631.0
-offset_bottom = 554.0
+offset_left = 1008.0
+offset_top = 456.0
+offset_right = 1408.0
+offset_bottom = 556.0
 theme = ExtResource("3_flq3v")
 text = "zpět do hlavní nabídky"
 
-[node name="save_game_button" type="Button" parent="."]
-process_mode = 2
-visible = false
-light_mask = 8
-visibility_layer = 2
-custom_minimum_size = Vector2(400, 100)
-offset_left = 761.0
-offset_top = 448.0
-offset_right = 1161.0
-offset_bottom = 568.0
-theme = ExtResource("3_flq3v")
-text = "uložit hru"
-
-[node name="save_filename" type="LineEdit" parent="."]
-process_mode = 2
-visible = false
-light_mask = 8
-visibility_layer = 2
-offset_left = 778.0
-offset_top = 716.0
-offset_right = 1159.0
-offset_bottom = 747.0
-
-[node name="save_message" type="Label" parent="."]
-process_mode = 2
-visible = false
-light_mask = 8
-visibility_layer = 2
-offset_left = 774.0
-offset_top = 677.0
-offset_right = 1199.0
-offset_bottom = 708.0
-text = "Název uložení hry:"
-horizontal_alignment = 1
-
 [connection signal="button_up" from="continue_button" to="." method="_on_continue_button_button_up"]
 [connection signal="button_up" from="main_menu_button" to="." method="_on_main_menu_button_button_up"]
-[connection signal="button_up" from="save_game_button" to="." method="_on_save_game_button_up"]

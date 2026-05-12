@@ -70,5 +70,5 @@ func _on_attack_timer_timeout() -> void:
 	if chasing_player:
 		attack_timer.start()
 
-func _on_hp_changed(new_hp) -> void:
+func _on_hp_changed(new_hp : int) -> void:
 	health_bar.value = new_hp

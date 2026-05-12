@@ -83,10 +83,13 @@ func attack(projectile_direction: Vector2) -> void:
 			var projectile_instance = projectile.instantiate()
 			get_tree().current_scene.add_child(projectile_instance)
 			projectile_instance.global_position = self.global_position + PROJECTILE_OFFSET
+			projectile_instance.connect("projectile_destroyed", _on_projectile_destroyed)
 			
+			projectile_instance.sound = load("res://sound/projectiles/"+ active_item_name +".mp3")
 			var mouse_rotation = projectile_direction.angle()
-			projectile_instance.rotation = mouse_rotation
 			
+			
+			projectile_instance.rotation = mouse_rotation
 			attack_timer.start()
 
 func blink_red(duration: float = 0.1) -> void:
@@ -94,6 +97,12 @@ func blink_red(duration: float = 0.1) -> void:
 	sprite.modulate = Color(1, 0.2, 0.2)  # red tint
 	await get_tree().create_timer(duration).timeout
 	sprite.modulate = original_color
+
+func _on_projectile_destroyed(sound : AudioStream) -> void:
+	$AudioStreamPlayer.stream = sound
+	if not $AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
+	
 
 func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 	if hitbox.is_in_group("projectiles"):

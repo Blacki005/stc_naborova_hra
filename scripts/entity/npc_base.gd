@@ -44,7 +44,7 @@ func _on_interact() -> void:
 		dialogue_box.start(start_id)
 
 
-func _on_dialogue_signal(value) -> void:
+func _on_dialogue_signal(value : String) -> void:
 	#match value with signal names specific for this NPC
 	match(value):
 		'play_game' : play_game()

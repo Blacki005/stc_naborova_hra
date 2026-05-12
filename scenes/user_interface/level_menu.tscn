@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c31rtfjrkku7"]
+[gd_scene load_steps=8 format=3 uid="uid://c31rtfjrkku7"]
 
 [ext_resource type="Script" uid="uid://c225s2nqamm54" path="res://scripts/level_menu.gd" id="1_yl4fo"]
 [ext_resource type="Texture2D" uid="uid://bn32j4oh8e3de" path="res://images/user_interface/level_menu_bg.png" id="2_k08aj"]
 [ext_resource type="SpriteFrames" uid="uid://dc6jf0j41p61e" path="res://resources/sprite_frames/animated_lock_frames.tres" id="2_rj3wb"]
 [ext_resource type="Theme" uid="uid://d3skd85tu8lgn" path="res://resources/themes/level_play_buttons.tres" id="3_jqwib"]
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="5_teein"]
+[ext_resource type="AudioStream" uid="uid://burwwc028d7nx" path="res://sound/level_menu_theme.wav" id="6_srt8x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_teein"]
 bg_color = Color(0, 0, 0, 0.5254902)
@@ -51,7 +52,6 @@ theme = ExtResource("3_jqwib")
 
 [node name="level2" type="Button" parent="buttons"]
 visible = false
-anchors_preset = -1
 offset_left = 1744.0
 offset_top = 504.0
 offset_right = 1872.0
@@ -148,6 +148,11 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
 text = "Level completed!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_srt8x")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="animation_finished" from="locks/lock1" to="." method="_on_lock_1_animation_finished"]
 [connection signal="animation_finished" from="locks/lock2" to="." method="_on_lock_2_animation_finished"]

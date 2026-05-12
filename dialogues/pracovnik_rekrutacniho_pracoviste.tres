@@ -43,6 +43,19 @@ nodes = {
 "size": Vector2(300, 308.00006),
 "speaker": 4
 },
+&"1_10": {
+"dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
+"offset": Vector2(-100, 440),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Díky."
+}
+},
+"size": Vector2(300.0004, 308.00015),
+"speaker": 4
+},
 &"1_2": {
 "dialogue": "Snažili jsme se naučit dokumenty potřebné na zápis trochu pořadové přípravy...aby se uměly alespoň narovnat do komínků, pochodovat a tak.",
 "offset": Vector2(-180, -280),
@@ -53,7 +66,7 @@ nodes = {
 "text": "Tak to nechápu kde je problém, moje papíry to doma umí."
 }
 },
-"size": Vector2(300.00012, 273),
+"size": Vector2(300.0001, 273),
 "speaker": 4
 },
 &"1_3": {
@@ -66,7 +79,7 @@ nodes = {
 "text": "Nikdy jsem s papírem nebojoval..."
 }
 },
-"size": Vector2(300.00073, 273.00012),
+"size": Vector2(300.0006, 273.00012),
 "speaker": 4
 },
 &"1_4": {
@@ -97,25 +110,20 @@ nodes = {
 "text": "Díky!"
 }
 },
-"size": Vector2(300.0001, 272.99988),
+"size": Vector2(300.00006, 273.00064),
 "speaker": 4
 },
 &"1_6": {
-"dialogue": "No dobře... [Esc] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
+"dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
 "offset": Vector2(-540, -60),
 "options": {
 0: {
 "condition": {},
 "link": &"1_2",
 "text": "Tak zpátky k věci..."
-},
-1: {
-"condition": {},
-"link": "END",
-"text": "Díky, to mi stačí."
 }
 },
-"size": Vector2(300.00018, 273.00006),
+"size": Vector2(300.00012, 308.00027),
 "speaker": 4
 },
 &"1_7": {
@@ -128,7 +136,7 @@ nodes = {
 "text": "Dobře, jdu."
 }
 },
-"size": Vector2(300.0005, 273),
+"size": Vector2(300.0005, 273.00043),
 "speaker": 4
 },
 &"1_8": {
@@ -137,7 +145,7 @@ nodes = {
 "options": {
 0: {
 "condition": {},
-"link": &"1_6",
+"link": &"1_10",
 "text": "Jak se hra ovládá?"
 },
 1: {
@@ -146,12 +154,12 @@ nodes = {
 "text": "Jdu"
 }
 },
-"size": Vector2(300.00006, 273.00012),
+"size": Vector2(300, 308.0006),
 "speaker": 4
 },
 &"1_9": {
 "dialogue": "Kryju.",
-"offset": Vector2(-113.69995, 585.6523),
+"offset": Vector2(-20, 820),
 "options": {
 0: {
 "condition": {},
@@ -159,7 +167,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00012, 240.00006),
+"size": Vector2(300.00027, 240.00055),
 "speaker": 4
 },
 &"3_1": {

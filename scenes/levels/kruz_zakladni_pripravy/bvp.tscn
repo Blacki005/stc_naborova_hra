@@ -6,12 +6,6 @@
 
 [node name="bvp" type="Node2D"]
 script = ExtResource("1_a5lb0")
-MOVEMENT_RADIUS = null
-BASE_SPEED = null
-SPEED_INCREASE_PER_SCORE = null
-WAIT_TIME_AT_DESTINATION = null
-RANGE = null
-MAX_RADIUS = null
 
 [node name="gun" type="Sprite2D" parent="."]
 texture = ExtResource("2_oeysn")
@@ -19,3 +13,5 @@ texture = ExtResource("2_oeysn")
 [node name="aim_point" type="Sprite2D" parent="."]
 position = Vector2(0, -500)
 texture = ExtResource("3_oeysn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

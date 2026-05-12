@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt2q2aj47cgav"]
+[gd_scene load_steps=6 format=3 uid="uid://bt2q2aj47cgav"]
 
 [ext_resource type="PackedScene" uid="uid://c8dj71ebo6upk" path="res://scenes/overlap/hurtbox.tscn" id="1_6ukqd"]
 [ext_resource type="Script" uid="uid://wcq6d3jh4yqv" path="res://scripts/levels/kurz_zakladni_pripravy/target.gd" id="2_hwoy8"]
 [ext_resource type="Texture2D" uid="uid://cdous2brhrcv4" path="res://images/kurz_zakladni_pripravy/eny.png" id="3_hwoy8"]
+[ext_resource type="AudioStream" uid="uid://lk4wj661p3ak" path="res://sound/projectiles/bullet_impact.mp3" id="4_vjdxp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjdxp"]
 radius = 32.0
@@ -22,3 +23,6 @@ shape = SubResource("CapsuleShape2D_vjdxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_hwoy8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("4_vjdxp")

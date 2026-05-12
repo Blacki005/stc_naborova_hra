@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx7hk6f6b8qbw"]
+[gd_scene load_steps=5 format=3 uid="uid://dx7hk6f6b8qbw"]
 
 [ext_resource type="Script" uid="uid://bqhp0jx8sbfy5" path="res://scripts/items/pickable_item.gd" id="1_jqwrp"]
 [ext_resource type="PackedScene" uid="uid://ltped2ukoxcp" path="res://scenes/interaction_area.tscn" id="1_vplft"]
+[ext_resource type="AudioStream" uid="uid://d2lkquwlf2clr" path="res://sound/item_picked.wav" id="3_4pi6y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqwrp"]
 radius = 120.0
@@ -20,3 +21,6 @@ action_name = "sebrat"
 shape = SubResource("CircleShape2D_jqwrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4pi6y")

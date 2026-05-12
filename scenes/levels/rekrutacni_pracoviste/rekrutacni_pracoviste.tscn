@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=4 uid="uid://dbhpjl37wyrs8"]
+[gd_scene load_steps=12 format=4 uid="uid://dbhpjl37wyrs8"]
 
 [ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_2gqs8"]
 [ext_resource type="Script" uid="uid://supxndc65db" path="res://scripts/levels/rekrutacni_pracoviste/rekrutacni_pracoviste.gd" id="1_bea72"]
 [ext_resource type="PackedScene" uid="uid://blrmp4hay8l34" path="res://scenes/entity/npc_base.tscn" id="3_djqey"]
 [ext_resource type="TileSet" uid="uid://bh0jollkyco4o" path="res://resources/tilemaps/rekrutacni_pracoviste_tileset.tres" id="3_nupyl"]
 [ext_resource type="Texture2D" uid="uid://cwtg46lgd8qe2" path="res://images/npc_characters/pracovnik_rekrutacniho_pracoviste.png" id="4_e1vv4"]
-[ext_resource type="Resource" uid="uid://vqd6f550jj66" path="res://dialogues/pracovnik_rekrutacniho_pracoviste.tres" id="5_n0hlp"]
 [ext_resource type="PackedScene" uid="uid://byxc5m8qslijc" path="res://scenes/entity/enemy/enemy_dokument.tscn" id="6_5onb4"]
 [ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/user_interface/level_menu.tscn" id="7_5b5qw"]
+[ext_resource type="Resource" uid="uid://vqd6f550jj66" path="res://dialogues/pracovnik_rekrutacniho_pracoviste.tres" id="7_5ntsb"]
 [ext_resource type="PackedScene" uid="uid://dx7hk6f6b8qbw" path="res://scenes/items/pickable_item.tscn" id="9_1ciho"]
 [ext_resource type="Texture2D" uid="uid://bcd0bqxh0k0mq" path="res://images/items/Bago.png" id="10_5ntsb"]
+[ext_resource type="AudioStream" uid="uid://copsnc65ig66b" path="res://sound/rekrutak_theme.wav" id="11_rvd35"]
 
 [node name="rekrutacni_pracoviste" instance=ExtResource("1_2gqs8")]
 script = ExtResource("1_bea72")
@@ -44,7 +45,7 @@ tile_set = ExtResource("3_nupyl")
 z_index = 0
 position = Vector2(-128, 168)
 texture = ExtResource("4_e1vv4")
-dialogue_data = ExtResource("5_n0hlp")
+dialogue_data = ExtResource("7_5ntsb")
 item = "Pen"
 next_scene = ExtResource("7_5b5qw")
 
@@ -71,5 +72,8 @@ position = Vector2(-1024, 1512)
 item_name = "Bago"
 item_quantity = 10
 texture = ExtResource("10_5ntsb")
+
+[node name="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("11_rvd35")
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://by4sal26veywl"]
+[gd_scene load_steps=20 format=4 uid="uid://by4sal26veywl"]
 
 [ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_bqiso"]
 [ext_resource type="TileSet" uid="uid://bh0jollkyco4o" path="res://resources/tilemaps/rekrutacni_pracoviste_tileset.tres" id="2_1ilnj"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/user_interface/level_menu.tscn" id="14_7mkqb"]
 [ext_resource type="PackedScene" uid="uid://dx7hk6f6b8qbw" path="res://scenes/items/pickable_item.tscn" id="16_u41ys"]
 [ext_resource type="Texture2D" uid="uid://cssdf15dwarlt" path="res://images/items/Key.png" id="17_5q3si"]
+[ext_resource type="AudioStream" uid="uid://bkrfgtiq5ql1d" path="res://sound/hospital_theme.wav" id="17_pb6g0"]
 
 [sub_resource type="Gradient" id="Gradient_xpuld"]
 offsets = PackedFloat32Array(0, 0.7865854)
@@ -176,3 +177,6 @@ range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_t7khd")
+
+[node name="AudioStreamPlayer" parent="." index="18"]
+stream = ExtResource("17_pb6g0")

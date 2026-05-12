@@ -3,11 +3,17 @@ extends "res://scripts/overlap/hitbox.gd"
 @export var SPEED: int = 1500
 @export var destroy_effect : PackedScene
 
+@onready var sound : AudioStream = null
+
+signal projectile_destroyed
+
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.RIGHT.rotated(rotation)
 	global_position += SPEED * direction * delta
 
-func destroy():
+func destroy() -> void:
+	if sound:
+		emit_signal("projectile_destroyed", sound)
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:

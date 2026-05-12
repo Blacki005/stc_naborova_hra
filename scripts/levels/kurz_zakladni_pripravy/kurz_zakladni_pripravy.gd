@@ -29,7 +29,6 @@ func _ready() -> void:
 	soldier_dialogue.start("START")
 
 func _on_target_hit() -> void:
-	# Optional: visual/audio feedback
 	shot_hit_target = true
 
 func hide_all_gear() -> void:
