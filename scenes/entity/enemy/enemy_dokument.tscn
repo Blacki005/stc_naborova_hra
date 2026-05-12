@@ -1,14 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://byxc5m8qslijc"]
+[gd_scene format=3 uid="uid://byxc5m8qslijc"]
 
 [ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_fidh4"]
 [ext_resource type="Texture2D" uid="uid://cxqmduiybiye0" path="res://images/enemies/enemy_document.png" id="2_crot1"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="3_ytsmb"]
 
-[node name="enemy_dokument" instance=ExtResource("1_fidh4")]
+[node name="enemy_dokument" unique_id=479324370 instance=ExtResource("1_fidh4")]
 SPEED = 350
 bago_drop_cnt = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_crot1")
+
+[node name="damage_reaction" type="Label" parent="." index="8" unique_id=220767146]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = -208.0
+offset_right = 80.0
+offset_bottom = -182.0
+grow_horizontal = 2
+theme = ExtResource("3_ytsmb")
+theme_override_font_sizes/font_size = 24
+text = "Auu"
+horizontal_alignment = 1
 
 [editable path="hurtbox"]
 [editable path="hitbox"]
