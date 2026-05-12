@@ -2,7 +2,7 @@ extends Node
 #this scripts serves as a place to store global variables for all NPCs, quests etc.
 
 const MAX_HEALTH : int = 10
-const INITIAL_BAGO : int = 50
+const INITIAL_BAGO : int = 0
 const LEVELS_CNT : int = 5
 const MAX_SHIELD : int = 10
 const INITIAL_SHIELD : int = 0
