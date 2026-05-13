@@ -55,8 +55,12 @@ func _input(event : InputEvent) -> void:
 func _on_bago_changed() -> void:
 	$bago_label.text = "Bago: " + str(Globals.bago)
 
-
 func _on_health_changed() -> void:
+	if (health_bar.value > Globals.health):
+		var tween = create_tween()
+		tween.tween_property($screen_damage.material, "shader_parameter/intensity", 1.0, 0.1)
+		tween.tween_property($screen_damage.material, "shader_parameter/intensity", 1.0 - (float(Globals.health) / float(Globals.MAX_HEALTH)), 0.4)
+
 	health_bar.value = Globals.health
 
 func _on_shield_changed() -> void:

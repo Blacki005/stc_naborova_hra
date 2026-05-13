@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7dtdy11356p2"]
+[gd_scene load_steps=10 format=3 uid="uid://c7dtdy11356p2"]
 
 [ext_resource type="Script" uid="uid://cmcfuf8yw3ec2" path="res://scripts/user_interface.gd" id="1_pvt6f"]
 [ext_resource type="PackedScene" uid="uid://dna0n06fraoup" path="res://scenes/user_interface/inventory.tscn" id="2_6xuti"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c44e11i0yrpui" path="res://scenes/user_interface/hotbar.tscn" id="4_8wifb"]
 [ext_resource type="Texture2D" uid="uid://w0gepoppmbdw" path="res://images/user_interface/healthbar_background.png" id="5_axgoa"]
 [ext_resource type="PackedScene" uid="uid://cde53tihhbiw8" path="res://scenes/shop.tscn" id="6_tfswy"]
+[ext_resource type="Material" uid="uid://o7ne8ad4lmtp" path="res://shaders/screen_damage_flash.tres" id="7_6xuti"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmdsp"]
 bg_color = Color(0.653898, 0, 0.362571, 1)
@@ -142,6 +143,14 @@ offset_right = 1408.0
 offset_bottom = 556.0
 theme = ExtResource("3_flq3v")
 text = "zpět do hlavní nabídky"
+
+[node name="screen_damage" type="ColorRect" parent="."]
+material = ExtResource("7_6xuti")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="button_up" from="continue_button" to="." method="_on_continue_button_button_up"]
 [connection signal="button_up" from="main_menu_button" to="." method="_on_main_menu_button_button_up"]
