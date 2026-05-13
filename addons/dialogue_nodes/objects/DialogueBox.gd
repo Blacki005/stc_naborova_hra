@@ -84,6 +84,7 @@ signal dialogue_ended
 			for idx in range(max_options_count):
 				var button = Button.new()
 				options_container.add_child(button)
+				button.light_mask = 8
 				button.mouse_filter=Control.MOUSE_FILTER_PASS
 				button.text = 'Option '+str(idx+1)
 				button.pressed.connect(select_option.bind(idx))
@@ -175,6 +176,7 @@ func _enter_tree():
 	portrait = TextureRect.new()
 	_main_container.add_child(portrait)
 	portrait.mouse_filter = Control.MOUSE_FILTER_PASS
+	portrait.light_mask = 8 #ignore lights
 	portrait.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	portrait.texture = sample_portrait

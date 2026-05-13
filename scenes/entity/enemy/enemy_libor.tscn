@@ -7,11 +7,15 @@
 [node name="libor" instance=ExtResource("1_d84gk")]
 ENY_PROJECTILE = ExtResource("2_63qvd")
 ATTACK_DISTANCE = 400
+DAMAGE_REACTIONS = Array[String](["Huuuuu", "Dej mi víc", "Že já nešel na VUT", "HELP MEE", "Nyní přednese proslov místostarostka", "Žádný klíč neexistuje!"])
 item_drop_name = "Bago"
 item_drop_cnt = 3
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_lgblf")
+
+[node name="damage_reaction" parent="." index="8"]
+z_index = 1
 
 [editable path="hurtbox"]
 [editable path="hitbox"]

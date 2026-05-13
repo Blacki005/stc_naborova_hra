@@ -14,7 +14,7 @@ var inventory : Dictionary = {
 }
 
 var hotbar : Dictionary = {
-	#0 : ["GreenPotion", 4],
+	#0 : ["Injection", 1],
 	#1 : ["RedPotion", 4],
 	#2 : ["BluePotion", 4]
 }

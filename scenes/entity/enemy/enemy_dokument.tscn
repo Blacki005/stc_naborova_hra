@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cxqmduiybiye0" path="res://images/enemies/enemy_document.png" id="2_crot1"]
 
 [node name="enemy_dokument" instance=ExtResource("1_fidh4")]
+DAMAGE_REACTIONS = Array[String](["Auu", "Ještě tady podepsat", "Ano!", "Uffffff", "Dopsala ti propiska", "Nezapomeň na datum", "*šustí*"])
 SPEED = 350
-bago_drop_cnt = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_crot1")

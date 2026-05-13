@@ -10,6 +10,7 @@ var LOS_to_player = false
 
 @export var ENY_PROJECTILE : PackedScene = null
 @export var ATTACK_DISTANCE : int = 700
+@export var DAMAGE_REACTIONS : Array[String] = []
 
 func _ready() -> void:
 	self.hp_changed.connect(_on_hp_changed)
@@ -70,5 +71,14 @@ func _on_attack_timer_timeout() -> void:
 	if chasing_player:
 		attack_timer.start()
 
+
 func _on_hp_changed(new_hp : int) -> void:
 	health_bar.value = new_hp
+	
+	var dmg_react = get_node_or_null("damage_reaction")
+	if dmg_react != null:
+		(dmg_react as Label).text = DAMAGE_REACTIONS.pick_random()
+		var tween1 = create_tween()
+		tween1.tween_property(dmg_react as Label, "position", Vector2(-104, -400), 2.0).from(Vector2(-104, -208))
+		var tween2 = create_tween()
+		tween2.tween_property(dmg_react as Label, "modulate", Color(1, 1, 1, 0), 2.0).from(Color(1,1,1,1))

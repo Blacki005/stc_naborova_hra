@@ -3,18 +3,22 @@
 [ext_resource type="Script" uid="uid://bmblsbkxt6tv1" path="res://scripts/interaction_manager.gd" id="1_wr8se"]
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="2_guivl"]
 
-[node name="interaction_manager" type="Node2D"]
+[node name="interaction_manager" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_wr8se")
 
 [node name="Label" type="Label" parent="."]
-z_index = 4
+top_level = true
+visibility_layer = 4
+z_index = 5
+z_as_relative = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -104.0
-offset_top = -408.0
-offset_right = 80.0
-offset_bottom = -382.0
+offset_left = -320.0
+offset_top = 120.0
+offset_right = -136.0
+offset_bottom = 146.0
 grow_horizontal = 2
 theme = ExtResource("2_guivl")
 theme_override_colors/font_color = Color(0, 0, 0, 1)

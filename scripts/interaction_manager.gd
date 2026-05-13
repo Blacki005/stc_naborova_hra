@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 var player
 @onready var label = $Label
@@ -23,10 +23,20 @@ func _process(_delta) -> void:
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
-		label.global_position = active_areas[0].global_position + OFFSET
+		
+		#label.global_position = active_areas[0].global_position + OFFSET
+		
+		var screen_pos = _world_to_screen(active_areas[0].global_position)
+		label.global_position = screen_pos + OFFSET
+
+		
 		label.show()
 	else:
 		label.hide()
+
+func _world_to_screen(world_position: Vector2) -> Vector2:
+	var canvas_transform = get_viewport().get_canvas_transform()
+	return canvas_transform * world_position
 
 
 func _sort_by_distance_to_player(area1, area2) -> bool:
