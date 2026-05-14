@@ -1,22 +1,22 @@
 extends CharacterBody2D
 
 var wheel_base = 32
-var steering_angle = 12
-var engine_power = 1000
+var steering_angle = 13
+var engine_power = 1500
 var friction = -70
 var drag = -0.06
 var braking = -450
 var max_speed_reverse = 250
-var slip_speed = 600
+var slip_speed = 750
 var traction_fast = 2.5
-var traction_slow = 10
+var traction_slow = 15
 
 # --- Boost settings ---
 const BOOST_MAX = 50.0            # max boost tank
-const BOOST_REFILL_RATE = 10.0    # per second when not boosting
-const BOOST_BURN_RATE = 30       # per second while boosting
-const BOOST_SPEED_MULT = 1.35      # extra engine power
-const BOOST_STEER_MULT = 0.7       # steering_angle is scaled by this (worse steer)
+const BOOST_REFILL_RATE = 15.0    # per second when not boosting
+const BOOST_BURN_RATE = 25       # per second while boosting
+const BOOST_SPEED_MULT = 1.4      # extra engine power
+const BOOST_STEER_MULT = 0.6       # steering_angle is scaled by this (worse steer)
 
 var boost_amount = BOOST_MAX
 var is_boosting = false
@@ -27,6 +27,7 @@ var steer_direction
 @onready var boost_particles: CPUParticles2D = $BoostParticles
 @onready var boost_bar = $CanvasLayer/boost_bar
 @onready var camera = $Camera2D
+@onready var audio_player = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -59,11 +60,16 @@ func get_input(delta):
 	var engine_multiplier := 1.0
 	var current_steering_angle = steering_angle
 	if Input.is_action_pressed("salute") and boost_amount > 0.0:
+
+		if not audio_player.playing:
+			audio_player.play()
+		
 		is_boosting = true
 		engine_multiplier = BOOST_SPEED_MULT
 		current_steering_angle *= BOOST_STEER_MULT
 		boost_amount = max(0.0, boost_amount - BOOST_BURN_RATE * delta)
 	else:
+		audio_player.stop()
 		boost_amount = min(BOOST_MAX, boost_amount + BOOST_REFILL_RATE * delta)
 
 	steer_direction = turn * deg_to_rad(current_steering_angle)

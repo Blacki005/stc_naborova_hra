@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var PROJECTILE_OFFSET : Vector2 = Vector2(0, -100)
 @onready var player_camera = $Camera2D
 @onready var body_anim = $player_body
-@onready var head_anim = $player_head
 @onready var attack_timer = $attack_timer
 @onready var sprite = $player_body
 

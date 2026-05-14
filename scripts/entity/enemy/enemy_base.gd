@@ -5,7 +5,6 @@ var player = null
 var LOS_to_player = false
 
 @onready var health_bar : ProgressBar = $health_bar
-@onready var move_timer : Timer = $move_timer
 @onready var detection_area : Area2D = $detection_area
 
 @export var ENY_PROJECTILE : PackedScene = null
@@ -42,7 +41,7 @@ func attack(projectile_direction: Vector2):
 	if ENY_PROJECTILE != null:
 		var projectile = ENY_PROJECTILE.instantiate()
 		get_tree().current_scene.add_child(projectile)
-		projectile.global_position = self.global_position + Vector2(0,-100)
+		projectile.global_position = global_position + Vector2(0,-100)
 		#make sure that projectile hits player and is on correct layers
 		projectile.set_collision_layer_value(4, false)
 		projectile.set_collision_layer_value(3, true)

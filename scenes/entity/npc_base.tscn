@@ -62,6 +62,5 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3b4l1"), Sub
 
 [connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_ended"]
 [connection signal="dialogue_signal" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_signal"]
-[connection signal="dialogue_started" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_started"]
 [connection signal="mouse_entered" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_box_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/DialogueBox" to="." method="_on_dialogue_box_mouse_exited"]

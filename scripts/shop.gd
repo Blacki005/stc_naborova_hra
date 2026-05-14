@@ -19,6 +19,7 @@ var buffer_size : int
 
 
 func display(shop_name : String) -> void:
+	InteractionManager.can_interact = false
 	#load current shop's data from json
 	shop_goods = load_data("res://data/shop_data/" + shop_name + ".json") #["Name", count : int, price : int]
 	if shop_goods == null:
@@ -57,6 +58,7 @@ func display_item(item_data : Array) -> void:
 
 #function makes sure that shop contents are stored in shop json file and plays exit animatiopn
 func _on_close_button_up() -> void:
+	InteractionManager.can_interact = true
 	#unused feature: limited number of items to sell requires saving on close
 	
 	#var file = FileAccess.open("res://data/shop_data/" + shop_name + ".json", FileAccess.WRITE)

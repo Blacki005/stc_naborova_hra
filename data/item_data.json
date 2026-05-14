@@ -69,5 +69,10 @@
 		"Description" : "Prý byl využit při stavbě Karlova mostu. Snad po něm budeš stejně odolný.",
 		"Healing" : 0,
 		"Shield" : 10
-	}
+	},
+	"Meridia's Beacon" : {
+		"ItemCategory" : "Quest item",
+		"StackSize" : 1,
+		"Description" : "Return my beacon to Mount Kilkreath. And I will make you the instrument of my cleansing light."
+	},
 }

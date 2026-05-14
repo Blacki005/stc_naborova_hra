@@ -21,27 +21,16 @@ func _ready() -> void:
 	if texture != null:
 		$Sprite2D.texture = texture
 	else:
-		$Sprite2D.texture = load("res://icon.svg")
 		print("Failed to load texture for " + self.name + "!")
 
 
 func _on_interact() -> void:
-	#handle interact action
-	
-	#get ui node
-	#var ui_node = get_tree().get_first_node_in_group("user_interface")
-	
-	#display shop with NPCs name
-	#ui_node.display_shop(self.name)
-	
-	#display NPCs dialogue
-	
 	if dialogue_data != null:
 		InteractionManager.can_interact = false
 		dialogue_box.data = dialogue_data
 		#writes global variables to dialoguebox variables dictionary
 		dialogue_box.variables.merge(Globals.variables, true)
-		dialogue_box.start(start_id)
+		dialogue_box.start(self.start_id)
 
 
 func _on_dialogue_signal(value : String) -> void:
@@ -101,11 +90,6 @@ func die() -> void:
 		get_parent().add_child(death_effect_node)
 		death_effect_node.global_position = self.global_position
 		queue_free()
-
-
-func _on_dialogue_started(_id: String) -> void:
-	pass
-	#InteractionManager.can_interact = false
 
 
 func _on_dialogue_ended() -> void:

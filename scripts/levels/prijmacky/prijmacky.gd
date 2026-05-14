@@ -69,6 +69,7 @@ func _on_finish_body_entered(body: Node2D) -> void:
 		game_over()
 
 func game_over() -> void:
+	stop_audio()
 	get_tree().paused = true
 	player.set_physics_process(false)
 	anim_player.play("fade_out")
@@ -78,20 +79,34 @@ func game_over() -> void:
 
 func race_finished() -> void:
 	score_label.hide()
-	$player/CanvasLayer/boost_bar.hide()
+	
 	get_tree().paused = true
 	player.set_physics_process(false)
 	Globals.new_level_unlocked = true
 	Globals.levels_completed += 1
 	anim_player.play("fade_out")
+	stop_audio()
 	start_label.text = "Dobrá práce, přemýšlel jsi o F1?"
 	end_buttons.show()
 	
-	
+func stop_audio() -> void:
+	$AudioStreamPlayer.stop()
+	$car_noise_player.stop()
+	player.audio_player.stop()
 
-func start_race():
+
+func start_race() -> void:
+	var start_beep_player : AudioStreamPlayer = AudioStreamPlayer.new()
+	start_beep_player.stream = load("res://sound/levels/prijmacky/car_starting.mp3")
+	start_beep_player.bus = "Master"
+	start_beep_player.volume_linear = 0.4
+	add_child(start_beep_player)
+	start_beep_player.play()
+	start_beep_player.finished.connect(start_beep_player.queue_free)
+	
 	score_label.text = "Kolo: 1"
 	start_label.show()
+	score_label.show()
 	start_timer.start()
 
 func _on_start_timer_timeout() -> void:
@@ -102,6 +117,7 @@ func _on_start_timer_timeout() -> void:
 		get_tree().paused = false
 		player.set_physics_process(true)
 		start_label.hide()
+		$car_noise_player.play()
 
 
 func _on_dialogue_signal(value: String) -> void:

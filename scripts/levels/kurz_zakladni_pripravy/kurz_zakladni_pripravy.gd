@@ -86,6 +86,10 @@ func _on_child_exiting_tree(node: Node) -> void:
 			soldier_dialogue.start("NICE_SHOT")
 			label_timer.start()
 			score += 1
+			if score < winning_score:
+				target.play_hit_animation()
+			else:
+				target.play_crash_animation()
 		else:
 			soldier_dialogue.start("MISS")
 			if score > 0:

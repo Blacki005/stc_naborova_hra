@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dbhpjl37wyrs8"]
+[gd_scene load_steps=13 format=4 uid="uid://dbhpjl37wyrs8"]
 
 [ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_2gqs8"]
 [ext_resource type="Script" uid="uid://supxndc65db" path="res://scripts/levels/rekrutacni_pracoviste/rekrutacni_pracoviste.gd" id="1_bea72"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dx7hk6f6b8qbw" path="res://scenes/items/pickable_item.tscn" id="9_1ciho"]
 [ext_resource type="Texture2D" uid="uid://bcd0bqxh0k0mq" path="res://images/items/Bago.png" id="10_5ntsb"]
 [ext_resource type="AudioStream" uid="uid://copsnc65ig66b" path="res://sound/rekrutak_theme.wav" id="11_rvd35"]
+[ext_resource type="Resource" uid="uid://b2uke6ywhlaj7" path="res://dialogues/meridias_beacon.tres" id="12_cti4v"]
 
 [node name="rekrutacni_pracoviste" instance=ExtResource("1_2gqs8")]
 script = ExtResource("1_bea72")
@@ -76,5 +77,11 @@ texture = ExtResource("10_5ntsb")
 [node name="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource("11_rvd35")
 volume_db = -7.0
+
+[node name="meridias_beacon" parent="." index="10" instance=ExtResource("3_djqey")]
+position = Vector2(900, 200)
+dialogue_data = ExtResource("12_cti4v")
+item = "Meridia's Beacon"
+action_name = "prohledat skříň"
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

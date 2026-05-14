@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqaa3b6inthkq"]
+[gd_scene load_steps=8 format=3 uid="uid://cqaa3b6inthkq"]
 
 [ext_resource type="Script" uid="uid://bl0soabu5tal5" path="res://scripts/levels/prijmacky/racer.gd" id="1_2v577"]
 [ext_resource type="Texture2D" uid="uid://dc4u06oxa3l6r" path="res://images/prijmacky/player.png" id="2_2v577"]
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="3_75xgd"]
+[ext_resource type="AudioStream" uid="uid://e7sq4fl8af4q" path="res://sound/levels/prijmacky/nitro.mp3" id="4_x5ah3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v577"]
 radius = 12.0
@@ -75,3 +76,7 @@ offset_bottom = 201.0
 theme = ExtResource("3_75xgd")
 text = "Boost:
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x5ah3")
+volume_db = -5.0

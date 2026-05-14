@@ -41,13 +41,15 @@ texture = ExtResource("2_frwnf")
 
 [node name="bvp" parent="." instance=ExtResource("2_ot065")]
 position = Vector2(960, 800)
-BASE_SPEED = 75.0
-SPEED_INCREASE_PER_SCORE = 20.0
+MOVEMENT_RADIUS = 50.0
+BASE_SPEED = 30.0
+SPEED_INCREASE_PER_SCORE = 15.0
 WAIT_TIME_AT_DESTINATION = 0.2
 
 [node name="target" parent="." instance=ExtResource("3_ygksr")]
 z_index = -1
 position = Vector2(960, 300)
+movement_radius = 100.0
 
 [node name="soldier" type="Node2D" parent="."]
 z_index = 1

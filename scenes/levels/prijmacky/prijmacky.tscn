@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cu7td2nnura82"]
+[gd_scene load_steps=21 format=4 uid="uid://cu7td2nnura82"]
 
 [ext_resource type="Script" uid="uid://d38cylbrkjj8e" path="res://scripts/levels/prijmacky/prijmacky.gd" id="1_xkojd"]
 [ext_resource type="PackedScene" uid="uid://cqaa3b6inthkq" path="res://scenes/levels/prijmacky/racer.tscn" id="2_4tc22"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://btauc604y04n3" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="8_22sox"]
 [ext_resource type="Script" uid="uid://cp21o5x0xdtq2" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="9_qroch"]
 [ext_resource type="AudioStream" uid="uid://bgte7c6tajrui" path="res://sound/racing_theme.wav" id="11_22sox"]
+[ext_resource type="AudioStream" uid="uid://cmu6jvh71rwy3" path="res://sound/levels/prijmacky/racing_car_noise.mp3" id="12_qroch"]
 
 [sub_resource type="Curve2D" id="Curve2D_4tc22"]
 _data = {
@@ -118,7 +119,7 @@ tile_set = ExtResource("3_xkojd")
 process_mode = 1
 position = Vector2(224, 624)
 rotation = -1.5707964
-max_speed = 500
+max_speed = 750
 look_ahead = 128
 path = NodePath("../racing_path")
 path_follow = NodePath("../racing_path/PathFollow2D")
@@ -136,7 +137,7 @@ rotation = -1.4735432
 process_mode = 1
 position = Vector2(104, 624)
 rotation = -1.5707964
-max_speed = 450
+max_speed = 770
 look_ahead = 128
 path = NodePath("../racing_path")
 path_follow = NodePath("../racing_path/PathFollow2D")
@@ -243,6 +244,10 @@ libraries = {
 stream = ExtResource("11_22sox")
 volume_db = -15.0
 autoplay = true
+
+[node name="car_noise_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_qroch")
+volume_db = -5.0
 
 [connection signal="body_entered" from="finish" to="." method="_on_finish_body_entered"]
 [connection signal="dialogue_signal" from="user_interface/DialogueBox" to="." method="_on_dialogue_signal"]

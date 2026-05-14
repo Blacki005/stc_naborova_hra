@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://b2uke6ywhlaj7"]
+
+[ext_resource type="Script" uid="uid://cbd02a8s6pll7" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_if2im"]
+
+[resource]
+script = ExtResource("1_if2im")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+&"0_1": {
+"link": &"1_1",
+"offset": Vector2(-160, 100),
+"start_id": "START"
+},
+&"1_1": {
+"dialogue": "A new hand touches the beacon",
+"offset": Vector2(140, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"3_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "",
+"voice": "res://sound/dialogues/meridias_beacon/a-new-hand-touches-the-beacon.mp3"
+},
+&"3_1": {
+"link": "END",
+"offset": Vector2(565.7053, 148.50642),
+"signalValue": "give_item"
+}
+}

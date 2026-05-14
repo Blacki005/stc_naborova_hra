@@ -25,6 +25,7 @@ func _process(_delta) -> void:
 		label.text = base_text + active_areas[0].action_name
 		var screen_pos = _world_to_screen(active_areas[0].global_position)
 		label.global_position = screen_pos + OFFSET
+		$Label/ColorRect.custom_minimum_size.x = label.size.x + 5
 		label.show()
 	else:
 		label.hide()

@@ -40,8 +40,9 @@ nodes = {
 "text": "Rád bych nejdřív tušil/a jak se tahle hra ovládá."
 }
 },
-"size": Vector2(300, 308.00006),
-"speaker": 4
+"size": Vector2(300, 344),
+"speaker": 4,
+"voice": ""
 },
 &"1_10": {
 "dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
@@ -53,8 +54,9 @@ nodes = {
 "text": "Díky."
 }
 },
-"size": Vector2(300.0004, 308.00015),
-"speaker": 4
+"size": Vector2(300.00043, 308.99997),
+"speaker": 4,
+"voice": ""
 },
 &"1_2": {
 "dialogue": "Snažili jsme se naučit dokumenty potřebné na zápis trochu pořadové přípravy...aby se uměly alespoň narovnat do komínků, pochodovat a tak.",
@@ -66,8 +68,9 @@ nodes = {
 "text": "Tak to nechápu kde je problém, moje papíry to doma umí."
 }
 },
-"size": Vector2(300.0001, 273),
-"speaker": 4
+"size": Vector2(300.00006, 309),
+"speaker": 4,
+"voice": ""
 },
 &"1_3": {
 "dialogue": "Moc se s naší vizí neztotožnily, naučily se házet propisky a vzbouřily se. Nicméně hlavní schopností vojáka je přizpůsobit se, takže pokud máte zájem, budete se muset k pohovoru probojovat.",
@@ -79,8 +82,9 @@ nodes = {
 "text": "Nikdy jsem s papírem nebojoval..."
 }
 },
-"size": Vector2(300.0006, 273.00012),
-"speaker": 4
+"size": Vector2(300.0006, 309),
+"speaker": 4,
+"voice": ""
 },
 &"1_4": {
 "dialogue": "Je to jednoduché. Stačí vám občaský průkaz a psací potřeby. Házejte je zkuste se trefit, když je podepíšete, zkrotnou. Mám tady nějakou propisku, zkuste to tou. Až je zlikvidujete, vraťte se za mnou.",
@@ -97,8 +101,9 @@ nodes = {
 "text": "Ještě nějaké tipy?"
 }
 },
-"size": Vector2(300.00024, 308.00006),
-"speaker": 4
+"size": Vector2(300.00024, 344),
+"speaker": 4,
+"voice": ""
 },
 &"1_5": {
 "dialogue": "Dobrá práce. Pohovor máte splněný, ale obávám se, že za svoji kariéru uvidíte ještě hodně záludných papírů. Občas jsou nebezpečnější než cokoliv jiného, zvlášť když na nich je váš podpis.",
@@ -110,8 +115,9 @@ nodes = {
 "text": "Díky!"
 }
 },
-"size": Vector2(300.00006, 273.00064),
-"speaker": 4
+"size": Vector2(300.00006, 309),
+"speaker": 4,
+"voice": ""
 },
 &"1_6": {
 "dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
@@ -123,8 +129,9 @@ nodes = {
 "text": "Tak zpátky k věci..."
 }
 },
-"size": Vector2(300.00012, 308.00027),
-"speaker": 4
+"size": Vector2(300.00006, 309),
+"speaker": 4,
+"voice": ""
 },
 &"1_7": {
 "dialogue": "Jo! Málem bych zapoměl. Kdybys tu našel nějaký bago, ber ho. V armádě funguje jako prémiová měna.",
@@ -136,8 +143,9 @@ nodes = {
 "text": "Dobře, jdu."
 }
 },
-"size": Vector2(300.0005, 273.00043),
-"speaker": 4
+"size": Vector2(300.0005, 309),
+"speaker": 4,
+"voice": ""
 },
 &"1_8": {
 "dialogue": "Běžte vyčistit kancelář od dokumentů, až to bude hotové, vraťte se za mnou.",
@@ -154,8 +162,9 @@ nodes = {
 "text": "Jdu"
 }
 },
-"size": Vector2(300, 308.0006),
-"speaker": 4
+"size": Vector2(300, 343.99997),
+"speaker": 4,
+"voice": ""
 },
 &"1_9": {
 "dialogue": "Kryju.",
@@ -167,8 +176,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00027, 240.00055),
-"speaker": 4
+"size": Vector2(300.00024, 274),
+"speaker": 4,
+"voice": ""
 },
 &"3_1": {
 "link": "END",
