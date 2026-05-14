@@ -7,9 +7,9 @@ extends Panel
 ## Triggered when a dialogue has started. Passes [param id] of the dialogue tree as defined in the StartNode.
 signal dialogue_started(id : String)
 ## Triggered when a single dialogue block has been processed.
-## Passes [param speaker] which can be a [String] or a [param Character] resource, a [param dialogue] containing the text to be displayed
-## and an [param options] list containing the texts for each option.
-signal dialogue_processed(speaker : Variant, dialogue : String, options : Array[String])
+## Passes [param speaker] which can be a [String] or a [param Character] resource, a [param dialogue] containing the text to be displayed,
+## an [param options] list containing the texts for each option, and a [param voice_path] for the associated voice line audio file.
+signal dialogue_processed(speaker : Variant, dialogue : String, options : Array[String], voice_path : String)
 ## Triggered when an option is selected
 signal option_selected(idx : int)
 ## Triggered when a SignalNode is encountered while processing the dialogue.
@@ -150,6 +150,7 @@ var _dialogue_parser : DialogueParser
 var _main_container : BoxContainer
 var _sub_container : BoxContainer
 var _wait_effect : RichTextWait
+var _voice_player : AudioStreamPlayer
 
 
 func _enter_tree():
@@ -229,6 +230,10 @@ func _ready():
 			_wait_effect.wait_finished.connect(_on_wait_finished)
 			break
 	
+	_voice_player = AudioStreamPlayer.new()
+	_voice_player.name = "VoicePlayer"
+	add_child(_voice_player)
+	
 	hide()
 
 
@@ -248,6 +253,8 @@ func _process(delta):
 
 func _input(event):
 	if is_running() and Input.is_action_just_pressed(skip_input_action):
+		if _voice_player and _voice_player.playing:
+			_voice_player.stop()
 		if _wait_effect and not _wait_effect.skip:
 			_wait_effect.skip = true
 			await get_tree().process_frame
@@ -281,11 +288,13 @@ func _on_dialogue_started(id : String):
 	speaker_label.text = ''
 	portrait.texture = null
 	dialogue_label.text = ''
+	if _voice_player and _voice_player.playing:
+		_voice_player.stop()
 	show()
 	dialogue_started.emit(id)
 
 
-func _on_dialogue_processed(speaker : Variant, dialogue : String, options : Array[String]):
+func _on_dialogue_processed(speaker : Variant, dialogue : String, options : Array[String], voice_path : String = ''):
 	# set speaker
 	speaker_label.text = ''
 	portrait.texture = null
@@ -319,7 +328,17 @@ func _on_dialogue_processed(speaker : Variant, dialogue : String, options : Arra
 	options_container.get_child(0).icon = next_icon if options.size() == 1 and options[0] == '' else null
 	options_container.hide()
 	
-	dialogue_processed.emit(speaker, dialogue, options)
+	# play voice line
+	if _voice_player:
+		if _voice_player.playing:
+			_voice_player.stop()
+		if voice_path != '' and ResourceLoader.exists(voice_path):
+			var stream = load(voice_path)
+			if stream is AudioStream:
+				_voice_player.stream = stream
+				_voice_player.play()
+	
+	dialogue_processed.emit(speaker, dialogue, options, voice_path)
 
 
 func _on_option_selected(idx : int):
@@ -335,6 +354,8 @@ func _on_variable_changed(variable_name : String, value):
 
 
 func _on_dialogue_ended():
+	if _voice_player and _voice_player.playing:
+		_voice_player.stop()
 	if hide_on_dialogue_end: hide()
 	dialogue_ended.emit()
 
