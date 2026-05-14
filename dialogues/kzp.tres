@@ -47,8 +47,9 @@ Sedni do toho a zkus sesřelit alespoň 5 Grippenů aniž bys minul.",
 "text": "Jdu na to"
 }
 },
-"size": Vector2(300.00027, 308),
-"speaker": 3
+"size": Vector2(300.00024, 344),
+"speaker": 3,
+"voice": ""
 },
 &"1_2": {
 "dialogue": "Tady nejsme na pirátské lodi, tady se rozkazy plní bez takových otázek. Ale abych tě motivoval, za každý sestřelený Grippen si na sebe vezmu část taktiky.",
@@ -60,8 +61,9 @@ Sedni do toho a zkus sesřelit alespoň 5 Grippenů aniž bys minul.",
 "text": "Tak to beru"
 }
 },
-"size": Vector2(300.00006, 273),
-"speaker": 3
+"size": Vector2(300.00018, 309),
+"speaker": 3,
+"voice": ""
 },
 &"1_3": {
 "dialogue": "Tahle prošla přímo skrz!",
@@ -73,8 +75,9 @@ Sedni do toho a zkus sesřelit alespoň 5 Grippenů aniž bys minul.",
 "text": ""
 }
 },
-"size": Vector2(300.00006, 240.00003),
-"speaker": 3
+"size": Vector2(300.0002, 274.00015),
+"speaker": 3,
+"voice": ""
 },
 &"1_4": {
 "dialogue": "Na co koukáš? Soustřeď se na bitvu!",
@@ -86,8 +89,9 @@ Sedni do toho a zkus sesřelit alespoň 5 Grippenů aniž bys minul.",
 "text": ""
 }
 },
-"size": Vector2(300.00006, 240.00012),
-"speaker": 3
+"size": Vector2(300.0001, 273.99988),
+"speaker": 3,
+"voice": ""
 },
 &"1_5": {
 "dialogue": "Výborně, vy budete postrach nepřátelských pilotů.",
@@ -99,8 +103,9 @@ Sedni do toho a zkus sesřelit alespoň 5 Grippenů aniž bys minul.",
 "text": ""
 }
 },
-"size": Vector2(300.00006, 240.00015),
-"speaker": 3
+"size": Vector2(300.00012, 273.99988),
+"speaker": 3,
+"voice": ""
 },
 &"3_1": {
 "link": "END",

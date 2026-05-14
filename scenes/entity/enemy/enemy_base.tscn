@@ -64,7 +64,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" index="0"]
-position = Vector2(8, 0)
+position = Vector2(120, -32)
 shape = SubResource("CircleShape2D_67ore")
 
 [node name="attack_timer" parent="." index="6"]
@@ -82,8 +82,11 @@ rounded = true
 show_percentage = false
 
 [node name="damage_reaction" type="Label" parent="." index="8"]
-offset_right = 40.0
-offset_bottom = 23.0
+visible = false
+offset_left = -104.0
+offset_top = -208.0
+offset_right = -56.0
+offset_bottom = -173.0
 theme = ExtResource("6_47181")
 text = "Auu"
 

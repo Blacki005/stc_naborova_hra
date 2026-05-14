@@ -16,6 +16,7 @@ bg_color = Color(0.7656455, 0.6386846, 3.85046e-07, 1)
 
 [node name="user_interface" type="CanvasLayer" groups=["user_interface"]]
 process_mode = 3
+layer = 2
 script = ExtResource("1_pvt6f")
 
 [node name="inventory" parent="." instance=ExtResource("2_6xuti")]
@@ -151,6 +152,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="button_up" from="continue_button" to="." method="_on_continue_button_button_up"]
 [connection signal="button_up" from="main_menu_button" to="." method="_on_main_menu_button_button_up"]

@@ -30,8 +30,17 @@ var empty_option : BoxContainer
 var first_option_index := -1
 var base_color : Color = Color.WHITE
 
+# Voice line
+var voice_path := ''
+var voice_container : HBoxContainer
+var voice_line_edit : LineEdit
+var voice_file_dialog : FileDialog
+var voice_audio_player : AudioStreamPlayer
+var voice_timer : Timer
+var last_voice_path := ''
 
 func _ready():
+	_create_voice_ui()
 	options.clear()
 	for idx in range(get_child_count() - 1, -1, -1):
 		var child = get_child(idx)
@@ -55,6 +64,7 @@ func _to_dict(graph : GraphEdit):
 		dict['speaker'] = speaker_idx
 	
 	dict['dialogue'] = dialogue.text
+	dict['voice'] = voice_path
 	dict['size'] = size
 	
 	# get options connected to other nodes
@@ -102,6 +112,12 @@ func _from_dict(dict : Dictionary):
 	dialogue.text = dict['dialogue']
 	dialogue_expanded.text = dialogue.text
 	last_dialogue = dialogue.text
+	
+	# set voice
+	voice_path = dict.get('voice', '')
+	if voice_line_edit:
+		voice_line_edit.text = voice_path
+	last_voice_path = voice_path
 	
 	# remove any existing options (if any)
 	for option in options:
@@ -392,3 +408,142 @@ func _on_option_focus_exited(option : BoxContainer):
 
 func _on_modified():
 	modified.emit()
+
+# === Voice line functions ===
+
+func _create_voice_ui():
+	# Main container row
+	voice_container = HBoxContainer.new()
+	
+	var voice_label = Label.new()
+	voice_label.text = "Voice:"
+	voice_container.add_child(voice_label)
+	
+	voice_line_edit = LineEdit.new()
+	voice_line_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	voice_line_edit.placeholder_text = "res://voice/..."
+	voice_line_edit.text_changed.connect(_on_voice_path_text_changed)
+	voice_container.add_child(voice_line_edit)
+	
+	var browse_btn = Button.new()
+	browse_btn.text = "..."
+	browse_btn.tooltip_text = "Browse audio file"
+	browse_btn.pressed.connect(_on_voice_browse)
+	voice_container.add_child(browse_btn)
+	
+	var play_btn = Button.new()
+	play_btn.text = "\u25b6"
+	play_btn.tooltip_text = "Preview voice line"
+	play_btn.pressed.connect(_on_voice_preview)
+	voice_container.add_child(play_btn)
+	
+	var clear_btn = Button.new()
+	clear_btn.text = "\u2715"
+	clear_btn.tooltip_text = "Clear voice line"
+	clear_btn.pressed.connect(_on_voice_clear)
+	voice_container.add_child(clear_btn)
+	
+	# Insert between speaker and dialogue sections
+	add_child(voice_container)
+	for i in range(get_child_count()):
+		if get_child(i).name == "DialogueLabel":
+			move_child(voice_container, i)
+			break
+	
+	# File dialog for browsing audio files
+	voice_file_dialog = FileDialog.new()
+	voice_file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	voice_file_dialog.access = FileDialog.ACCESS_RESOURCES
+	voice_file_dialog.filters = PackedStringArray(["*.ogg ; Ogg Vorbis", "*.wav ; WAV Audio", "*.mp3 ; MP3 Audio"])
+	voice_file_dialog.file_selected.connect(_on_voice_file_selected)
+	add_child(voice_file_dialog)
+	
+	# Audio player for editor preview
+	voice_audio_player = AudioStreamPlayer.new()
+	voice_audio_player.name = "VoicePreviewPlayer"
+	add_child(voice_audio_player)
+	
+	# Timer for debouncing line edit changes
+	voice_timer = Timer.new()
+	voice_timer.wait_time = 0.5
+	voice_timer.one_shot = true
+	voice_timer.timeout.connect(_on_voice_timer_timeout)
+	add_child(voice_timer)
+
+
+func set_voice_path(new_path: String):
+	voice_path = new_path
+	last_voice_path = voice_path
+
+
+func _on_voice_path_text_changed(_new_text: String):
+	voice_timer.stop()
+	voice_timer.start()
+
+
+func _on_voice_timer_timeout():
+	if not undo_redo: return
+	if voice_line_edit.text == last_voice_path: return
+	
+	undo_redo.create_action('Set voice path')
+	undo_redo.add_do_method(self, 'set_voice_path', voice_line_edit.text)
+	undo_redo.add_do_method(voice_line_edit, 'set_text', voice_line_edit.text)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(voice_line_edit, 'set_text', last_voice_path)
+	undo_redo.add_undo_method(self, 'set_voice_path', last_voice_path)
+	undo_redo.commit_action()
+
+
+func _on_voice_browse():
+	voice_file_dialog.popup_centered(Vector2i(800, 600))
+
+
+func _on_voice_file_selected(path: String):
+	if not undo_redo: return
+	
+	undo_redo.create_action('Set voice file')
+	undo_redo.add_do_method(self, 'set_voice_path', path)
+	undo_redo.add_do_method(voice_line_edit, 'set_text', path)
+	undo_redo.add_do_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, '_on_modified')
+	undo_redo.add_undo_method(self, 'set_voice_path', last_voice_path)
+	undo_redo.add_undo_method(voice_line_edit, 'set_text', last_voice_path)
+	undo_redo.commit_action()
+
+
+func _on_voice_preview():
+	if voice_audio_player.playing:
+		voice_audio_player.stop()
+		return
+	
+	var path = voice_line_edit.text.strip_edges()
+	if path == '': return
+	
+	if not ResourceLoader.exists(path):
+		push_warning("Voice file not found: " + path)
+		return
+	
+	var stream = load(path)
+	if stream is AudioStream:
+		voice_audio_player.stream = stream
+		voice_audio_player.play()
+
+
+func _on_voice_clear():
+	if voice_path == '' and (not voice_line_edit or voice_line_edit.text == ''): return
+	
+	if undo_redo:
+		undo_redo.create_action('Clear voice path')
+		undo_redo.add_do_method(self, 'set_voice_path', '')
+		undo_redo.add_do_method(voice_line_edit, 'set_text', '')
+		undo_redo.add_do_method(self, '_on_modified')
+		undo_redo.add_undo_method(self, '_on_modified')
+		undo_redo.add_undo_method(self, 'set_voice_path', last_voice_path)
+		undo_redo.add_undo_method(voice_line_edit, 'set_text', last_voice_path)
+		undo_redo.commit_action()
+	else:
+		set_voice_path('')
+		if voice_line_edit:
+			voice_line_edit.text = ''
+		_on_modified()

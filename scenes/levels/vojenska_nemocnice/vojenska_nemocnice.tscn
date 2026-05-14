@@ -37,9 +37,6 @@ camera_limit_left = -2880
 camera_limit_right = 4160
 camera_limit_top = -1536
 
-[node name="user_interface" parent="." index="0"]
-layer = 2
-
 [node name="player" parent="." index="1"]
 z_as_relative = false
 position = Vector2(272, 360)

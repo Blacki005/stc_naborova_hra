@@ -23,13 +23,8 @@ func _process(_delta) -> void:
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
-		
-		#label.global_position = active_areas[0].global_position + OFFSET
-		
 		var screen_pos = _world_to_screen(active_areas[0].global_position)
 		label.global_position = screen_pos + OFFSET
-
-		
 		label.show()
 	else:
 		label.hide()

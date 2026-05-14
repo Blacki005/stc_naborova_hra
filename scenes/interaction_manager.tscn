@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="2_guivl"]
 
 [node name="interaction_manager" type="CanvasLayer"]
-layer = 3
+process_mode = 3
 script = ExtResource("1_wr8se")
 
 [node name="Label" type="Label" parent="."]

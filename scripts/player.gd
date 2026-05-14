@@ -32,12 +32,10 @@ func _physics_process(delta) -> void:
 	if not is_saluting:
 		player_movement(delta)
 		#attack only if mouse is not above the inventory node or inventory is invisible:
-
-func _input(event: InputEvent) -> void:
-	if Globals.able_to_attack and Input.is_action_pressed("attack") and attack_timer.is_stopped():
-		var projectile_direction = self.global_position.direction_to(get_global_mouse_position())
-		attack(projectile_direction)
-	
+		if Globals.able_to_attack and Input.is_action_pressed("attack") and attack_timer.is_stopped():
+			var projectile_direction = self.global_position.direction_to(get_global_mouse_position())
+			attack(projectile_direction)
+		
 
 #func _input(event: InputEvent) -> void:
 	#if Input.is_action_just_pressed("salute"):
@@ -111,6 +109,20 @@ func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 		blink_red()
 		#TODO: implement meelee damage - this gets damage only if area is projectile
 		#TODO: cool take damage effects
+		
+		var hit_sounds = [
+			load("res://sound/player/hit1.mp3"),
+			load("res://sound/player/hit2.mp3"),
+			load("res://sound/player/hit3.mp3"),
+			load("res://sound/player/hit4.mp3"),
+		]
+		var hit_player = AudioStreamPlayer.new()
+		hit_player.stream = hit_sounds[randi() % hit_sounds.size()]
+		hit_player.bus = "Master"
+		add_child(hit_player)
+		hit_player.play()
+		hit_player.finished.connect(hit_player.queue_free)
+		
 		if Globals.shield > dmg:
 			Globals.shield -= dmg
 		elif Globals.shield > 0:

@@ -77,6 +77,7 @@ func _on_hp_changed(new_hp : int) -> void:
 	
 	var dmg_react = get_node_or_null("damage_reaction")
 	if dmg_react != null:
+		dmg_react.show()
 		(dmg_react as Label).text = DAMAGE_REACTIONS.pick_random()
 		var tween1 = create_tween()
 		tween1.tween_property(dmg_react as Label, "position", Vector2(-104, -400), 2.0).from(Vector2(-104, -208))

@@ -93,8 +93,6 @@ func _on_child_exiting_tree(node: Node) -> void:
 		update_gear_visibility(prev_score)
 		label_timer.start()
 
-
-
 func _on_label_timer_timeout() -> void:
 	if score >= winning_score:
 		soldier_dialogue.start("GAME_OVER")
@@ -116,7 +114,6 @@ func _on_soldier_dialogue_ended() -> void:
 	if score < 5:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		get_tree().paused = false
-		
 
 
 func _on_soldier_dialogue_signal(value: String) -> void:

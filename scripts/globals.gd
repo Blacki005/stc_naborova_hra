@@ -88,6 +88,12 @@ var player_position:
 #variable that makes sure player doesn't unintentionally fire when clicking on inventory node
 var able_to_attack : bool = true
 
+# Fade overlay for scene transitions (death screen)
+var _is_dying := false
+var _fade_canvas_layer: CanvasLayer = null
+var _fade_color_rect: ColorRect = null
+
+
 var http_request: HTTPRequest
 
 #set window to fullscreen at the beginning
@@ -121,17 +127,58 @@ func send_data(address: String, data: Dictionary) -> void:
 
 #resets global variables to initial state
 func reset() -> void:
-	
 	bago = 0
 	health = MAX_HEALTH
 	player_position = null
-
+	_is_dying = false
 
 func die() -> void:
-	reset()
-	PlayerInventory.reset_inventory()
-	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+	if _is_dying:
+		return
+	_is_dying = true
+	
+	# Play death sound
+	var death_audio = AudioStreamPlayer.new()
+	death_audio.stream = load("res://sound/player/death.mp3")
+	death_audio.bus = "Master"
+	add_child(death_audio)
+	death_audio.play()
 
+	# Create a full-screen black overlay on a high CanvasLayer
+	_fade_canvas_layer = CanvasLayer.new()
+	_fade_canvas_layer.layer = 100
+	add_child(_fade_canvas_layer)
+	
+	_fade_color_rect = ColorRect.new()
+	_fade_color_rect.color = Color(0, 0, 0, 0)
+	_fade_color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	_fade_color_rect.anchor_left = 0.0
+	_fade_color_rect.anchor_top = 0.0
+	_fade_color_rect.anchor_right = 1.0
+	_fade_color_rect.anchor_bottom = 1.0
+	_fade_canvas_layer.add_child(_fade_color_rect)
+	
+	# Fade out to black, then switch to death screen
+	var tween = create_tween()
+	tween.tween_property(_fade_color_rect, "color:a", 1.0, 0.5)
+	tween.tween_callback(func():
+		reset()
+		PlayerInventory.reset_inventory()
+		get_tree().change_scene_to_file("res://scenes/user_interface/death_screen.tscn")
+	)
+
+func fade_in(duration: float = 0.5) -> void:
+	if _fade_color_rect == null:
+		return
+	_fade_color_rect.color.a = 1.0
+	var tween = create_tween()
+	tween.tween_property(_fade_color_rect, "color:a", 0.0, duration)
+	tween.tween_callback(func():
+		if _fade_canvas_layer:
+			_fade_canvas_layer.queue_free()
+			_fade_canvas_layer = null
+			_fade_color_rect = null
+	)
 
 func get_public_ip() -> String:
 	var err : Error = http_request.request("https://api.ipify.org")

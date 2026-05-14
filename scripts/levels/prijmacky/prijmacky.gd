@@ -77,6 +77,8 @@ func game_over() -> void:
 	
 
 func race_finished() -> void:
+	score_label.hide()
+	$player/CanvasLayer/boost_bar.hide()
 	get_tree().paused = true
 	player.set_physics_process(false)
 	Globals.new_level_unlocked = true
