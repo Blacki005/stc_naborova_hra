@@ -75,7 +75,7 @@ visible = false
 texture = ExtResource("9_o6krp")
 
 [node name="label_timer" type="Timer" parent="soldier"]
-wait_time = 2.0
+wait_time = 3.19
 one_shot = true
 
 [node name="soldier_dialogue" type="RichTextLabel" parent="soldier"]

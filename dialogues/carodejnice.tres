@@ -28,8 +28,9 @@ nodes = {
 "text": "Jasně."
 }
 },
-"size": Vector2(300.00003, 273),
-"speaker": 5
+"size": Vector2(300.00003, 344),
+"speaker": 5,
+"voice": "res://sound/levels/nemocnice/carodejnice/karticku_mate.mp3"
 },
 &"1_2": {
 "dialogue": "Tak to je mi k ničemu, radši nahoď ty pojistky.",
@@ -41,8 +42,9 @@ nodes = {
 "text": "Ok"
 }
 },
-"size": Vector2(300, 240.00003),
-"speaker": 5
+"size": Vector2(300, 309.00003),
+"speaker": 5,
+"voice": "res://sound/levels/nemocnice/carodejnice/radsi_nahod_pojistky.mp3"
 },
 &"3_1": {
 "link": "END",

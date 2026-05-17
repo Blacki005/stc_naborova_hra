@@ -25,6 +25,7 @@ JsonData="*res://scripts/JSON_data.gd"
 PlayerInventory="*res://scripts/player_inventory.gd"
 InteractionManager="*res://scenes/interaction_manager.tscn"
 Globals="*res://scripts/globals.gd"
+ViewportScaler="*res://scripts/viewport_scaler.gd"
 
 [debug]
 
@@ -37,7 +38,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=4
 window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

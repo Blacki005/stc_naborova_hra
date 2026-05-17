@@ -36,21 +36,41 @@ func _ready() -> void:
 			buttons[i+1].disabled = false
 
 
+func _animate_unlocked_button(btn: Button) -> void:
+	btn.visible = true
+	btn.pivot_offset = btn.size / 2.0
+	btn.scale = Vector2.ZERO
+
+	var mat = ShaderMaterial.new()
+	mat.shader = preload("res://shaders/button_sweep.gdshader")
+	btn.material = mat
+
+	var tween = create_tween()
+	tween.tween_property(btn, "scale", Vector2(1.3, 1.3), 0.25).set_ease(Tween.EASE_OUT)
+	tween.tween_property(btn, "scale", Vector2(0.9, 0.9), 0.1).set_ease(Tween.EASE_IN)
+	tween.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_OUT)
+
+	mat.set_shader_parameter("sweep_progress", -0.5)
+	var sweep_tween = create_tween()
+	sweep_tween.tween_property(mat, "shader_parameter/sweep_progress", 1.5, 2.0).set_delay(0.1)
+	sweep_tween.tween_callback(func(): btn.material = null)
+
+
 func _on_lock_1_animation_finished() -> void:
 	locks[0].visible = false
-	buttons[1].visible = true
+	_animate_unlocked_button(buttons[1])
 
 func _on_lock_2_animation_finished() -> void:
 	locks[1].visible = false
-	buttons[2].visible = true
+	_animate_unlocked_button(buttons[2])
 
 func _on_lock_3_animation_finished() -> void:
 	locks[2].visible = false
-	buttons[3].visible = true
+	_animate_unlocked_button(buttons[3])
 
 func _on_lock_4_animation_finished() -> void:
 	locks[3].visible = false
-	buttons[4].visible = true
+	_animate_unlocked_button(buttons[4])
 
 
 func _on_level_1_button_up() -> void:

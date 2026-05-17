@@ -13,40 +13,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gt06f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("1_ke4io")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5411765, 0.4509804, 0.3137255, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_top = 193.0
-offset_right = 1921.0
-offset_bottom = 656.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("3_hnope")
 theme_override_font_sizes/font_size = 96
 text = "Zemřel jsi!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 558.0
-offset_top = 700.0
-offset_right = 1362.0
-offset_bottom = 800.0
+[node name="texture" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(176, 206)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ke4io")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="main_menu_button" type="Button" parent="HBoxContainer"]
+[node name="main_menu_button" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme = ExtResource("3_hnope")
 text = "hlavní nabídka"
 
-[node name="exit_button" type="Button" parent="HBoxContainer"]
+[node name="exit_button" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme = ExtResource("3_hnope")
 text = "už mě to nebaví"
 
-[connection signal="button_up" from="HBoxContainer/main_menu_button" to="." method="_on_main_menu_button_button_up"]
-[connection signal="button_up" from="HBoxContainer/exit_button" to="." method="_on_exit_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/main_menu_button" to="." method="_on_main_menu_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/exit_button" to="." method="_on_exit_button_button_up"]

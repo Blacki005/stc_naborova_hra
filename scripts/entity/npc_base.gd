@@ -12,7 +12,7 @@ extends StaticBody2D
 @export var action_name : String
 
 @onready var interaction_area = $interaction_area
-@onready var dialogue_box = $CanvasLayer/DialogueBox
+@onready var dialogue_box = $CanvasLayer/MarginContainer/DialogueBox
 
 func _ready() -> void:
 	if action_name:
@@ -50,6 +50,7 @@ func display_shop() -> void:
 		return
 	
 	#display shop with NPCs name
+	InteractionManager.can_interact = false
 	ui_node.display_shop(shop_name)
 
 
@@ -93,4 +94,13 @@ func die() -> void:
 
 
 func _on_dialogue_ended() -> void:
+	# Guard against calls during scene transition (get_tree() can be null).
+	var tree = get_tree()
+	if not tree:
+		return
+	# Don't re-enable interaction if the shop is open — the shop's
+	# close handler will set can_interact back to true.
+	var ui_node = tree.get_first_node_in_group("user_interface")
+	if ui_node and ui_node.shop.visible:
+		return
 	InteractionManager.can_interact = true

@@ -88,7 +88,7 @@ func race_finished() -> void:
 	stop_audio()
 	start_label.text = "Dobrá práce, přemýšlel jsi o F1?"
 	end_buttons.show()
-	
+
 func stop_audio() -> void:
 	$AudioStreamPlayer.stop()
 	$car_noise_player.stop()

@@ -1,10 +1,14 @@
-extends Node2D
+extends Control
 
 const BPM : int = 55 #bpm pochodu na zacatku
 const NEEDED_STEPS : int = 132 #CORRECT BEATS OF SONG
 
 @onready var audio_stream_player = $AudioStreamPlayer
 @export var tolerance : int #how many steps can player miss
+
+@onready var game_over_message = $game_over_menu/VBoxContainer/game_over_message
+@onready var bpm_label = $VBoxContainer/bpm_label
+@onready var progress_bar = $VBoxContainer/ProgressBar
 
 #to count steps done by player
 var steps : int = 0
@@ -21,9 +25,9 @@ func _ready() -> void:
 
 
 func start_game() -> void:
-	$bpm_label.text = "KROKY: 0"
+	bpm_label.text = "KROKY: 0"
 	$game_over_menu.hide()
-	$ProgressBar.value = 0
+	progress_bar.value = 0
 	$idle_timer.start(3)
 	$soldiers.position.x = 1320
 	steps = 0
@@ -37,8 +41,8 @@ func _input(_event: InputEvent) -> void:
 		$idle_timer.stop()
 		$idle_timer.start(3)
 		steps += 1
-		$bpm_label.text = "KROKY: " + str(steps)
-		$ProgressBar.value = steps
+		bpm_label.text = "KROKY: " + str(steps)
+		progress_bar.value = steps
 		$soldiers.play("default")
 		$soldiers.position.x -= 5
 
@@ -55,11 +59,11 @@ func game_over(status:int) -> void:
 	$idle_timer.stop()
 	
 	if status==VICTORY:
-		$game_over_menu/game_over_message.text = "Gratuluji, jsi hvězdou úterního nástupu!"
+		game_over_message.text = "Gratuluji, jsi hvězdou úterního nástupu!"
 	elif status==IDLE_TIMEOUT:
-		$game_over_menu/game_over_message.text = "Kdybys místo stání na místě pochodoval, plakaly by rodiny dojetím a ne hanbou. Zkus to znovu!"
+		game_over_message.text = "Kdybys místo stání na místě pochodoval, plakaly by rodiny dojetím a ne hanbou. Zkus to znovu!"
 	else:
-		$game_over_menu/game_over_message.text = "No, tak to to půjdeš ještě jednou!\nSprávný počet kroků: " + str(NEEDED_STEPS) + "\nTvůj počet kroků: " + str(steps)
+		game_over_message.text = "No, tak to to půjdeš ještě jednou!\nSprávný počet kroků: " + str(NEEDED_STEPS) + "\nTvůj počet kroků: " + str(steps)
 	$game_over_menu.show()
 
 func _on_restart_button_button_up() -> void:

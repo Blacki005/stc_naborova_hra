@@ -70,6 +70,14 @@ func player_movement(_delta) -> void:
 
 	move_and_slide()
 
+	# Push enemies on collision so player can always move through them
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("enemy"):
+			var push_direction = -collision.get_normal()
+			collider.push_velocity = push_direction * SPEED * 1.5
+
 func attack(projectile_direction: Vector2) -> void:
 	#decide if active item is throwable:
 	if PlayerInventory.hotbar.has(PlayerInventory.active_item_slot):

@@ -32,6 +32,7 @@ script = ExtResource("2_t2j3i")
 ENY_PROJECTILE = ExtResource("3_sctgn")
 ATTACK_DISTANCE = 700
 DAMAGE_REACTIONS = Array[String]([])
+WANDER_RADIUS = 500
 SPEED = 600
 knockback_modifier = 4.0
 

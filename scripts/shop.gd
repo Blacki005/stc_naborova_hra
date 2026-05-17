@@ -19,7 +19,6 @@ var buffer_size : int
 
 
 func display(shop_name : String) -> void:
-	InteractionManager.can_interact = false
 	#load current shop's data from json
 	shop_goods = load_data("res://data/shop_data/" + shop_name + ".json") #["Name", count : int, price : int]
 	if shop_goods == null:

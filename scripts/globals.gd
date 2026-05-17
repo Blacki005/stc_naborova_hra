@@ -96,6 +96,11 @@ var _fade_color_rect: ColorRect = null
 
 var http_request: HTTPRequest
 
+var volume : int = 100: #% of max volume
+	set(value):
+		volume = clampi(value, 0, 100)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(volume / 100.0))
+
 #set window to fullscreen at the beginning
 func _ready() -> void:
 	PlayerInventory.connect("inventory_updated", _on_inventory_updated)

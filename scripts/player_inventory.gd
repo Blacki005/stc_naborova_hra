@@ -76,7 +76,7 @@ func add_item(item_name: String, item_quantity: int) -> bool:
 func update_slot_visual(slot_index : int, item_name : String, new_quantity : int, is_hotbar : bool) -> void:
 	var slot : SlotClass 
 	if is_hotbar:
-		slot = get_tree().get_first_node_in_group("user_interface").get_node("./hotbar/hotbar_slots/hotbar_slot_" + str(slot_index + 1))
+		slot = get_tree().get_first_node_in_group("user_interface").get_node("./VBoxContainer/hotbar/hotbar_slots/hotbar_slot_" + str(slot_index + 1))
 	else:
 		slot = get_tree().get_first_node_in_group("user_interface").get_node("./inventory/GridContainer/Slot" + str(slot_index + 1))
 	
@@ -94,6 +94,7 @@ func update_slot_visual(slot_index : int, item_name : String, new_quantity : int
 	else:
 		#initialize slot with item that has not been in that slot
 		slot.initialize_item(item_name, new_quantity)
+	slot.refresh_style()
 
 
 func erase_item(slot : SlotClass, is_hotbar : bool = false) -> void:

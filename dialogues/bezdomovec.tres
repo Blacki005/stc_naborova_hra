@@ -33,9 +33,9 @@ nodes = {
 "text": "Řekni mi svůj příběh"
 }
 },
-"size": Vector2(300, 379),
+"size": Vector2(300, 379.00003),
 "speaker": 2,
-"voice": ""
+"voice": "res://sound/levels/nemocnice/bezdomovec/chrrrmpppf.mp3"
 },
 &"1_2": {
 "dialogue": "Viděl jsem že tady bylo otevřeno, tak sem sem šel hledat vajgly a drogy.",
@@ -52,9 +52,9 @@ nodes = {
 "text": "Nemohl byste mi prosím věnovat ten klíč a opustit objekt? "
 }
 },
-"size": Vector2(300, 344),
+"size": Vector2(300.00003, 344.00003),
 "speaker": 2,
-"voice": ""
+"voice": "res://sound/levels/nemocnice/bezdomovec/sel_jsem_hledat_vajgly.mp3"
 },
 &"1_3": {
 "dialogue": "No dobře, když to musí bejt...",
@@ -68,7 +68,7 @@ nodes = {
 },
 "size": Vector2(300.00024, 309),
 "speaker": 2,
-"voice": ""
+"voice": "res://sound/levels/nemocnice/bezdomovec/kdyz_to_musi_bejt.mp3"
 },
 &"1_4": {
 "dialogue": "To víš že jo, nehrozí. Radší mi běž sehnat nějaký injekce, už mi došly.",
@@ -91,7 +91,7 @@ nodes = {
 },
 "size": Vector2(300.0006, 344),
 "speaker": 2,
-"voice": ""
+"voice": "res://sound/levels/nemocnice/bezdomovec/to_vis_ze_jo.mp3"
 },
 &"1_5": {
 "dialogue": "No, když to chceš slyšet...začalo to na střední v Rumburku. Měli jsme mejdan jako kráva, ale přítelkyně otěhotněla a nějak to nevyšlo, špatný lidi a špatný místo. Pak jsem dělal v Praze u Krysy a taky chvíli v gastru, u Zlatýho Mloka. Ale z obojího jsem si odnesl jen další šrámy na duši. A od tý doby se to táhne, několikrát jsem seděl, ale vždycky jsem nějak zdrhnul.",
@@ -103,9 +103,9 @@ nodes = {
 "text": "Ok "
 }
 },
-"size": Vector2(300, 309),
+"size": Vector2(300, 309.00003),
 "speaker": 2,
-"voice": ""
+"voice": "res://sound/levels/nemocnice/bezdomovec/backstory.mp3"
 },
 &"3_1": {
 "link": "END",

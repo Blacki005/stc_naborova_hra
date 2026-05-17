@@ -42,7 +42,7 @@ nodes = {
 },
 "size": Vector2(300, 344),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/dobry_den.mp3"
 },
 &"1_10": {
 "dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
@@ -54,9 +54,9 @@ nodes = {
 "text": "Díky."
 }
 },
-"size": Vector2(300.00043, 308.99997),
+"size": Vector2(300.0005, 308.99997),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/tutorial.mp3"
 },
 &"1_2": {
 "dialogue": "Snažili jsme se naučit dokumenty potřebné na zápis trochu pořadové přípravy...aby se uměly alespoň narovnat do komínků, pochodovat a tak.",
@@ -68,9 +68,9 @@ nodes = {
 "text": "Tak to nechápu kde je problém, moje papíry to doma umí."
 }
 },
-"size": Vector2(300.00006, 309),
+"size": Vector2(300.00012, 309),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/poradovka_pro_dokumenty.mp3"
 },
 &"1_3": {
 "dialogue": "Moc se s naší vizí neztotožnily, naučily se házet propisky a vzbouřily se. Nicméně hlavní schopností vojáka je přizpůsobit se, takže pokud máte zájem, budete se muset k pohovoru probojovat.",
@@ -82,9 +82,9 @@ nodes = {
 "text": "Nikdy jsem s papírem nebojoval..."
 }
 },
-"size": Vector2(300.0006, 309),
+"size": Vector2(300.0005, 309),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/dokumenty_se_neztotoznily.mp3"
 },
 &"1_4": {
 "dialogue": "Je to jednoduché. Stačí vám občaský průkaz a psací potřeby. Házejte je zkuste se trefit, když je podepíšete, zkrotnou. Mám tady nějakou propisku, zkuste to tou. Až je zlikvidujete, vraťte se za mnou.",
@@ -103,7 +103,7 @@ nodes = {
 },
 "size": Vector2(300.00024, 344),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/jak_na_dokumenty.mp3"
 },
 &"1_5": {
 "dialogue": "Dobrá práce. Pohovor máte splněný, ale obávám se, že za svoji kariéru uvidíte ještě hodně záludných papírů. Občas jsou nebezpečnější než cokoliv jiného, zvlášť když na nich je váš podpis.",
@@ -117,7 +117,7 @@ nodes = {
 },
 "size": Vector2(300.00006, 309),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/to_byla_dobra_prace.mp3"
 },
 &"1_6": {
 "dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
@@ -129,9 +129,9 @@ nodes = {
 "text": "Tak zpátky k věci..."
 }
 },
-"size": Vector2(300.00006, 309),
+"size": Vector2(300.00003, 309.00006),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/tutorial.mp3"
 },
 &"1_7": {
 "dialogue": "Jo! Málem bych zapoměl. Kdybys tu našel nějaký bago, ber ho. V armádě funguje jako prémiová měna.",
@@ -143,9 +143,9 @@ nodes = {
 "text": "Dobře, jdu."
 }
 },
-"size": Vector2(300.0005, 309),
+"size": Vector2(300.00098, 308.99994),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/sbirej_bago.mp3"
 },
 &"1_8": {
 "dialogue": "Běžte vyčistit kancelář od dokumentů, až to bude hotové, vraťte se za mnou.",
@@ -162,9 +162,9 @@ nodes = {
 "text": "Jdu"
 }
 },
-"size": Vector2(300, 343.99997),
+"size": Vector2(300.00003, 344.00015),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/vyridte_dokumenty.mp3"
 },
 &"1_9": {
 "dialogue": "Kryju.",
@@ -176,9 +176,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 274),
+"size": Vector2(300.00018, 273.99997),
 "speaker": 4,
-"voice": ""
+"voice": "res://sound/levels/rekrutak/kryju.mp3"
 },
 &"3_1": {
 "link": "END",

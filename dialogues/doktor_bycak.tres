@@ -23,8 +23,9 @@ nodes = {
 "text": "Co se stalo?"
 }
 },
-"size": Vector2(300.00006, 273),
-"speaker": 1
+"size": Vector2(300, 309.00006),
+"speaker": 1,
+"voice": "res://sound/levels/nemocnice/dr_bycak/demoni.mp3"
 },
 &"1_2": {
 "dialogue": "UNOBáci...přivezli jsme je sem na povinnou kastraci. A jeden z nich začal křičet, Liboreeee, nebo nějak tak to znělo. Vypadly pojistky a po nemocnici se začaly pohybovat přízraky Libora, který nikomu nedovolí je nahodit. Pojistky jsou navíc zamčené. Jeden klíč se tu válí někde v jihovýchodní části s druhým jsem viděl utíkat bezdomovce do severozápadní části objektu. Zkus najít klíč a nahodit je, jsi naše jediná naděje!",
@@ -41,8 +42,9 @@ nodes = {
 "text": "Nemáte něco co by mi při hledání pomohlo? "
 }
 },
-"size": Vector2(300.00006, 308),
-"speaker": 1
+"size": Vector2(300.0001, 344),
+"speaker": 1,
+"voice": "res://sound/levels/nemocnice/dr_bycak/povinna_kastrace.mp3"
 },
 &"1_3": {
 "dialogue": "Kryju",
@@ -54,8 +56,9 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00104, 240.00002),
-"speaker": 1
+"size": Vector2(300.00125, 274),
+"speaker": 1,
+"voice": "res://sound/levels/nemocnice/dr_bycak/kryju.mp3"
 },
 &"1_4": {
 "dialogue": "No...sice bych neměl, ale za trochu baga jsem ochotný ti prodat nějaké lékařské vybavení, co by ti mohlo pomoct odehnat Libora.",
@@ -76,8 +79,9 @@ nodes = {
 "text": "Bohužel žádné bago nemám."
 }
 },
-"size": Vector2(300.00073, 308.00006),
-"speaker": 1
+"size": Vector2(300.00064, 344.00003),
+"speaker": 1,
+"voice": "res://sound/levels/nemocnice/dr_bycak/za_bago_prodam_vybaveni.mp3"
 },
 &"3_1": {
 "link": "END",

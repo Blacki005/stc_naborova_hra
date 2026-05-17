@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dco6cvxl2gbu2"]
+
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="1_rulab"]
+
+[node name="pause_screen" type="ColorRect"]
+visible = false
+light_mask = 8
+visibility_layer = 2
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.584314)
+
+[node name="continue_button" type="Button" parent="."]
+process_mode = 2
+light_mask = 8
+visibility_layer = 2
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 512.0
+offset_top = 456.0
+offset_right = 912.0
+offset_bottom = 556.0
+theme = ExtResource("1_rulab")
+text = "zpět do hry"
+
+[node name="main_menu_button" type="Button" parent="."]
+process_mode = 2
+light_mask = 8
+visibility_layer = 2
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 456.0
+offset_right = 1408.0
+offset_bottom = 556.0
+theme = ExtResource("1_rulab")
+text = "zpět do hlavní nabídky"

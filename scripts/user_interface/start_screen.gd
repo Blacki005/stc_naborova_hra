@@ -2,7 +2,7 @@ extends Control
 
 func _ready() -> void:
 	if OS.get_name() == "Web":
-		$HBoxContainer/exit.hide()
+		$VBoxContainer/HBoxContainer/exit.hide()
 
 
 func _on_exit_button_up() -> void:

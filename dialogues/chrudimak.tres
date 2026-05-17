@@ -23,8 +23,9 @@ nodes = {
 "text": " Pardon, vynahradím to na pochodu."
 }
 },
-"size": Vector2(380.00027, 360.00024),
-"speaker": 0
+"size": Vector2(380.00037, 360.00024),
+"speaker": 0,
+"voice": "res://sound/levels/prisaha/chrudimak/o_5m_drive.mp3"
 },
 &"1_3": {
 "dialogue": "Cílem zaměstnání je synchronizovat kroky s hudbou, levá noha (mezerník) by měla vždy došlápnout na buben. Pár chyb vám prominu, ale snažte se ať to vypadá, jinak to půjdete znovu.",
@@ -36,8 +37,9 @@ nodes = {
 "text": "Dobře, to zvládnu"
 }
 },
-"size": Vector2(339.9995, 360),
-"speaker": 0
+"size": Vector2(339.9994, 360),
+"speaker": 0,
+"voice": "res://sound/levels/prisaha/chrudimak/cil_zamestnani.mp3"
 },
 &"1_4": {
 "dialogue": "Tak to byl dobrý výkon. Matky pláčou, otcové a domácí mazlíčci také a mě nezbývá než vám popřát hodně štěstí ve vaší budoucí kariéře! ",
@@ -54,8 +56,9 @@ nodes = {
 "text": "Chcete kapesník?"
 }
 },
-"size": Vector2(300.0005, 308),
-"speaker": 0
+"size": Vector2(300.0006, 344),
+"speaker": 0,
+"voice": "res://sound/levels/prisaha/chrudimak/dobry_vykon.mp3"
 },
 &"3_1": {
 "link": "END",

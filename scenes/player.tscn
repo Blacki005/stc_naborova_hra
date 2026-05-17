@@ -325,6 +325,8 @@ editor_draw_limits = true
 
 [node name="player_body" type="AnimatedSprite2D" parent="."]
 light_mask = 4
+texture_filter = 1
+texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_4c78h")
 animation = &"walk_down"
 offset = Vector2(0, -90)

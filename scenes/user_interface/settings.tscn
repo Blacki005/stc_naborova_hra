@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://e3y2rsh0qpvg"]
+
+[ext_resource type="Script" uid="uid://dm5fjfjfqy278" path="res://scripts/user_interface/settings.gd" id="1_m4hwg"]
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="2_5h5xy"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m4hwg")
+
+[node name="background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.5411765, 0.4509804, 0.3137255, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1664.0
+offset_bottom = 600.0
+
+[node name="volume" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_5h5xy")
+text = "Hlasitost:"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+rounded = true
+
+[node name="fingerprint" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_5h5xy")
+text = "Odesílání dat o uživateli:"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0

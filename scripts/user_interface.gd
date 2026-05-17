@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var shield_bar = $shield_bar
 @onready var inventory = $inventory
 @onready var shop = $shop
+@onready var pause_screen = $pause_screen
 
 #defined for both hotbar and inventory
 var holding_item = null #item player is currently holding
@@ -44,9 +45,7 @@ func _input(event : InputEvent) -> void:
 		#toggle pause menu
 		if not get_tree().paused:
 			get_tree().paused = true
-			$pause_screen.show()
-			$continue_button.show()
-			$main_menu_button.show()
+			pause_screen.show()
 		else:
 			_on_continue_button_button_up()
 
@@ -73,7 +72,7 @@ func display_shop(shopName : String) -> void:
 func _on_main_menu_button_button_up() -> void:
 	#first click = warning, click second time to confirm
 	if not warning_issued:
-		$main_menu_button.text = "Fakt? Smaže to neuložený postup."
+		$pause_screen/VBoxContainer/HBoxContainer/main_menu_button.text = "Fakt? Smaže to neuložený postup."
 		warning_issued = true
 	else:
 		#reset game progress and quit to main menu
@@ -86,6 +85,8 @@ func _on_main_menu_button_button_up() -> void:
 
 func _on_continue_button_button_up() -> void:
 	get_tree().paused = false
-	$pause_screen.hide()
-	$continue_button.hide()
-	$main_menu_button.hide()
+	pause_screen.hide()
+
+func _on_volume_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		Globals.volume = $pause_screen/VBoxContainer/volume_slider.value

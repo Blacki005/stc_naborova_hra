@@ -101,6 +101,7 @@ process_mode = 3
 position = Vector2(168, 624)
 rotation = -1.5707964
 motion_mode = 1
+wall_min_slide_angle = 0.0
 platform_on_leave = 2
 
 [node name="tile_map_layers" type="Node2D" parent="."]

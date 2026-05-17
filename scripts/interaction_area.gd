@@ -13,7 +13,7 @@ func _on_body_entered(_body) -> void:
 
 func _on_body_exited(body) -> void:
 	if body.is_in_group("player"):
-		var dialogue_box = get_node("../CanvasLayer/DialogueBox")
+		var dialogue_box = get_node("../CanvasLayer/MarginContainer/DialogueBox")
 		if dialogue_box:
 			dialogue_box.stop()
 	InteractionManager.unregister_area(self)

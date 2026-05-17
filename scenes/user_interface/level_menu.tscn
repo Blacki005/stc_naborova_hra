@@ -27,7 +27,7 @@ sprite_frames = ExtResource("2_rj3wb")
 animation = &"unlock"
 
 [node name="lock2" type="AnimatedSprite2D" parent="locks"]
-position = Vector2(1192, 936)
+position = Vector2(1040, 880)
 sprite_frames = ExtResource("2_rj3wb")
 animation = &"unlock"
 
@@ -60,10 +60,10 @@ theme = ExtResource("3_jqwib")
 
 [node name="level3" type="Button" parent="buttons"]
 visible = false
-offset_left = 1128.0
-offset_top = 880.0
-offset_right = 1256.0
-offset_bottom = 1008.0
+offset_left = 984.0
+offset_top = 816.0
+offset_right = 1112.0
+offset_bottom = 944.0
 theme = ExtResource("3_jqwib")
 
 [node name="level4" type="Button" parent="buttons"]
@@ -95,7 +95,8 @@ theme = ExtResource("5_teein")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
-text = "Level completed!"
+text = "Dokončeno!"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="labels"]
 visible = false
@@ -108,20 +109,22 @@ theme = ExtResource("5_teein")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
-text = "Level completed!"
+text = "Dokončeno!"
+horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="labels"]
 visible = false
 texture_filter = 1
-offset_left = 1072.0
-offset_top = 800.0
-offset_right = 1328.0
-offset_bottom = 835.0
+offset_left = 928.0
+offset_top = 736.0
+offset_right = 1184.0
+offset_bottom = 771.0
 theme = ExtResource("5_teein")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
-text = "Level completed!"
+text = "Dokončeno!"
+horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="labels"]
 visible = false
@@ -134,7 +137,8 @@ theme = ExtResource("5_teein")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
-text = "Level completed!"
+text = "Dokončeno!"
+horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="labels"]
 visible = false
@@ -147,7 +151,8 @@ theme = ExtResource("5_teein")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_teein")
-text = "Level completed!"
+text = "Dokončeno!"
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_srt8x")
