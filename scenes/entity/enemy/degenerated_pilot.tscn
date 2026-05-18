@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b36crmlmdrxr5"]
+
+[ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_qgq1y"]
+[ext_resource type="Texture2D" uid="uid://dyx0in2ml3ufk" path="res://images/enemies/degenerated_pilot.png" id="2_8ug0c"]
+
+[node name="degenerated_pilot" instance=ExtResource("1_qgq1y")]
+enemy_type = 1
+DAMAGE_REACTIONS = Array[String](["Ale já jsem pilot!", "Kde je můj kávovar?", "Ještě mi zašpiníš uniformu!", "Piloti jsou elita armády.", "Doufám že nejsi od bláta!"])
+WANDER_RADIUS = 200
+hp_max = 70
+hp = 70
+knockback_modifier = 6.0
+item_drop_name = "Bago"
+item_drop_cnt = 2
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_8ug0c")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(16, 56)
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

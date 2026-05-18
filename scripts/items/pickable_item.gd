@@ -12,16 +12,38 @@ extends Node2D
 @export var item_name : String
 @export var item_quantity : int
 @export var texture : Texture2D
+var is_collecting : bool = false
+
+const REACH_RADIUS : int = 300
 
 func _ready():
 	sprite2d.texture = texture
 	interaction_area.interact = Callable(self, "_on_interact")
 
 func _on_interact() -> void:
+	# Prevent double-pickup and recursion from batch collection
+	if is_collecting:
+		return
+	is_collecting = true
+
+	# Prevent double-pickup: disable the area immediately
+	interaction_area.set_deferred("monitoring", false)
+	InteractionManager.unregister_area(interaction_area)
+	item_name = item_name.strip_edges()
 	if item_name == "Bago":
 		Globals.bago += item_quantity
 	else:
 		PlayerInventory.add_item(item_name, item_quantity)
+
+	# Batch-collect same-type items within reach
+	for sibling in get_parent().get_children():
+		if sibling == self:
+			continue
+		if sibling.get("item_name") != item_name or sibling.is_collecting:
+			continue
+		if global_position.distance_to(sibling.global_position) <= REACH_RADIUS:
+			sibling._on_interact()
+
 	animate_and_free()
 
 func animate_and_free() -> void:
@@ -50,5 +72,4 @@ func animate_and_free() -> void:
 
 	# Fade after landing
 	tween.tween_property(self, "modulate:a", 0.0, fade_time).set_trans(Tween.TRANS_SINE)
-
 	tween.finished.connect(queue_free)

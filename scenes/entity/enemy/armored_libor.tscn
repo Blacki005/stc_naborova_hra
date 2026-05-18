@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://doodys0lbmvk0"]
+
+[ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_ikbyr"]
+[ext_resource type="Texture2D" uid="uid://dhcjw3k57csbv" path="res://images/enemies/armored_libor.png" id="2_3v5rx"]
+[ext_resource type="PackedScene" uid="uid://d3a0l1llbf2ej" path="res://scenes/projectiles/libor_projectile.tscn" id="2_fv51i"]
+
+[node name="armored_libor" instance=ExtResource("1_ikbyr")]
+enemy_type = 3
+ENY_PROJECTILE = ExtResource("2_fv51i")
+ATTACK_DISTANCE = 500
+DAMAGE_REACTIONS = Array[String](["Tahle prošla přímo skrz!", "Vzdávám se! ...Apríl", "Pořád lepší jak Cisco.", "Segmentation fault: Core dumped."])
+WANDER_RADIUS = 256
+hp_max = 150
+hp = 150
+defence = 3
+SPEED = 200
+receives_knockback = false
+item_drop_name = "Bago"
+item_drop_cnt = 5
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_3v5rx")
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

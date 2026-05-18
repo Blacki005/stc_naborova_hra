@@ -10,5 +10,8 @@ SPEED = 350
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_crot1")
 
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 40)
+
 [editable path="hurtbox"]
 [editable path="hitbox"]

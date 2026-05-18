@@ -25,6 +25,7 @@ var bot2_score = 1
 var start_countdown: int
 
 func _ready():
+	Globals.is_in_gameplay = true
 	player.set_physics_process(false)
 	get_tree().paused = true
 	dialogue_box.start("START")

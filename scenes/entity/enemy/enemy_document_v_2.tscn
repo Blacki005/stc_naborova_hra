@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drmogpq1j2ukp"]
+
+[ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_fayig"]
+[ext_resource type="Texture2D" uid="uid://dq457gayllvum" path="res://images/enemies/enemy_document_v2.png" id="2_osoq3"]
+
+[node name="enemy_document_v2" instance=ExtResource("1_fayig")]
+enemy_type = 1
+DAMAGE_REACTIONS = Array[String](["Tfuuuj", "Bleee", "Ooooch", "Kousnu tě!"])
+knockback_modifier = 6.0
+item_drop_name = "Bago"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_osoq3")
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

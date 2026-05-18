@@ -1,6 +1,8 @@
 extends Control
 
 func _ready() -> void:
+	Globals.health = Globals.MAX_HEALTH
+	Globals.is_in_gameplay = false
 	Globals.fade_in()
 	if OS.get_name() == "Web":
 		$VBoxContainer/HBoxContainer/exit_button.hide()

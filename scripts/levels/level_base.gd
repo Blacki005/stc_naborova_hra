@@ -9,6 +9,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	Globals.is_in_gameplay = true
 	var camera : Camera2D = get_tree().get_first_node_in_group("player").get_node("./Camera2D")
 	if camera == null:
 		print("Error: Unable to get camera node!")

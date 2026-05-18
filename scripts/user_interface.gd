@@ -59,6 +59,11 @@ func _on_health_changed() -> void:
 		var tween = create_tween()
 		tween.tween_property($screen_damage.material, "shader_parameter/intensity", 1.0, 0.1)
 		tween.tween_property($screen_damage.material, "shader_parameter/intensity", 1.0 - (float(Globals.health) / float(Globals.MAX_HEALTH)), 0.4)
+	else:
+		# Heal: smoothly reduce the damage overlay to match new health
+		var target_intensity := 1.0 - (float(Globals.health) / float(Globals.MAX_HEALTH))
+		var tween = create_tween()
+		tween.tween_property($screen_damage.material, "shader_parameter/intensity", target_intensity, 0.5)
 
 	health_bar.value = Globals.health
 

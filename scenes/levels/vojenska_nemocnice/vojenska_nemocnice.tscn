@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://by4sal26veywl"]
+[gd_scene load_steps=22 format=4 uid="uid://by4sal26veywl"]
 
 [ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_bqiso"]
 [ext_resource type="TileSet" uid="uid://bh0jollkyco4o" path="res://resources/tilemaps/rekrutacni_pracoviste_tileset.tres" id="2_1ilnj"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b1a4we3iffb85" path="res://images/npc_characters/hlavni_jistic_down.png" id="12_1ilnj"]
 [ext_resource type="Resource" uid="uid://cco24dddvbwn4" path="res://dialogues/hlavni_jistic.tres" id="13_7yw58"]
 [ext_resource type="PackedScene" uid="uid://c31rtfjrkku7" path="res://scenes/user_interface/level_menu.tscn" id="14_7mkqb"]
+[ext_resource type="PackedScene" uid="uid://doodys0lbmvk0" path="res://scenes/entity/enemy/armored_libor.tscn" id="15_mqq7t"]
+[ext_resource type="PackedScene" uid="uid://b36crmlmdrxr5" path="res://scenes/entity/enemy/degenerated_pilot.tscn" id="15_pb6g0"]
 [ext_resource type="PackedScene" uid="uid://dx7hk6f6b8qbw" path="res://scenes/items/pickable_item.tscn" id="16_u41ys"]
 [ext_resource type="Texture2D" uid="uid://cssdf15dwarlt" path="res://images/items/Key.png" id="17_5q3si"]
 [ext_resource type="AudioStream" uid="uid://bkrfgtiq5ql1d" path="res://sound/hospital_theme.wav" id="17_pb6g0"]
@@ -101,7 +103,7 @@ dialogue_data = ExtResource("11_1ilnj")
 shop_name = "bago_shop"
 
 [node name="carodejnice" parent="." index="8" instance=ExtResource("3_auxw0")]
-position = Vector2(3744, 840)
+position = Vector2(3840, 896)
 texture = ExtResource("9_m5vqm")
 dialogue_data = ExtResource("10_u41ys")
 shop_name = "carodejnice_shop"
@@ -116,41 +118,44 @@ dialogue_data = ExtResource("13_7yw58")
 next_scene = ExtResource("14_7mkqb")
 action_name = "Zapnout"
 
-[node name="libor" parent="." index="10" instance=ExtResource("11_mc5yi")]
-light_mask = 2
-position = Vector2(2416, 2736)
-ATTACK_DISTANCE = 200
-hp_max = 80
-defence = 4
-SPEED = 400
-
-[node name="libor2" parent="." index="11" instance=ExtResource("11_mc5yi")]
+[node name="libor2" parent="." index="10" instance=ExtResource("11_mc5yi")]
 light_mask = 2
 position = Vector2(3872, 2688)
+enemy_type = 2
+WANDER_RADIUS = 256
+hp_max = 60
 
-[node name="libor3" parent="." index="12" instance=ExtResource("11_mc5yi")]
-light_mask = 2
-position = Vector2(3560, 2744)
-
-[node name="libor4" parent="." index="13" instance=ExtResource("11_mc5yi")]
+[node name="libor4" parent="." index="11" instance=ExtResource("11_mc5yi")]
 light_mask = 2
 position = Vector2(2400, 696)
+WANDER_RADIUS = 256
+hp_max = 60
 
-[node name="libor5" parent="." index="14" instance=ExtResource("11_mc5yi")]
-light_mask = 2
-position = Vector2(-1816, 384)
-
-[node name="libor6" parent="." index="15" instance=ExtResource("11_mc5yi")]
-light_mask = 2
+[node name="armored_libor" parent="." index="12" instance=ExtResource("15_mqq7t")]
 position = Vector2(184, 1520)
 
-[node name="key_pickable" parent="." index="16" instance=ExtResource("16_u41ys")]
+[node name="armored_libor2" parent="." index="13" instance=ExtResource("15_mqq7t")]
+position = Vector2(-1248, 2704)
+
+[node name="degenerated_pilot" parent="." index="14" instance=ExtResource("15_pb6g0")]
+position = Vector2(-1816, 384)
+ATTACK_DISTANCE = 200
+
+[node name="degenerated_pilot2" parent="." index="15" instance=ExtResource("15_pb6g0")]
+position = Vector2(2424, 2736)
+ATTACK_DISTANCE = 200
+
+[node name="degenerated_pilot3" parent="." index="16" instance=ExtResource("15_pb6g0")]
+position = Vector2(3200, 2344)
+ATTACK_DISTANCE = 200
+
+[node name="key_pickable" parent="." index="17" instance=ExtResource("16_u41ys")]
 position = Vector2(2360, 3040)
 item_name = "Key"
 item_quantity = 1
 texture = ExtResource("17_5q3si")
 
-[node name="lights" type="Node2D" parent="." index="17"]
+[node name="lights" type="Node2D" parent="." index="18"]
 
 [node name="PointLight2D" type="PointLight2D" parent="lights" index="0"]
 light_mask = 2
@@ -176,6 +181,6 @@ shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_t7khd")
 
-[node name="AudioStreamPlayer" parent="." index="18"]
+[node name="AudioStreamPlayer" parent="." index="19"]
 process_mode = 3
 stream = ExtResource("17_pb6g0")

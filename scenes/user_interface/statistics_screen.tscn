@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn465femkjrgn"]
+
+[ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="1_7sg2f"]
+[ext_resource type="Script" uid="uid://dxxaifxx5yxhf" path="res://scripts/user_interface/statistics_screen.gd" id="1_ubk1a"]
+
+[node name="statistics_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ubk1a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5411765, 0.4509804, 0.3137255, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="playtime" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Čas hry	"
+
+[node name="playtime_val" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "xxx"
+horizontal_alignment = 2
+
+[node name="enemies_killed" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Zabití nepřátelé	"
+
+[node name="enemies_killed_val" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "xxx"
+horizontal_alignment = 2
+
+[node name="damage_taken" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Utrpěné poškození	"
+
+[node name="damage_taken_val" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "xxx"
+horizontal_alignment = 2
+
+[node name="items_collected" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Sesbírané předměty	"
+
+[node name="items_collected_val" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "xxx"
+horizontal_alignment = 2
+
+[node name="max_combo" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Maximální kombo	"
+
+[node name="max_combo_val" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "xxx"
+horizontal_alignment = 2
+
+[node name="grade" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Finální známka"
+
+[node name="grade_val" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "xxx"
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="main_menu" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Hlavní menu"
+
+[node name="exit" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("1_7sg2f")
+text = "Ukončit hru
+"
+
+[connection signal="button_up" from="ColorRect/VBoxContainer/HBoxContainer/main_menu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="ColorRect/VBoxContainer/HBoxContainer/exit" to="." method="_on_exit_button_up"]

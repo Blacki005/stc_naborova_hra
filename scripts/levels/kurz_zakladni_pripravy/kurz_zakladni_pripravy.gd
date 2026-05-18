@@ -19,6 +19,7 @@ var winning_score : int
 var shot_hit_target : bool = false
 
 func _ready() -> void:
+	Globals.is_in_gameplay = true
 	winning_score = len(gear_nodes)
 	hide_all_gear()
 	if target:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7lb7j4wmbus"]
+[gd_scene load_steps=13 format=3 uid="uid://bm7lb7j4wmbus"]
 
 [ext_resource type="PackedScene" uid="uid://oq5s71qxggu1" path="res://scenes/entity/entity_base.tscn" id="1_jery7"]
 [ext_resource type="Script" uid="uid://b468wwjp8x7rq" path="res://scripts/entity/enemy/enemy_base.gd" id="2_t2j3i"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dtyhgddjc1o0j" path="res://scenes/projectiles/Pen_projectile.tscn" id="3_sctgn"]
 [ext_resource type="Texture2D" uid="uid://vmyrf6od15c4" path="res://images/npc_characters/eny_placeholder.png" id="3_vev8t"]
 [ext_resource type="Theme" uid="uid://sue4tlr8wwrf" path="res://resources/themes/default_theme.tres" id="6_47181"]
+[ext_resource type="AudioStream" uid="uid://cqudf0m4k5tti" path="res://sound/projectiles/banzai.mp3" id="7_eov6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kscqh"]
-radius = 104.0
+radius = 64.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j75oj"]
-radius = 112.0
-height = 224.0
+radius = 96.0
+height = 192.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bm27"]
 radius = 104.0
@@ -29,6 +30,7 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("2_t2j3i")
+enemy_type = 0
 ENY_PROJECTILE = ExtResource("3_sctgn")
 ATTACK_DISTANCE = 700
 DAMAGE_REACTIONS = Array[String]([])
@@ -53,7 +55,7 @@ shape = SubResource("CapsuleShape2D_j75oj")
 [node name="hitbox" parent="." index="4" groups=["enemy"] instance=ExtResource("3_b58gt")]
 collision_layer = 4
 collision_mask = 2
-damage = 2
+damage = 3
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 modulate = Color(0.98, 0, 0, 1)
@@ -65,7 +67,6 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" index="0"]
-position = Vector2(120, -32)
 shape = SubResource("CircleShape2D_67ore")
 
 [node name="attack_timer" parent="." index="6"]
@@ -90,6 +91,9 @@ offset_right = -56.0
 offset_bottom = -173.0
 theme = ExtResource("6_47181")
 text = "Auu"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = ExtResource("7_eov6p")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

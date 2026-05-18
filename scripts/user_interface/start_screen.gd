@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	Globals.is_in_gameplay = false
 	if OS.get_name() == "Web":
 		$VBoxContainer/HBoxContainer/exit.hide()
 

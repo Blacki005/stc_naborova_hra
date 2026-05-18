@@ -27,14 +27,21 @@ signal died
 @export var item_drop_name : String = ""
 @export var item_drop_cnt : int = 0
 
+# ─── Visual state (tween-driven, no await races) ────────────────
+var _blink_tween: Tween = null
+var _freeze_tween: Tween = null
+var _is_frozen: bool = false
+
 func die():
 	queue_free()
 
 func blink_red(duration: float = 0.1) -> void:
-	var original_color = sprite.modulate
-	sprite.modulate = Color(1, 0.2, 0.2)  # red tint
-	await get_tree().create_timer(duration).timeout
-	sprite.modulate = original_color
+	if _blink_tween and _blink_tween.is_valid():
+		_blink_tween.kill()
+	_blink_tween = create_tween()
+	sprite.modulate = Color(1, 0.2, 0.2)
+	var target := Color(0.5, 0.8, 1.0) if _is_frozen else Color.WHITE
+	_blink_tween.tween_property(sprite, "modulate", target, duration)
 
 func receive_damage(base_damage : int) -> int:
 	var actual_damage = base_damage - defence
@@ -53,7 +60,7 @@ func receive_damage(base_damage : int) -> int:
 	self.hp -= actual_damage #neccessary for setter call
 	return actual_damage
 
-func receive_knockback(damage_source_pos: Vector2, received_damage:int):
+func receive_knockback(damage_source_pos: Vector2, received_damage:int) -> void:
 	if receives_knockback:
 		var knockback_direction = damage_source_pos.direction_to(self.global_position)
 		var knockback_strength = received_damage * knockback_modifier
@@ -62,15 +69,22 @@ func receive_knockback(damage_source_pos: Vector2, received_damage:int):
 		global_position += knockback
 
 func freeze(seconds: float) -> void:
-	var original_color = sprite.modulate
+	_is_frozen = true
 	sprite.modulate = Color(0.5, 0.8, 1.0)
-	set_physics_process(false)# or disable movement logic
+	set_physics_process(false)
 	attack_timer.paused = true
-	var timer = get_tree().create_timer(seconds)
-	await timer.timeout
+
+	if _freeze_tween and _freeze_tween.is_valid():
+		_freeze_tween.kill()
+	_freeze_tween = create_tween()
+	_freeze_tween.tween_callback(_end_freeze).set_delay(seconds)
+
+func _end_freeze() -> void:
+	_is_frozen = false
 	set_physics_process(true)
 	attack_timer.paused = false
-	sprite.modulate = original_color
+	if _blink_tween == null or not _blink_tween.is_valid():
+		sprite.modulate = Color.WHITE
 
 func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 	#actual damage = damage - defence
@@ -83,8 +97,12 @@ func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 	
 	if hitbox.is_in_group("projectiles"):
 		hitbox.destroy()
+		# Notify player for combo tracking and screen shake
+		Globals.screen_shake_requested.emit(4.0, 0.1)
+		Globals.enemy_hit.emit(global_position)
 	
 	receive_knockback(hitbox.global_position, actual_damage)
 
 func _on_died() -> void:
+	Globals.stats["enemies_killed"] += 1
 	die()

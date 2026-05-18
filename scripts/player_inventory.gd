@@ -14,7 +14,7 @@ var inventory : Dictionary = {
 }
 
 var hotbar : Dictionary = {
-	#0 : ["Injection", 1],
+	0 : ["IDCard", 1],
 	#1 : ["RedPotion", 4],
 	#2 : ["BluePotion", 4]
 }
@@ -30,7 +30,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("consume") and hotbar.has(active_item_slot):
-		var active_item_name : String = PlayerInventory.hotbar[PlayerInventory.active_item_slot][0]
+		var active_item_name : String = hotbar[active_item_slot][0]
 		if JsonData.item_data[active_item_name]["ItemCategory"] == "Consumable":
 			remove_item(active_item_name, 1)
 			Globals.health += JsonData.item_data[active_item_name]["Healing"]
@@ -87,7 +87,8 @@ func update_slot_visual(slot_index : int, item_name : String, new_quantity : int
 	if slot.item != null:
 		#item already exists, update quantity
 		if new_quantity == 0:
-			slot.remove_child(slot.item)
+			slot.item.queue_free()
+			slot.item = null
 			erase_item(slot, is_hotbar)
 			return
 		slot.item.set_item(item_name, new_quantity)
@@ -107,9 +108,9 @@ func erase_item(slot : SlotClass, is_hotbar : bool = false) -> void:
 
 func remove_item(item_name : String, item_quantity : int) -> bool:
 	for item : int in hotbar:
-			#remove from hotbar first if it is there
+		#remove from hotbar first if it is there
 		if hotbar[item][0] == item_name:
-			var able_to_remove : int = hotbar[item][1]
+			var able_to_remove : int = hotbar[item][1] #item quantity in the slot
 			if able_to_remove >= item_quantity:
 				hotbar[item][1] -= item_quantity
 				update_slot_visual(item, hotbar[item][0], hotbar[item][1], true)
@@ -181,3 +182,14 @@ func active_item_scroll_down() -> void:
 			change_active_item(NUM_HOTBAR_SLOTS - 1)
 		else:
 			change_active_item(active_item_slot-1)
+
+func get_uniq_inventory_items_cnt() -> int:
+	#gets number of unique item types in inventory:
+	var collected_items : Array[String] = []
+	for item in hotbar:
+		if not collected_items.has(hotbar[item][0]):
+			collected_items.push_back(hotbar[item][0])
+	for item in inventory:
+		if not collected_items.has(inventory[item][0]):
+			collected_items.push_back(inventory[item][0])
+	return collected_items.size()

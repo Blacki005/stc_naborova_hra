@@ -48,6 +48,7 @@ offset_left = 232.0
 offset_top = 800.0
 offset_right = 360.0
 offset_bottom = 928.0
+tooltip_text = "Každý generál tady taky začínal."
 theme = ExtResource("3_jqwib")
 
 [node name="level2" type="Button" parent="buttons"]
@@ -56,6 +57,7 @@ offset_left = 1744.0
 offset_top = 504.0
 offset_right = 1872.0
 offset_bottom = 632.0
+tooltip_text = "Ti mrtví jsou překvapivě živí."
 theme = ExtResource("3_jqwib")
 
 [node name="level3" type="Button" parent="buttons"]
@@ -64,6 +66,7 @@ offset_left = 984.0
 offset_top = 816.0
 offset_right = 1112.0
 offset_bottom = 944.0
+tooltip_text = "Legendy praví, že na přípravě dostaneš i svačinu zdarma."
 theme = ExtResource("3_jqwib")
 
 [node name="level4" type="Button" parent="buttons"]
@@ -72,6 +75,7 @@ offset_left = 96.0
 offset_top = 168.0
 offset_right = 224.0
 offset_bottom = 296.0
+tooltip_text = "Konečně fasování."
 theme = ExtResource("3_jqwib")
 
 [node name="level5" type="Button" parent="buttons"]
@@ -80,6 +84,7 @@ offset_left = 992.0
 offset_top = 216.0
 offset_right = 1120.0
 offset_bottom = 344.0
+tooltip_text = "Levá, levá, levá pravá levá. Tahle jednoduché."
 theme = ExtResource("3_jqwib")
 
 [node name="labels" type="Node2D" parent="."]

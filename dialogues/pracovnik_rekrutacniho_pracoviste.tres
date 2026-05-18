@@ -54,7 +54,7 @@ nodes = {
 "text": "Díky."
 }
 },
-"size": Vector2(300.0005, 308.99997),
+"size": Vector2(300.0005, 309),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/tutorial.mp3"
 },
@@ -120,7 +120,7 @@ nodes = {
 "voice": "res://sound/levels/rekrutak/to_byla_dobra_prace.mp3"
 },
 &"1_6": {
-"dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A to je asi vše.",
+"dialogue": "No dobře... [E] přepne načítání dialogu. [W], [A], [S] a [D] se pohybuješ, jako ve všech normálních hrách. Levým myšítkem střílíš, kolečkem na myši přepínáš předměty v hotbaru. [I] zapne inventář. [Tab] hru stopne. Pokud narzíte na předměty nebo osoby, se kterými lze interagovat, jde to klávesou [E]. Poživatelné předměty z hotbaru lze konzumovat klávesou [Q]. A pomocí [Shift] uděláš přískok. A to je asi vše.",
 "offset": Vector2(-540, -60),
 "options": {
 0: {
@@ -129,7 +129,7 @@ nodes = {
 "text": "Tak zpátky k věci..."
 }
 },
-"size": Vector2(300.00003, 309.00006),
+"size": Vector2(300, 309.00006),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/tutorial.mp3"
 },
@@ -143,7 +143,7 @@ nodes = {
 "text": "Dobře, jdu."
 }
 },
-"size": Vector2(300.00098, 308.99994),
+"size": Vector2(300.00024, 309),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/sbirej_bago.mp3"
 },
@@ -162,7 +162,7 @@ nodes = {
 "text": "Jdu"
 }
 },
-"size": Vector2(300.00003, 344.00015),
+"size": Vector2(300, 344.00012),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/vyridte_dokumenty.mp3"
 },
@@ -176,7 +176,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00018, 273.99997),
+"size": Vector2(300.00024, 274),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/kryju.mp3"
 },

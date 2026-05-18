@@ -9,7 +9,8 @@ ENY_PROJECTILE = ExtResource("2_0awxv")
 DAMAGE_REACTIONS = Array[String](["Bleee", "Tfuj", "Ooooh", "Chrrrmpf", "*čvacht*"])
 hp_max = 60
 hp = 60
-defence = 5
+defence = 2
+knockback_modifier = 7.0
 item_drop_name = "Key"
 item_drop_cnt = 1
 

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dprq1nlxjcd8c" path="res://images/items/Grenade.png" id="2_jo78g"]
 
 [node name="projectile" instance=ExtResource("1_pbq1d")]
-SPEED = 250
-damage = 40
+SPEED = 350
+damage = 43
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_jo78g")

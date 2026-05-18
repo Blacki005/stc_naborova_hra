@@ -21,6 +21,7 @@ enum {
 }
 
 func _ready() -> void:
+	Globals.is_in_gameplay = true
 	start_game()
 
 

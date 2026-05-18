@@ -15,3 +15,6 @@ func LoadData(file_path : String) -> Dictionary:
 	if json.parse(json_string) != OK:
 		return {}
 	return json.get_data()
+
+func get_item_cnt() -> int:
+	return item_data.size()

@@ -7,6 +7,10 @@ const LEVELS_CNT : int = 5
 const MAX_SHIELD : int = 10
 const INITIAL_SHIELD : int = 0
 
+# Signals used for cross-node communication
+signal screen_shake_requested(strength: float, duration: float)
+signal enemy_hit(position: Vector2)
+
 const SERVER_URL : String = "localhost"
 const HTTP_PORT : String = "8080"
 const HTTPS_PORT : String = "8443"
@@ -88,6 +92,58 @@ var player_position:
 #variable that makes sure player doesn't unintentionally fire when clicking on inventory node
 var able_to_attack : bool = true
 
+# ─── Stats tracking ────────────────────────────────────────────
+var stats : Dictionary = {
+	"playtime" : 0.0,
+	"max_combo" : 0,
+	"enemies_killed" : 0,
+	"items_collected" : 0,
+	"damage_taken" : 0,
+}
+
+var is_in_gameplay: bool = false
+
+func _process(delta: float) -> void:
+	# Only count playtime when in a gameplay scene (not menus) and not paused
+	if is_in_gameplay and not get_tree().paused:
+		stats["playtime"] += delta
+
+func reset_stats() -> void:
+	stats = {
+		"playtime" : 0.0,
+		"max_combo" : 0,
+		"enemies_killed" : 0,
+		"items_collected" : 0,
+		"damage_taken" : 0,
+	}
+
+## Returns a grade dictionary: { "grade": "S", "score": 85, "breakdown": {...} }
+func get_grade() -> String:
+	# Individual stat scores (0-100 each)
+	var combo_score : float = minf(stats["max_combo"] * 10.0, 100.0)
+	var kills_score : float = minf(stats["enemies_killed"] * (100.0 / 9.0), 100.0)
+	var items_score : float = minf(stats["items_collected"] * 10.0, 100.0)
+	# Damage penalty: 0 damage = 100, losing all 10 HP = 0
+	var damage_score : float = maxf(100.0 - stats["damage_taken"] * 10.0, 0.0)
+	# Time score: full marks under 120s, drops to 0 by 600s
+	var time_score : float = clampf(100.0 - (stats["playtime"] - 120.0) * (100.0 / 480.0), 0.0, 100.0)
+
+	var total : float = (combo_score + kills_score + items_score + damage_score + time_score) / 5.0
+
+	var grade : String
+	if total >= 90.0:
+		grade = "S"
+	elif total >= 75.0:
+		grade = "A"
+	elif total >= 55.0:
+		grade = "B"
+	elif total >= 35.0:
+		grade = "C"
+	else:
+		grade = "D"
+
+	return grade
+
 # Fade overlay for scene transitions (death screen)
 var _is_dying := false
 var _fade_canvas_layer: CanvasLayer = null
@@ -136,6 +192,8 @@ func reset() -> void:
 	health = MAX_HEALTH
 	player_position = null
 	_is_dying = false
+	is_in_gameplay = false
+	reset_stats()
 
 func die() -> void:
 	if _is_dying:
@@ -167,8 +225,7 @@ func die() -> void:
 	var tween = create_tween()
 	tween.tween_property(_fade_color_rect, "color:a", 1.0, 0.5)
 	tween.tween_callback(func():
-		reset()
-		PlayerInventory.reset_inventory()
+		_is_dying = false
 		get_tree().change_scene_to_file("res://scenes/user_interface/death_screen.tscn")
 	)
 

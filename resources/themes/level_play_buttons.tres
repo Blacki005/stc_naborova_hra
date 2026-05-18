@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d3skd85tu8lgn"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://d3skd85tu8lgn"]
 
 [ext_resource type="Texture2D" uid="uid://c1u1hufcw4x62" path="res://images/user_interface/play_level_button_hover.png" id="1_03ew3"]
 [ext_resource type="Texture2D" uid="uid://bbh57ay55iqp2" path="res://images/user_interface/play_level_button_disabled.png" id="1_68abk"]
 [ext_resource type="Texture2D" uid="uid://c2g8cxi5ngr7w" path="res://images/user_interface/play_level_button_normal.png" id="2_68abk"]
 [ext_resource type="Texture2D" uid="uid://d23tep7k5ptpr" path="res://images/user_interface/play_level_button_clicked.png" id="3_03ew3"]
+[ext_resource type="FontFile" uid="uid://dkhubn87fqsuh" path="res://fonts/CozetteVector.otf" id="5_wb3xv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wb3xv"]
 texture = ExtResource("1_68abk")
@@ -25,3 +26,5 @@ Button/styles/normal = SubResource("StyleBoxTexture_77ulm")
 Button/styles/pressed = SubResource("StyleBoxTexture_jgdf3")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/fonts/font = null
+TooltipLabel/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+TooltipLabel/fonts/font = ExtResource("5_wb3xv")

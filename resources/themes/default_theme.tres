@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://sue4tlr8wwrf"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://sue4tlr8wwrf"]
 
 [ext_resource type="StyleBox" uid="uid://p1sjch5um5ht" path="res://resources/ButtonNormalStyleBoxFlat.tres" id="2_dgxsq"]
 [ext_resource type="StyleBox" uid="uid://mw05gx62ij07" path="res://resources/ButtonDisabledStyleBoxFlat.tres" id="2_nfgd4"]
@@ -6,6 +6,8 @@
 [ext_resource type="StyleBox" uid="uid://x4jek74qrroa" path="res://resources/ButtonClickedStyleBoxFlat.tres" id="4_dgxsq"]
 [ext_resource type="FontFile" uid="uid://dkhubn87fqsuh" path="res://fonts/CozetteVector.otf" id="6_hge1u"]
 [ext_resource type="FontFile" uid="uid://cy8tg748a0wvi" path="res://fonts/CozetteVector.ttf" id="6_ttywx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttywx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttywx"]
 bg_color = Color(0, 0, 0, 0.54509807)
@@ -35,6 +37,8 @@ Button/styles/focus = ExtResource("2_dgxsq")
 Button/styles/hover = ExtResource("3_nfgd4")
 Button/styles/normal = ExtResource("2_dgxsq")
 Button/styles/pressed = ExtResource("4_dgxsq")
+HSeparator/constants/separation = 10
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_ttywx")
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("6_hge1u")
 Label/styles/focus = SubResource("StyleBoxFlat_ttywx")

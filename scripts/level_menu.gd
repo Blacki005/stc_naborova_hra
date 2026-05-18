@@ -5,6 +5,7 @@ extends Node2D
 @onready var labels = $labels.get_children(false)
 
 func _ready() -> void:
+	Globals.is_in_gameplay = false
 	var levels_completed = Globals.levels_completed
 	var new_level_unlocked = Globals.new_level_unlocked
 	

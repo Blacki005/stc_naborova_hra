@@ -65,9 +65,17 @@ theme = ExtResource("2_pf7bt")
 text = "Ukončit hru
 "
 
+[node name="stats" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme = ExtResource("2_pf7bt")
+text = "Skóre
+"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ix76p")
 autoplay = true
 
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/main_menu" to="." method="_on_main_menu_button_up"]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/stats" to="." method="_on_stats_button_up"]

@@ -5,9 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://b4ftnesfj3ngt" path="res://images/enemies/libor.png" id="2_lgblf"]
 
 [node name="libor" instance=ExtResource("1_d84gk")]
+enemy_type = 2
 ENY_PROJECTILE = ExtResource("2_63qvd")
 ATTACK_DISTANCE = 400
 DAMAGE_REACTIONS = Array[String](["Huuuuu", "Dej mi víc", "Že já nešel na VUT", "HELP MEE", "Nyní přednese proslov místostarostka", "Žádný klíč neexistuje!"])
+WANDER_RADIUS = 256
+hp_max = 60
+hp = 60
+defence = 1
+SPEED = 750
+knockback_modifier = 3.0
 item_drop_name = "Bago"
 item_drop_cnt = 3
 
