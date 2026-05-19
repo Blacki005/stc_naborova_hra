@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ykjgma5fpr3y"]
+[gd_scene load_steps=4 format=3 uid="uid://ykjgma5fpr3y"]
 
 [ext_resource type="PackedScene" uid="uid://c80e3g5vwh245" path="res://scenes/projectiles/projectile_base.tscn" id="1_pbq1d"]
+[ext_resource type="PackedScene" uid="uid://bgbrcpniu5wia" path="res://scenes/effects/explosion_red.tscn" id="2_iouhc"]
 [ext_resource type="Texture2D" uid="uid://dprq1nlxjcd8c" path="res://images/items/Grenade.png" id="2_jo78g"]
 
 [node name="projectile" instance=ExtResource("1_pbq1d")]
 SPEED = 350
+destroy_effect = ExtResource("2_iouhc")
 damage = 43
 
 [node name="Sprite2D" parent="." index="0"]

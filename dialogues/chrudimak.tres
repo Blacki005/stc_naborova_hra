@@ -15,21 +15,26 @@ nodes = {
 },
 &"1_1": {
 "dialogue": "Tady jste! Hledáme vás celou věčnost, nevíte že tu máte být o 5 minut dřív?? Doufejme že alespoň ta hudba vyjde, máme nového zvukaře protože na nástupech pluku to moc nefungovalo",
-"offset": Vector2(-60, -220),
+"offset": Vector2(-80, -220),
 "options": {
 0: {
 "condition": {},
 "link": &"1_3",
-"text": " Pardon, vynahradím to na pochodu."
+"text": " Pardon, už se to nikdy nestane."
+},
+1: {
+"condition": {},
+"link": &"3_3",
+"text": "No a, táhni si do Chrudimi!"
 }
 },
-"size": Vector2(380.00037, 360.00024),
+"size": Vector2(379.99997, 360.0003),
 "speaker": 0,
 "voice": "res://sound/levels/prisaha/chrudimak/o_5m_drive.mp3"
 },
 &"1_3": {
 "dialogue": "Cílem zaměstnání je synchronizovat kroky s hudbou, levá noha (mezerník) by měla vždy došlápnout na buben. Pár chyb vám prominu, ale snažte se ať to vypadá, jinak to půjdete znovu.",
-"offset": Vector2(400, -200),
+"offset": Vector2(480, -220),
 "options": {
 0: {
 "condition": {},
@@ -37,7 +42,7 @@ nodes = {
 "text": "Dobře, to zvládnu"
 }
 },
-"size": Vector2(339.9994, 360),
+"size": Vector2(339.99933, 360.00006),
 "speaker": 0,
 "voice": "res://sound/levels/prisaha/chrudimak/cil_zamestnani.mp3"
 },
@@ -56,19 +61,24 @@ nodes = {
 "text": "Chcete kapesník?"
 }
 },
-"size": Vector2(300.0006, 344),
+"size": Vector2(300.0008, 344),
 "speaker": 0,
 "voice": "res://sound/levels/prisaha/chrudimak/dobry_vykon.mp3"
 },
 &"3_1": {
 "link": "END",
-"offset": Vector2(840, -200),
+"offset": Vector2(900, -200),
 "signalValue": "play_game"
 },
 &"3_2": {
 "link": "END",
 "offset": Vector2(391.05734, -416.04178),
 "signalValue": "level_finished"
+},
+&"3_3": {
+"link": "END",
+"offset": Vector2(403.30942, 286.69907),
+"signalValue": "die"
 },
 &"5_1": {
 "false": &"1_1",

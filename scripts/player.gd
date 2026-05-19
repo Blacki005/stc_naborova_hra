@@ -35,7 +35,7 @@ var last_move_direction: Vector2 = Vector2.DOWN
 
 # ─── Combo system ───────────────────────────────────────────────
 const COMBO_TIMEOUT: float = 2.0
-const COMBO_BAGO_MILESTONE: int = 4
+const COMBO_BAGO_MILESTONE: int = 5
 var combo_count: int = 0
 var combo_timer: float = 0.0
 var _combo_font: FontFile = preload("res://fonts/CozetteVector.otf")

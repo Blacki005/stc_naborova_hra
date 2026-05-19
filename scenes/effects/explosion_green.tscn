@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://dh4a58tynq8cg"]
+
+[ext_resource type="Texture2D" uid="uid://trhu0ms1stya" path="res://images/effects/explosion.png" id="1_siwyo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xs7e"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm4ba"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fofg5"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjy43"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hevgd"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stqc6"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2eij"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8582"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eky38"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(512, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1uca"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(576, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ve6"]
+atlas = ExtResource("1_siwyo")
+region = Rect2(640, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wi4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xs7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm4ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fofg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjy43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hevgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stqc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2eij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8582")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eky38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1uca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ve6")
+}],
+"loop": false,
+"name": &"Injection",
+"speed": 20.0
+}]
+
+[node name="explosion" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4wi4f")
+animation = &"Injection"
+autoplay = "Injection"

@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://bkyceirsl1x33"]
+
+[ext_resource type="Texture2D" uid="uid://trhu0ms1stya" path="res://images/effects/explosion.png" id="1_6qn7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wivqg"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geyas"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h26r8"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhp4v"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gred"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54j4o"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn14w"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idg7g"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su0oo"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(512, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_185fi"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(576, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1kwj"]
+atlas = ExtResource("1_6qn7i")
+region = Rect2(640, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wi4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wivqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geyas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h26r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhp4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gred")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54j4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn14w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idg7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su0oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_185fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1kwj")
+}],
+"loop": false,
+"name": &"BluePotion",
+"speed": 20.0
+}]
+
+[node name="explosion" type="Node2D"]
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4wi4f")
+animation = &"BluePotion"
+autoplay = "BluePotion"

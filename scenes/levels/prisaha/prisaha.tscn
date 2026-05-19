@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c41uq21f4rj4v"]
+[gd_scene load_steps=10 format=3 uid="uid://c41uq21f4rj4v"]
 
 [ext_resource type="PackedScene" uid="uid://bdj2hepeldyqv" path="res://scenes/levels/level_base.tscn" id="1_hxphb"]
 [ext_resource type="PackedScene" uid="uid://blrmp4hay8l34" path="res://scenes/entity/npc_base.tscn" id="2_irmhm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dvbmf0k6icbw2" path="res://dialogues/chrudimak.tres" id="4_oxryl"]
 [ext_resource type="PackedScene" uid="uid://bhsy2yjledrlk" path="res://scenes/levels/prisaha/pochod.tscn" id="5_4h8v5"]
 [ext_resource type="PackedScene" uid="uid://cals6tfnw4gf" path="res://scenes/user_interface/game_won_screen.tscn" id="7_1oj1t"]
+[ext_resource type="PackedScene" uid="uid://bv1t427wqm5qr" path="res://scenes/entity/enemy/enemy_chrudimak.tscn" id="9_kas3w"]
 
 [node name="prisaha" instance=ExtResource("1_hxphb")]
 default_position = Vector2(1280, 752)
@@ -32,3 +33,4 @@ texture = ExtResource("3_4h8v5")
 dialogue_data = ExtResource("4_oxryl")
 minigame = ExtResource("5_4h8v5")
 next_scene = ExtResource("7_1oj1t")
+death_effect = ExtResource("9_kas3w")

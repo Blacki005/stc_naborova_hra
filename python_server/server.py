@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, render_template_string
-from flask_cors import CORS
 from werkzeug.serving import make_server
 import sqlite3
 import json
@@ -7,7 +6,8 @@ import requests
 import ssl
 import threading
 import ipaddress
-from datetime import datetime
+import html as html_lib
+from datetime import datetime, timezone
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CONFIG
@@ -28,38 +28,108 @@ ALLOWED_ORIGINS = [
     "null",
 ]
 
-app = Flask(__name__)
-CORS(app, origins=[
-    "https://blacki005.github.io",
-    "null"
-], 
-resources={
-    r"/*": {
-        "origins": ["https://blacki005.github.io", "null"],
-        "allow_headers": ["Content-Type"]
+# ─────────────────────────────────────────────────────────────────────────────
+# INPUT VALIDATION
+# ─────────────────────────────────────────────────────────────────────────────
+
+MAX_STR   = 256    # max chars for any string field
+MAX_JSON  = 8192   # max chars for raw_data JSON blob
+MAX_IPS   = 20     # max entries in ip_addresses list
+
+def _clamp_str(val, max_len=MAX_STR):
+    """Ensure value is a string and truncate to max_len."""
+    if not isinstance(val, str):
+        val = str(val) if val is not None else ""
+    return val[:max_len]
+
+def _clamp_int(val, min_val=0, max_val=100000):
+    """Ensure value is an int within range, or return 0."""
+    try:
+        return max(min_val, min(max_val, int(val)))
+    except (TypeError, ValueError):
+        return 0
+
+def _validate_ips(val):
+    """Validate ip_addresses: must be a list of short strings."""
+    if not isinstance(val, list):
+        return []
+    return [_clamp_str(ip, 45) for ip in val[:MAX_IPS]]
+
+def _validate_screen(val):
+    """Validate screen_size dict: two integers."""
+    if not isinstance(val, dict):
+        return {"width": 0, "height": 0}
+    return {
+        "width":  _clamp_int(val.get("width"),  0, 10000),
+        "height": _clamp_int(val.get("height"), 0, 10000),
     }
-})
+
+def sanitize_input(data):
+    """
+    Validate and sanitize the incoming fingerprint JSON.
+    Returns a cleaned dict or None if the payload is irrecoverably invalid.
+    """
+    if not isinstance(data, dict):
+        return None
+
+    # fingerprint_hash is mandatory and must look like an integer hash
+    fp = data.get("fingerprint_hash")
+    if fp is None:
+        return None
+    try:
+        fp = int(fp)
+    except (TypeError, ValueError):
+        return None
+
+    screen = _validate_screen(data.get("screen_size", {}))
+
+    # Build the sanitized dict — only known fields are kept
+    cleaned = {
+        "fingerprint_hash": fp,
+        "os_name":           _clamp_str(data.get("os_name")),
+        "os_version":         _clamp_str(data.get("os_version")),
+        "os_locale":          _clamp_str(data.get("os_locale")),
+        "model_name":         _clamp_str(data.get("model_name")),
+        "processor_name":     _clamp_str(data.get("processor_name"), 128),
+        "processor_count":    _clamp_int(data.get("processor_count"), 0, 256),
+        "user_agent":         _clamp_str(data.get("user_agent"), 512),
+        "timezone":           _clamp_str(data.get("timezone")),
+        "screen_size":        screen,
+        "screen_dpi":         _clamp_int(data.get("screen_dpi"), 0, 1000),
+        "screen_color_depth": _clamp_int(data.get("screen_color_depth"), 0, 48),
+        "ip_addresses":       _validate_ips(data.get("ip_addresses", [])),
+        "is_web":             bool(data.get("is_web")),
+        "is_windows":         bool(data.get("is_windows")),
+        "is_linux":           bool(data.get("is_linux")),
+        "is_macos":           bool(data.get("is_macos")),
+        "is_mobile":          bool(data.get("is_mobile")),
+    }
+    return cleaned
+
+app = Flask(__name__)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CORS — ensure headers on every response including errors
+# CORS — single source of truth using ALLOWED_ORIGINS
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Add localhost pattern separately
 @app.after_request
-def after_request(response):
-    origin = request.headers.get('Origin')
-    if origin and origin.startswith('http://localhost:'):
+def set_cors_headers(response):
+    origin = request.headers.get('Origin', '')
+    allowed = False
+    for pattern in ALLOWED_ORIGINS:
+        if origin == pattern or (pattern == "localhost" and origin.startswith("http://localhost:")):
+            allowed = True
+            break
+    if allowed:
         response.headers['Access-Control-Allow-Origin'] = origin
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
     return response
 
-@app.route("/data",          methods=["OPTIONS"])
-@app.route("/players/full",  methods=["OPTIONS"])
-@app.route("/players/clear", methods=["OPTIONS"])
-def preflight():
-    """Handle CORS preflight for all endpoints."""
-    return jsonify({}), 200
+@app.before_request
+def handle_preflight():
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
 
 # ─────────────────────────────────────────────────────────────────────────────
 # GEOLOCATION — uses public IP from client data first, then falls back to request IP
@@ -476,6 +546,12 @@ Chart.defaults.font.size = 13;
 let allPlayers = [], charts = {};
 let sortKey = 'last_seen', sortAsc = false, countdown = 30;
 
+// Escape HTML to prevent XSS — wraps every user-derived value in the dashboard
+function esc(s) {
+    if (s == null) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 const count = (arr, key, fb='Unknown') => {
     const m = {};
     arr.forEach(p => { const v = p[key]||fb; m[v]=(m[v]||0)+1; });
@@ -561,9 +637,9 @@ function renderRegions() {
         const max = Math.max(...Object.values(map), 1);
         document.getElementById(elId).innerHTML = Object.entries(map).sort((a,b)=>b[1]-a[1])
             .map(([k,v])=>`<div class="region-row">
-                <div class="region-name" title="${k}">${k}</div>
+                <div class="region-name" title="${esc(k)}">${esc(k)}</div>
                 <div class="region-bar-wrap"><div class="region-bar" style="width:${(v/max*100).toFixed(1)}%"></div></div>
-                <div class="region-count">${v}</div>
+                <div class="region-count">${esc(v)}</div>
             </div>`).join('');
     };
     barList(regionMap, 'region-list');
@@ -603,9 +679,9 @@ function renderWealth() {
 
     document.getElementById('criteria-tbody').innerHTML = CRITERIA.map(c =>
         `<tr>
-            <td><strong>${c.label}</strong></td>
-            <td>${c.points > 0 ? `<span class="pts-plus">+${c.points} pts</span>` : `<span class="pts-minus">${c.points}%</span>`}</td>
-            <td style="color:#b0c4e0">${c.desc}</td>
+            <td><strong>${esc(c.label)}</strong></td>
+            <td>${c.points > 0 ? `<span class="pts-plus">+${esc(c.points)} pts</span>` : `<span class="pts-minus">${esc(c.points)}%</span>`}</td>
+            <td style="color:#b0c4e0">${esc(c.desc)}</td>
         </tr>`
     ).join('');
 }
@@ -622,18 +698,18 @@ function renderTable(players) {
     });
     tbody.innerHTML = sorted.map(p => {
         const isNew = p.play_count === 1;
-        const wl    = p.wealth_label || 'Unknown';
+        const wl    = esc(p.wealth_label || 'Unknown');
         return `<tr>
-            <td class="hash" title="${p.fingerprint_hash}">${(p.fingerprint_hash||'').toString().slice(0,10)}…</td>
-            <td>${p.region_name||'Unknown'}</td>
-            <td>${p.city||'—'}</td>
-            <td>${p.os_name||'—'}</td>
-            <td class="play-count">${p.play_count}</td>
-            <td><span class="badge badge-${wl.toLowerCase()}">${wl} (${p.wealth_score||0})</span></td>
-            <td>${p.first_seen?.slice(0,16).replace('T',' ')||'—'}</td>
-            <td>${p.last_seen?.slice(0,16).replace('T',' ')||'—'}</td>
+            <td class="hash" title="${esc(p.fingerprint_hash)}">${esc((p.fingerprint_hash||'').toString().slice(0,10))}…</td>
+            <td>${esc(p.region_name)||'Unknown'}</td>
+            <td>${esc(p.city)||'—'}</td>
+            <td>${esc(p.os_name)||'—'}</td>
+            <td class="play-count">${esc(p.play_count)}</td>
+            <td><span class="badge badge-${wl.toLowerCase()}">${wl} (${esc(p.wealth_score)||0})</span></td>
+            <td>${esc(p.first_seen?.slice(0,16).replace('T',' '))||'—'}</td>
+            <td>${esc(p.last_seen?.slice(0,16).replace('T',' '))||'—'}</td>
             <td><span class="badge ${isNew?'badge-new':'badge-returning'}">${isNew?'NEW':'RETURNING'}</span></td>
-            <td><button class="row-btn" onclick='showDetail(${JSON.stringify(p)})'>Detail</button></td>
+            <td><button class="row-btn" onclick='showDetail(${JSON.stringify(p).replace(/'/g,"&#39;")})'>Detail</button></td>
         </tr>`;
     }).join('');
 }
@@ -657,20 +733,20 @@ function showDetail(p) {
         <div class="modal-section">
             <div class="modal-section-title">Identity</div>
             <div class="grid-2">
-                <div class="field-group"><div class="field-label">Fingerprint</div><div class="field-value highlight">${p.fingerprint_hash}</div></div>
-                <div class="field-group"><div class="field-label">Play Count</div><div class="field-value highlight">${p.play_count}</div></div>
-                <div class="field-group"><div class="field-label">First Seen</div><div class="field-value">${p.first_seen?.replace('T',' ')||'—'}</div></div>
-                <div class="field-group"><div class="field-label">Last Seen</div><div class="field-value">${p.last_seen?.replace('T',' ')||'—'}</div></div>
+                <div class="field-group"><div class="field-label">Fingerprint</div><div class="field-value highlight">${esc(p.fingerprint_hash)}</div></div>
+                <div class="field-group"><div class="field-label">Play Count</div><div class="field-value highlight">${esc(p.play_count)}</div></div>
+                <div class="field-group"><div class="field-label">First Seen</div><div class="field-value">${esc(p.first_seen?.replace('T',' '))||'—'}</div></div>
+                <div class="field-group"><div class="field-label">Last Seen</div><div class="field-value">${esc(p.last_seen?.replace('T',' '))||'—'}</div></div>
             </div>
         </div>
         <div class="modal-section">
             <div class="modal-section-title">Location</div>
             <div class="grid-3">
-                <div class="field-group"><div class="field-label">Country</div><div class="field-value">${p.country||'Unknown'} ${p.country_code?'('+p.country_code+')':''}</div></div>
-                <div class="field-group"><div class="field-label">Region</div><div class="field-value">${p.region_name||'—'}</div></div>
-                <div class="field-group"><div class="field-label">City</div><div class="field-value">${p.city||'—'}</div></div>
-                <div class="field-group"><div class="field-label">Coordinates</div><div class="field-value">${p.lat&&p.lon?p.lat+', '+p.lon:'—'}</div></div>
-                <div class="field-group"><div class="field-label">IP Addresses</div><div class="field-value">${ips.join(', ')||'—'}</div></div>
+                <div class="field-group"><div class="field-label">Country</div><div class="field-value">${esc(p.country)||'Unknown'} ${p.country_code?'('+esc(p.country_code)+')':''}</div></div>
+                <div class="field-group"><div class="field-label">Region</div><div class="field-value">${esc(p.region_name)||'—'}</div></div>
+                <div class="field-group"><div class="field-label">City</div><div class="field-value">${esc(p.city)||'—'}</div></div>
+                <div class="field-group"><div class="field-label">Coordinates</div><div class="field-value">${p.lat&&p.lon?esc(p.lat)+', '+esc(p.lon):'—'}</div></div>
+                <div class="field-group"><div class="field-label">IP Addresses</div><div class="field-value">${ips.map(ip=>esc(ip)).join(', ')||'—'}</div></div>
             </div>
         </div>
         <div class="modal-section">
@@ -678,29 +754,29 @@ function showDetail(p) {
             <div class="grid-2">
                 <div class="field-group">
                     <div class="field-label">Score / Tier</div>
-                    <div class="wealth-score-big" style="color:${barColor}">${p.wealth_score||0}</div>
-                    <div class="wealth-bar-wrap"><div class="wealth-bar" style="width:${p.wealth_score||0}%;background:${barColor}"></div></div>
-                    <div style="margin-top:8px;font-size:16px;color:${barColor};font-weight:bold">${p.wealth_label||'Unknown'}</div>
+                    <div class="wealth-score-big" style="color:${barColor}">${esc(p.wealth_score||0)}</div>
+                    <div class="wealth-bar-wrap"><div class="wealth-bar" style="width:${esc(p.wealth_score||0)}%;background:${barColor}"></div></div>
+                    <div style="margin-top:8px;font-size:16px;color:${barColor};font-weight:bold">${esc(p.wealth_label)||'Unknown'}</div>
                 </div>
                 <div class="field-group">
                     <div class="field-label">Score Breakdown</div>
-                    ${reasons.map(r=>`<div class="reason-item">&#9658; ${r}</div>`).join('')||'<div class="reason-item">No data</div>'}
+                    ${reasons.map(r=>`<div class="reason-item">&#9658; ${esc(r)}</div>`).join('')||'<div class="reason-item">No data</div>'}
                 </div>
             </div>
         </div>
         <div class="modal-section">
             <div class="modal-section-title">Hardware &amp; Browser</div>
             <div class="grid-2">
-                <div class="field-group"><div class="field-label">OS</div><div class="field-value">${p.os_name||'—'} ${p.os_version||''}</div></div>
-                <div class="field-group"><div class="field-label">Screen</div><div class="field-value">${p.screen_width||'—'}x${p.screen_height||'—'}</div></div>
-                <div class="field-group"><div class="field-label">Locale / Timezone</div><div class="field-value">${p.os_locale||'—'} / ${p.timezone||'—'}</div></div>
-                <div class="field-group"><div class="field-label">Processor</div><div class="field-value">${p.processor_name||'—'}</div></div>
+                <div class="field-group"><div class="field-label">OS</div><div class="field-value">${esc(p.os_name)||'—'} ${esc(p.os_version)||''}</div></div>
+                <div class="field-group"><div class="field-label">Screen</div><div class="field-value">${esc(p.screen_width)||'—'}x${esc(p.screen_height)||'—'}</div></div>
+                <div class="field-group"><div class="field-label">Locale / Timezone</div><div class="field-value">${esc(p.os_locale)||'—'} / ${esc(p.timezone)||'—'}</div></div>
+                <div class="field-group"><div class="field-label">Processor</div><div class="field-value">${esc(p.processor_name)||'—'}</div></div>
             </div>
-            <div class="field-group"><div class="field-label">User Agent</div><div class="field-value">${p.user_agent||'—'}</div></div>
+            <div class="field-group"><div class="field-label">User Agent</div><div class="field-value">${esc(p.user_agent)||'—'}</div></div>
         </div>
         <div class="modal-section">
             <div class="modal-section-title">Raw Data</div>
-            <pre>${JSON.stringify(raw,null,2)}</pre>
+            <pre>${esc(JSON.stringify(raw,null,2))}</pre>
         </div>`;
     document.getElementById('modal').classList.add('open');
 }
@@ -761,14 +837,22 @@ def clear_players():
 
 @app.route("/data", methods=["POST"])
 def receive_data():
-    data = request.get_json()
-    if not data or "fingerprint_hash" not in data:
-        return jsonify({"status": "error", "message": "Missing fingerprint_hash"}), 400
+    raw = request.get_json()
+    if not raw:
+        return jsonify({"status": "error", "message": "Invalid JSON"}), 400
 
-    hash_key  = str(data.get("fingerprint_hash"))
-    now       = datetime.utcnow().isoformat()
-    screen    = data.get("screen_size", {})
-    geo       = geolocate(data.get("ip_addresses", []))
+    data = sanitize_input(raw)
+    if data is None:
+        return jsonify({"status": "error", "message": "Missing or invalid fingerprint_hash"}), 400
+
+    # Reject payloads that are far too large (extra junk)
+    if len(json.dumps(raw)) > MAX_JSON:
+        return jsonify({"status": "error", "message": "Payload too large"}), 413
+
+    hash_key  = str(data["fingerprint_hash"])
+    now       = datetime.now(timezone.utc).isoformat()
+    screen    = data["screen_size"]
+    geo       = geolocate(data["ip_addresses"])
     wealth_score, wealth_label, wealth_reasons = estimate_wealth(data)
 
     with get_db() as conn:
@@ -776,10 +860,10 @@ def receive_data():
 
         vals_common = (
             now,
-            data.get("os_name"), data.get("os_version"), data.get("os_locale"),
-            data.get("model_name"), data.get("processor_name"), data.get("user_agent"),
-            data.get("timezone"), screen.get("width"), screen.get("height"),
-            json.dumps(data.get("ip_addresses", [])), json.dumps(data),
+            data["os_name"], data["os_version"], data["os_locale"],
+            data["model_name"], data["processor_name"], data["user_agent"],
+            data["timezone"], screen["width"], screen["height"],
+            json.dumps(data["ip_addresses"]), json.dumps(data),
             geo and geo.get("country"), geo and geo.get("countryCode"),
             geo and geo.get("regionName"), geo and geo.get("city"),
             geo and geo.get("lat"), geo and geo.get("lon"),
@@ -838,26 +922,52 @@ def receive_data():
 #       url = "http://192.168.0.111:8080/data"
 # ─────────────────────────────────────────────────────────────────────────────
 
+import signal
+
+# Server references for graceful shutdown
+_http_server = None
+_https_server = None
+_shutdown_event = threading.Event()
+
 def run_http():
-    server = make_server(HOST, HTTP_PORT, app)
+    global _http_server
+    _http_server = make_server(HOST, HTTP_PORT, app)
     print(f"[HTTP]  http://{HOST}:{HTTP_PORT}  — for desktop builds")
-    server.serve_forever()
+    _http_server.serve_forever()
 
 def run_https():
+    global _https_server
     ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     ctx.load_cert_chain("cert.pem", "key.pem")
-    server = make_server(HOST, HTTPS_PORT, app, ssl_context=ctx)
+    _https_server = make_server(HOST, HTTPS_PORT, app, ssl_context=ctx)
     print(f"[HTTPS] https://{HOST}:{HTTPS_PORT}  — for web build / dashboard")
-    server.serve_forever()
+    _https_server.serve_forever()
+
+def shutdown(signum, frame):
+    """Gracefully shut down both servers and wait for threads to finish."""
+    sig_name = signal.Signals(signum).name
+    print(f"\n[SHUTDOWN] Received {sig_name}, shutting down...")
+    if _http_server:
+        _http_server.shutdown()
+    if _https_server:
+        _https_server.shutdown()
+    _shutdown_event.set()
 
 if __name__ == "__main__":
     init_db()
 
-    t_http  = threading.Thread(target=run_http,  daemon=True, name="http")
-    t_https = threading.Thread(target=run_https, daemon=True, name="https")
+    t_http  = threading.Thread(target=run_http,  name="http")
+    t_https = threading.Thread(target=run_https, name="https")
 
     t_http.start()
     t_https.start()
 
-    print(f"\nDashboard → https://{HOST}:{HTTPS_PORT}\n")
-    t_http.join()
+    signal.signal(signal.SIGINT, shutdown)
+    signal.signal(signal.SIGTERM, shutdown)
+
+    print(f"\nDashboard → https://{HOST}:{HTTPS_PORT}")
+    print("Press Ctrl+C to stop.\n")
+    _shutdown_event.wait()
+    t_http.join(timeout=5)
+    t_https.join(timeout=5)
+    print("[SHUTDOWN] Done.")

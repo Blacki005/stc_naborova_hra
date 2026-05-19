@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv1t427wqm5qr"]
+
+[ext_resource type="PackedScene" uid="uid://bm7lb7j4wmbus" path="res://scenes/entity/enemy/enemy_base.tscn" id="1_yylil"]
+[ext_resource type="Texture2D" uid="uid://blmtec4c1ynr3" path="res://images/npc_characters/chrudimak.png" id="2_fg30c"]
+[ext_resource type="PackedScene" uid="uid://ykjgma5fpr3y" path="res://scenes/projectiles/Grenade_projectile.tscn" id="2_v86ff"]
+
+[node name="chrudimak" instance=ExtResource("1_yylil")]
+ENY_PROJECTILE = ExtResource("2_v86ff")
+DAMAGE_REACTIONS = Array[String](["Pot šetří krev!", "Chrudim p**o"])
+hp_max = 10000
+hp = 10000
+defence = 1
+SPEED = 200
+receives_knockback = false
+item_drop_name = "Bago"
+item_drop_cnt = 50
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_fg30c")
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

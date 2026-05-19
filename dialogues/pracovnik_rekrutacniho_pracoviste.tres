@@ -37,7 +37,7 @@ nodes = {
 1: {
 "condition": {},
 "link": &"1_6",
-"text": "Rád bych nejdřív tušil/a jak se tahle hra ovládá."
+"text": "Rád bych tušil/a jak se tahle hra ovládá."
 }
 },
 "size": Vector2(300, 344),
@@ -68,7 +68,7 @@ nodes = {
 "text": "Tak to nechápu kde je problém, moje papíry to doma umí."
 }
 },
-"size": Vector2(300.00012, 309),
+"size": Vector2(300.00018, 309),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/poradovka_pro_dokumenty.mp3"
 },
@@ -101,7 +101,7 @@ nodes = {
 "text": "Ještě nějaké tipy?"
 }
 },
-"size": Vector2(300.00024, 344),
+"size": Vector2(300.00037, 344),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/jak_na_dokumenty.mp3"
 },
@@ -115,7 +115,7 @@ nodes = {
 "text": "Díky!"
 }
 },
-"size": Vector2(300.00006, 309),
+"size": Vector2(300.00006, 308.99997),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/to_byla_dobra_prace.mp3"
 },
@@ -143,7 +143,7 @@ nodes = {
 "text": "Dobře, jdu."
 }
 },
-"size": Vector2(300.00024, 309),
+"size": Vector2(300, 309),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/sbirej_bago.mp3"
 },
@@ -162,7 +162,7 @@ nodes = {
 "text": "Jdu"
 }
 },
-"size": Vector2(300, 344.00012),
+"size": Vector2(300, 344.00006),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/vyridte_dokumenty.mp3"
 },
@@ -176,7 +176,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300.00024, 274),
+"size": Vector2(300.00024, 273.99988),
 "speaker": 4,
 "voice": "res://sound/levels/rekrutak/kryju.mp3"
 },

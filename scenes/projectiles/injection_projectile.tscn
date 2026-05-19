@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6p7k0ypoa7j7"]
+[gd_scene load_steps=4 format=3 uid="uid://b6p7k0ypoa7j7"]
 
 [ext_resource type="PackedScene" uid="uid://c80e3g5vwh245" path="res://scenes/projectiles/projectile_base.tscn" id="1_55wpt"]
 [ext_resource type="Texture2D" uid="uid://cjbbsuspntci7" path="res://images/items/Injection.png" id="2_1xpke"]
+[ext_resource type="PackedScene" uid="uid://dh4a58tynq8cg" path="res://scenes/effects/explosion_green.tscn" id="2_hoq0l"]
 
 [node name="injection_projectile" instance=ExtResource("1_55wpt")]
+destroy_effect = ExtResource("2_hoq0l")
 damage = 20
 
 [node name="Sprite2D" parent="." index="0"]

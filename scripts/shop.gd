@@ -57,17 +57,16 @@ func display_item(item_data : Array) -> void:
 
 #function makes sure that shop contents are stored in shop json file and plays exit animatiopn
 func _on_close_button_up() -> void:
+	close()
+
+
+func close() -> void:
+	if not visible:
+		return
 	InteractionManager.can_interact = true
-	#unused feature: limited number of items to sell requires saving on close
-	
-	#var file = FileAccess.open("res://data/shop_data/" + shop_name + ".json", FileAccess.WRITE)
-	#if file != null:
-		#file.store_string(JSON.stringify(shop_goods, "\t"))
-	#else:
-		#print("Error storing goods, file res://data/shop_data/" + shop_name + ".json not found!")
-	
+	Globals.able_to_attack = true
 	anim.play("trans_out")
-	await anim.get_tree().create_timer(0.5).timeout #wait until animation finishes
+	await anim.get_tree().create_timer(0.5).timeout
 	self.visible = false
 	get_tree().paused = false
 

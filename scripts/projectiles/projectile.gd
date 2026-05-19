@@ -12,6 +12,13 @@ func _physics_process(delta: float) -> void:
 	global_position += SPEED * direction * delta
 
 func destroy() -> void:
+	if destroy_effect:
+		var effect := destroy_effect.instantiate()
+		var animatedSprite = effect.get_child(0) #destroy effect has only one child - animated sprite2d
+		if animatedSprite:
+			animatedSprite.connect("animation_finished", effect.queue_free)
+			get_parent().add_child(effect)
+			effect.global_position = global_position
 	if sound:
 		emit_signal("projectile_destroyed", sound)
 	queue_free()

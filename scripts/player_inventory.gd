@@ -15,8 +15,6 @@ var inventory : Dictionary = {
 
 var hotbar : Dictionary = {
 	0 : ["IDCard", 1],
-	#1 : ["RedPotion", 4],
-	#2 : ["BluePotion", 4]
 }
 
 #current active item slot
